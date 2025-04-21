@@ -1,0 +1,11 @@
+# Ignore virtual environment
+env_portfolio/
+
+# Python junk
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Env files
+.env
