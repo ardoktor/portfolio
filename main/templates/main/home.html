@@ -6,13 +6,13 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="py-7 text-center bg-light min-vh-90 d-flex align-items-center">
+<section class="py-7 text-center min-vh-90 d-flex align-items-center bg-dark text-white">
   <div class="container py-5">
     <h1 class="display-2 fw-bold mb-4">Hi, I'm Arda</h1>
-    <p class="lead mb-5 fs-3">I build AI-driven tools, ship MVPs , and love making ideas real with code.</p>
+    <p class="lead mb-5 fs-3">I build AI-driven tools, ship MVPs, and love making ideas real with code.</p>
     <div class="mt-5">
       <a href="{% url 'projects' %}" class="btn btn-dark btn-lg me-3">View My Work</a>
-      <a href="{% url 'contact' %}" class="btn btn-outline-dark btn-lg">Get in Touch</a>
+      <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -25,15 +25,15 @@
 
       <!-- AI & Automation -->
       <div class="col-md-3">
-        <div class="skill-card skill-card-ai p-4 border rounded h-100 shadow-sm hover-card">
+        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
           <h3 class="h5">AI & Automation</h3>
-          <p>I build GPT-powered tools and custom AI agents using Python and the OpenAI API. I use Firestore and automation workflows to deliver intelligent responses and personalized user experiences — just like in MentAI and my Interview Simulator project.</p>
+          <p>I build <span class="text-primary">GPT-powered tools</span> and custom <span class="text-primary">AI agents</span> using <span class="text-primary">Python</span> and the OpenAI API. I use Firestore and automation workflows to deliver intelligent responses — just like in <span class="text-primary">MentAI</span> and my Interview Simulator.</p>
         </div>
       </div>
 
       <!-- Backend Engineering -->
       <div class="col-md-3">
-        <div class="skill-card skill-card-backend p-4 border rounded h-100 shadow-sm hover-card">
+        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
           <h3 class="h5">Backend Engineering</h3>
           <p>I write secure and scalable backend systems using Django, Firebase, and Google Cloud Functions. Everything I've built connects APIs, handles user data, and creates logic-heavy functionality — with a strong foundation in Python, REST, and cloud infra thinking.</p>
         </div>
@@ -41,7 +41,7 @@
 
       <!-- MVP & Startup Building -->
       <div class="col-md-3">
-        <div class="skill-card skill-card-mvp p-4 border rounded h-100 shadow-sm hover-card">
+        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
           <h3 class="h5">MVP & Startup Building</h3>
           <p>I develop full-stack MVPs on my own — from idea to deployment. I'm passionate about turning concepts into actual products, solving real problems, and validating fast. MentAI is a prime example, built with zero investment, reaching early users.</p>
         </div>
@@ -49,7 +49,7 @@
 
       <!-- Research & Data Science -->
       <div class="col-md-3">
-        <div class="skill-card skill-card-research p-4 border rounded h-100 shadow-sm hover-card">
+        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
           <h3 class="h5">Research & Data Science</h3>
           <p>I've worked on applied research projects involving natural language processing, user analysis, and structured datasets. My approach is data-informed and insight-driven — blending scientific thinking with real-world product building.</p>
         </div>
