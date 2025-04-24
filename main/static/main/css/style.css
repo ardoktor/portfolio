@@ -202,11 +202,28 @@ body {
   min-height: 90vh !important;
 }
 
-/* Skill Cards */
+/* Skill Cards - Base styles */
 .skill-card {
-  background-color: #333333;
-  border-color: #444444 !important;
+  background-color: #0f1113;
+  border: 2px solid #343a40 !important;
   transition: all 0.3s ease;
+  border-radius: 20px !important;
+  -webkit-border-radius: 20px !important;
+  -moz-border-radius: 20px !important;
+  overflow: hidden;
+  padding: 1.5rem !important;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Override any Bootstrap classes that might be interfering */
+.skill-card.rounded {
+  border-radius: 20px !important;
+}
+
+.skill-card.border {
+  border: 2px solid #343a40 !important;
 }
 
 .hover-card {
@@ -216,7 +233,7 @@ body {
 .hover-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-  background-color: #404040;
+  background-color: #2c3034;
 }
 
 .skill-card h3 {
@@ -234,12 +251,26 @@ body {
   color: #0066cc !important;
 }
 
-/* Remove the individual card color variations */
+/* Remove or comment out the individual card variations */
+/* 
 .skill-card-ai, .skill-card-backend, .skill-card-mvp, .skill-card-research {
   background-color: #333333;
   border-color: #444444 !important;
+  border-radius: 30px;
+  overflow: hidden; 
+}
+*/
+
+.hero-section {
+    background: linear-gradient(135deg, #435fce, #8616b9, #000000);
+    color: #ffffff;
+    transition: all 0.5s ease;
+    border-radius: 30px 30px 30px 30px;  /* Curves at the bottom corners */
+    overflow: hidden;  /* Ensures content stays within the curved container */
 }
 
-.skill-card-ai:hover, .skill-card-backend:hover, .skill-card-mvp:hover, .skill-card-research:hover {
-  background-color: #404040;
+.hero-section:hover {
+    background: linear-gradient(135deg, #5a74e3, #9b2dd1, #1a1a1a);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    transform: scale(1.01);
 }
