@@ -1,11 +1,189 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
-{% block title %} About me {% endblock %}
+{% block title %}About - Arda Asut{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Hello I am Arda !</h1>
-    <p>Let me tell you a bit about my story</p>
-    <!-- Add your content here -->
+
+<!-- Hero Section -->
+<section class="about-hero-section py-5 text-center min-vh-30 d-flex align-items-center">
+  <div class="container py-4">
+    <h1 class="display-4 fw-bold mb-3">About Me</h1>
+    <p class="lead mb-0">Passionate about building AI-powered tools, scalable platforms, and products that help people grow.</p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<div class="bg-light py-5">
+  <div class="container">
+
+    <!-- Introduction -->
+    <section class="mb-5">
+      <h2 class="h3 mb-4">👋 Hi, I'm Arda</h2>
+      <p class="fs-5 mb-3">I'm a Python/Django developer with a passion for solving real-world problems through technology.</p>
+      <p class="fs-5 mb-0">My journey started in network engineering, mastering complex systems. Over time, my love for coding, AI, and creating meaningful applications took over — leading me to build full-stack platforms that help people grow.</p>
+    </section>
+
+    <!-- What I Do -->
+    <section class="mb-5">
+      <h2 class="h3 mb-4">🔧 What I Do</h2>
+      <ul class="fs-5 mb-0">
+        <li class="mb-2">Develop full-stack MVPs with Python, Django, Firebase, and Google Cloud</li>
+        <li class="mb-2">Build AI-powered applications using OpenAI APIs, LangChain, and NLP methods</li>
+        <li class="mb-2">Design cloud-native backends with secure, scalable infrastructures</li>
+        <li>Create productivity and growth-focused platforms like <strong>MentAI</strong></li>
+      </ul>
+    </section>
+
+    <!-- Why I Build -->
+    <section class="mb-5">
+      <h2 class="h3 mb-4">💡 Why I Build</h2>
+      <p class="fs-5 mb-0">I believe great software isn't just about code — it's about empowering people to live better lives.  
+      From focus-enhancing tools to personal development systems, my mission is to create impactful, human-centered technology.</p>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="mb-5">
+      <h2 class="h3 mb-4">💼 Experience</h2>
+      <br><br>
+      <div class="timeline">
+        <!-- MentAI -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Jul 2024 - Present · 10 mos</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Product Lead, MentAI</h3>
+            <ul class="fs-5 mb-0">
+              <li class="mb-2">Developing AI-Based Mentorship App: Designed and developed an MVP using LLMs, LangChain, and retrieval-augmented generation (RAG) to provide personalized mentorship experiences.</li>
+              <li class="mb-2">Product Ownership: Led the end-to-end product lifecycle, including feature design, UI/UX development, and backend implementation using Python and Google Cloud Services.</li>
+              <li class="mb-2">Team Leadership: Managed a cross-functional team of developers, marketers, and designers, ensuring alignment between technical execution and marketing strategies.</li>
+              <li class="mb-2">Technical Implementation: Developed the app's backend using REST APIs, integrated LLM pipelines, and utilized frameworks like React Native and Flutter for cross-platform mobile development.</li>
+              <li class="mb-2">Data-Driven Iterations: Conducted A/B testing and user feedback analysis to improve app features and retention rates by 25%.</li>
+              <li>Skills: LangChain · Product Management · Python · React Native</li>
+            </ul>
+          </div>
+        </div>
+        <br><br>
+        <!-- Türk Telekom -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Dec 2021 - Present · 3 yrs 5 mos</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Network Engineer, Türk Telekom</h3>
+            <h4 class="h6 text-muted mb-2">İzmir, Türkiye</h4>
+            <ul class="fs-5 mb-0">
+              <li class="mb-2">Team Leadership: Led and coordinated cross-functional teams to manage regional network infrastructure, focusing on performance optimization and issue resolution. Successfully delivered a major network upgrade project, improving performance by 30%.</li>
+              <li class="mb-2">Technical Expertise: Proficient in TCP/IP protocols, VLANs, routing, and switching. Hands-on experience configuring and managing network devices, including Nokia and Huawei routers and switches.</li>
+              <li class="mb-2">Network Tools & Technologies: Skilled in using network monitoring and diagnostic tools to ensure availability and performance. Familiar with Linux-based systems for network management and optimization.</li>
+              <li class="mb-2">Process Automation: Streamlined network processes and developed automated solutions to reduce downtime and improve system efficiency.</li>
+              <li>Skills: Network Services · Computer Networking · Nokia · Linux</li>
+            </ul>
+          </div>
+        </div>
+        <br><br>
+        <!-- Miuul -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Jun 2023 - Oct 2023 · 5 mos</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Teaching Assistant & Bootcamp Participant, Miuul</h3>
+            <ul class="fs-5 mb-0">
+              <li class="mb-2">Teaching Assistant (Sep 2023 - Oct 2023): Assisted in Data Science & Machine Learning Bootcamp.</li>
+              <li class="mb-2">Bootcamp Participant (Jun 2023 - Sep 2023): Completed comprehensive training in data science and machine learning.</li>
+              <li>Skills: Statistical Modeling · Scikit-Learn · Generative AI · Data Analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SADELABS -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Jul 2021 - Aug 2021 · 2 mos</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Project Intern, SADELABS</h3>
+            <h4 class="h6 text-muted mb-2">İzmir, Türkiye</h4>
+            <p class="fs-5 mb-0">Anomaly detection on first party energy consumption data using LSTM neural network.</p>
+          </div>
+        </div>
+
+        <!-- Yaşar University -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Feb 2019 - Jan 2020 · 1 yr</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Part-time Project Assistant, Yaşar University</h3>
+            <h4 class="h6 text-muted mb-2">İzmir, Türkiye</h4>
+            <p class="fs-5 mb-0">Scheduling IoT device traffic with machine learning models.</p>
+          </div>
+        </div>
+
+        <!-- Green Energy Park -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Jun 2019 - Aug 2019 · 3 mos</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Intern, Green Energy Park</h3>
+            <h4 class="h6 text-muted mb-2">Fas</h4>
+            <p class="fs-5 mb-0">Developed a Windows application/interface using C# and SQL that automates the presentation of measurement results from PV panel performance tests in Excel reports.</p>
+          </div>
+        </div>
+
+        <!-- Izdemir Energy -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge bg-secondary">Jun 2018 - Aug 2018 · 3 mos</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Intern, Izdemir Energy Inc.</h3>
+            <h4 class="h6 text-muted mb-2">Izmir, Turkey</h4>
+            <p class="fs-5 mb-0">Voluntary Internship</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="mb-5">
+      <h2 class="h3 mb-4">🛠️ Tech Stack</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <ul class="fs-5 mb-0">
+            <li class="mb-2">⚡ Python (Django, Flask)</li>
+            <li class="mb-2">⚡ Firebase, Google Cloud Functions</li>
+            <li class="mb-2">⚡ OpenAI API, LangChain, LLM Integrations</li>
+            <li>⚡ React Native & Flutter for mobile apps</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul class="fs-5 mb-0">
+            <li class="mb-2">⚡ TCP/IP Networking (Nokia, Huawei Systems)</li>
+            <li class="mb-2">⚡ Data Science (NLP, LSTM, Machine Learning)</li>
+            <li class="mb-2">⚡ Product Management & Team Leadership</li>
+            <li>⚡ Full-stack MVP Building & Deployment</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <div class="text-center mt-5">
+      <a href="{% url 'projects' %}" class="btn btn-dark btn-lg">Explore My Projects →</a>
+    </div>
+
+  </div>
 </div>
+
 {% endblock %}

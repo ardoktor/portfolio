@@ -64,9 +64,23 @@
 <section class="py-5">
   <div class="container text-center">
     <h2 class="mb-4">About Me</h2>
-    <p class="lead">I'm a Python/Django developer building full-stack products, from AI tools to habit-tracking platforms. I believe in launching early, learning fast, and writing real-world software that helps people grow.</p>
+    <p class="lead">
+      I'm a Python/Django developer with a passion for building full-stack, user-centric products — from intelligent AI agents to productivity platforms that support real human goals. I enjoy the process of turning complex ideas into elegant code, using tools like Firebase, OpenAI, and Django to deliver scalable, meaningful apps. I believe in launching early, learning fast, and crafting real-world software that makes a difference.
+    </p>
+      <a href="{% url 'about' %}" 
+      class="btn btn-lg px-4 py-2 mt-4"
+      style="background-color: #7d48c4; color: white; border: none; border-radius: 12px;">
+      Read More →
+      </a>
+  
   </div>
 </section>
+
+
+  
+</section>
+
+
 
 <!-- Contact Section -->
 <section class="py-5 bg-dark text-white">
@@ -76,5 +90,9 @@
     <a href="{% url 'contact' %}" class="btn btn-outline-light mt-3">Reach Out</a>
   </div>
 </section>
+
+<div class="wide-container py-5">
+  <!-- Content here -->
+</div>
 
 {% endblock %}

@@ -251,26 +251,149 @@ body {
   color: #0066cc !important;
 }
 
-/* Remove or comment out the individual card variations */
-/* 
-.skill-card-ai, .skill-card-backend, .skill-card-mvp, .skill-card-research {
-  background-color: #333333;
-  border-color: #444444 !important;
-  border-radius: 30px;
-  overflow: hidden; 
-}
-*/
 
+/* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #435fce, #8616b9, #000000);
-    color: #ffffff;
-    transition: all 0.5s ease;
-    border-radius: 30px 30px 30px 30px;  /* Curves at the bottom corners */
-    overflow: hidden;  /* Ensures content stays within the curved container */
+  width: 100%;
+  background: linear-gradient(135deg, #435fce, #8616b9, #000000);
+  color: #ffffff;
+  transition: all 0.2s ease;
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .hero-section:hover {
-    background: linear-gradient(135deg, #5a74e3, #9b2dd1, #1a1a1a);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    transform: scale(1.01);
+  background: linear-gradient(135deg, #000000, #3d2dd1, #8616b9);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #435fce, #8616b9, #000000);
+  z-index: 1;
+}
+
+.hero-content {
+  padding: 2rem;
+  max-width: 1200px;
+  color: #ffffff;
+}
+
+
+/* About Page Hero Section */
+.about-hero-section {
+  width: 100%;
+  background: linear-gradient(135deg, #6016e0, #a016d6, #dd1111);  /* 💡 Try different purples or even blue-gray combos */
+  color: #ffffff;
+  transition: all 0.5s ease;
+  border-radius: 30px;  /* Optional: flatter top section */
+  overflow: hidden;
+}
+
+.about-hero-section:hover {
+  transform: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.wide-container {
+  max-width: 1400px;  /* Adjust this value as needed */
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Button Hover Style */
+.btn-dark {
+  background-color: #222;
+  color: #fff;
+  border: none;
+}
+
+.btn-dark:hover {
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light {
+  border: 2px solid #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+/* Timeline Styling */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  margin-left: 10px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: #435fce;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -39px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #8616b9;
+  border: 4px solid #1a1a1a;
+  box-shadow: 0 0 0 2px #8616b9;
+}
+
+.timeline-date {
+  margin-bottom: 10px;
+}
+
+.timeline-date .badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: #8616b9;
+}
+
+.timeline-content {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.timeline-content h3, .timeline-content h4, .timeline-content p {
+  color: #ffffff;
+}
+
+.timeline-content h4 {
+  color: #aaaaaa;
 }
