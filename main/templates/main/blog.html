@@ -1,11 +1,83 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
-{% block title %}Home - Your Portfolio{% endblock %}
+{% block title %}Blog - Arda Asut{% endblock %}
 
 {% block content %}
+
+<!-- Hero Section -->
+<section class="blog-hero-section py-5 text-center min-vh-30 d-flex align-items-center">
+    <div class="container py-4">
+      <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">Blog</h1>
+      <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100"> "Thoughts, lessons, and stories from my journey in tech and life."</p>
+    </div>
+  </section>
+
+<br><br>
+
+<!-- Blog Posts -->
 <div class="container">
-    <h1>Blog posts </h1>
-    <p>I want to talk about my journey</p>
-    <!-- Add your content here -->
-</div>
+    <div class="row g-4">
+      
+      {% if blog_posts %}
+        {% for post in blog_posts %}
+          <!-- Blog Post Card -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+            <div class="card blog-card h-100">
+              {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">        
+              {% endif %}
+              <div class="card-body">
+                <h3 class="card-title h5">{{ post.text|truncatechars:50 }}</h3>
+                <p class="card-text">{{ post.text|truncatewords:30 }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">{{ post.created_at|date:"F d, Y" }}</small>
+                  <a href="{% url 'blog_detail' post.slug %}" class="btn btn-sm btn-outline-light">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12 text-center">
+          <p class="fs-5">No blog posts available yet. Check back soon!</p>
+        </div>
+      {% endif %}
+    
+    </div>
+  </div>    
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Blog Card Styling */
+  .blog-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .blog-card .card-body {
+    padding: 1.5rem;
+  }
+  
+  .blog-card .card-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  
+  .blog-card .card-text {
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+  }
+</style>
 {% endblock %}

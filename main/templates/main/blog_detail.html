@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ post.text|truncatechars:50 }} - Arda Asut{% endblock %}
+
+{% block content %}
+
+<!-- Blog Post Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <div class="card blog-detail-card">
+        <div class="card-body">
+          {% if post.image %}
+            <img src="{{ post.image.url }}" class="img-fluid rounded mb-4" alt="{{ post.text|truncatechars:50 }}">
+          {% endif %}
+          
+          <div class="blog-content">
+            {{ post.text|linebreaks }}
+          </div>
+          
+          <div class="mt-5 pt-4 border-top">
+            <a href="{% url 'blog' %}" class="btn btn-outline-light">← Back to Blog</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .blog-detail-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .blog-detail-card .card-body {
+    padding: 3rem;
+  }
+  
+  .blog-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+  
+  .blog-content p {
+    margin-bottom: 1.8rem;
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1300px;
+    }
+  }
+</style>
+{% endblock %} 
