@@ -287,10 +287,10 @@ body {
 /* About Page Hero Section */
 .about-hero-section {
   width: 100%;
-  background: linear-gradient(135deg, #6016e0, #a016d6, #dd1111);  /* 💡 Try different purples or even blue-gray combos */
+  background: linear-gradient(135deg, #17141d, #6148eb, #332294);
   color: #ffffff;
   transition: all 0.5s ease;
-  border-radius: 30px;  /* Optional: flatter top section */
+  border-radius: 30px 30px 30px 30px;  /* Same as your tech stack section */
   overflow: hidden;
 }
 
@@ -299,8 +299,45 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.bg-light.py-5 {
+  border-radius: 20px;
+}
 
+/* Tech Stack Sections */
+.bg-secondary.py-5 {
+  border-radius: 30px 30px 0 0;  /* Rounded top corners only */
+  background: linear-gradient(135deg, #435fce, #8616b9) !important;
+  color: white;
+  margin-bottom: 0;  /* Remove bottom margin */
+  padding-bottom: 3rem;  /* Add more padding at bottom */
+}
 
+.bg-dark.py-5 {
+  border-radius: 0 0 30px 30px;  /* Rounded bottom corners only */
+  background: linear-gradient(135deg, #17141d, #332294) !important;
+  color: white;
+  margin-top: 0;  /* Remove top margin */
+  padding-top: 3rem;  /* Add more padding at top */
+}
+
+/* Ensure text is visible in both sections */
+.bg-secondary.py-5 h2, 
+.bg-secondary.py-5 li,
+.bg-dark.py-5 h2,
+.bg-dark.py-5 li {
+  color: white;
+}
+
+/* Add shadow only to the bottom section */
+.bg-dark.py-5 {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Add some margin between sections */
+.bg-light.py-5 + br + br + .bg-secondary.py-5,
+.bg-secondary.py-5 + br + br + .bg-light.py-5 {
+  margin-top: -30px;  /* Negative margin to reduce the space from <br><br> */
+}
 
 .wide-container {
   max-width: 1400px;  /* Adjust this value as needed */
@@ -396,4 +433,56 @@ body {
 
 .timeline-content h4 {
   color: #aaaaaa;
+}
+
+/* Two-column Tech Stack Layout */
+.tech-stack-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tech-stack-container .bg-secondary {
+  border-radius: 30px 0 0 30px;
+  background: linear-gradient(135deg, #435fce, #8616b9) !important;
+  padding: 2.5rem;
+}
+
+.tech-stack-container .bg-dark {
+  border-radius: 0 30px 30px 0;
+  background: linear-gradient(135deg, #17141d, #332294) !important;
+  padding: 2.5rem;
+}
+
+/* For mobile devices, make both columns have rounded corners */
+@media (max-width: 767.98px) {
+  .tech-stack-container .bg-secondary {
+    border-radius: 30px 30px 0 0;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-stack-container .bg-dark {
+    border-radius: 0 0 30px 30px;
+  }
+  
+  .tech-stack-container .col-md-6 {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* Ensure text is visible in both sections */
+.tech-stack-container h2, 
+.tech-stack-container li {
+  color: white;
+}
+
+/* Add shadow to both columns */
+.tech-stack-container .bg-secondary,
+.tech-stack-container .bg-dark {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Container padding adjustments */
+.tech-stack-container .container {
+  padding: 0 1rem;
 }
