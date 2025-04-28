@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import BlogPost
+from .models import BlogPost, Project
 from django.views.generic import ListView, DetailView
 
 # Create your views here.
@@ -14,7 +14,8 @@ def contact(request):
 
 
 def projects(request):
-    return render(request, 'main/projects.html')
+    projects_list = Project.objects.all()
+    return render(request, 'main/projects.html', {'projects': projects_list})
 
 class BlogListView(ListView):
     model = BlogPost

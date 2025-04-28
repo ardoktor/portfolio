@@ -517,3 +517,19 @@ body {
   max-width: 1200px;
   color: #ffffff;
 }
+
+/* About Page Hero Section */
+.projects-hero-section {
+  width: 100%;
+  background: linear-gradient(135deg, #d8a5a5, #d63a6e, #2b0cdd);
+  color: #ffffff;
+  transition: all 0.5s ease;
+  border-radius: 30px 30px 30px 30px;  /* Same as your tech stack section */
+  overflow: hidden;
+}
+
+.projects-hero-section:hover {
+  transform: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+

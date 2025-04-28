@@ -1,12 +1,302 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
-{% block title %}Home - Your Portfolio{% endblock %}
+{% block title %}Projects - Arda Asut{% endblock %}
 
 {% block content %}
+
+<!-- Hero Section -->
+<section class="projects-hero-section py-5 text-center min-vh-30 d-flex align-items-center">
+    <div class="container py-4">
+      <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">Projects</h1>
+      <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100">A showcase of my work, side projects, and experiments</p>
+    </div>
+</section>
+
+<br><br>
+
+<!-- Projects Container -->
 <div class="container">
-    <h1>Here are my projects /h1>
-    <li>  Mentai </li> <br>
-    <li>  Interview simulator  </li>
-    <!-- Add your content here -->
+  <div class="row g-4">
+    
+    {% if projects %}
+      {% for project in projects %}
+        <div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+          <div class="project-card">
+            <div class="project-header" style="text-align: left !important;">
+              <h3 style="text-align: left !important;">{{ project.title }}</h3>
+              <span class="badge bg-primary">{{ project.year }}</span>
+            </div>
+            <div class="project-body">
+              <div class="row">
+                <div class="col-md-4">
+                  {% if project.image_url %}
+                    <img src="{{ project.image_url }}" class="img-fluid rounded" alt="{{ project.title }}">
+                  {% endif %}
+                </div>
+                <div class="col-md-8" style="text-align: left !important;">
+                  <p class="project-description" style="text-align: left !important;">
+                    {{ project.description }}
+                  </p>
+                  <div class="project-tech" style="text-align: left !important;">
+                    {% for tech in project.get_tech_stack_list %}
+                      <span class="tech-badge">{{ tech }}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="project-links mt-3" style="text-align: left !important;">
+                    {% if project.demo_link %}
+                      <a href="{{ project.demo_link }}" class="btn btn-sm btn-outline-light me-2" target="_blank">View Demo</a>
+                    {% endif %}
+                    {% if project.github_link %}
+                      <a href="{{ project.github_link }}" class="btn btn-sm btn-dark" target="_blank">GitHub</a>
+                    {% endif %}
+                    {% if project.other_link %}
+                      <a href="{{ project.other_link }}" class="btn btn-sm btn-outline-light me-2" target="_blank">{{ project.other_link_text|default:"Learn More" }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <!-- Hardcoded Projects (will show if no database projects exist) -->
+      <!-- Project 1: MentAI -->
+      <div class="col-12 mb-4" data-aos="fade-up">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>MentAI - AI-Powered Mentorship Platform</h3>
+            <span class="badge bg-primary">2024</span>
+          </div>
+          <div class="project-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="https://via.placeholder.com/600x300" class="img-fluid rounded" alt="MentAI Project">
+              </div>
+              <div class="col-md-8">
+                <p class="project-description">
+                  An AI-powered mentorship platform that uses LLMs and retrieval-augmented generation to provide personalized guidance. Built with Python, LangChain, and Firebase.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">Python</span>
+                  <span class="tech-badge">LangChain</span>
+                  <span class="tech-badge">Firebase</span>
+                  <span class="tech-badge">React Native</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-light me-2">View Demo</a>
+                  <a href="#" class="btn btn-sm btn-dark">GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 2: Network Optimization Tool -->
+      <div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Network Optimization Dashboard</h3>
+            <span class="badge bg-primary">2023</span>
+          </div>
+          <div class="project-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="https://via.placeholder.com/600x300" class="img-fluid rounded" alt="Network Dashboard">
+              </div>
+              <div class="col-md-8">
+                <p class="project-description">
+                  A dashboard for monitoring and optimizing network performance. Integrates with Nokia and Huawei systems to provide real-time analytics and automated optimization suggestions.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">Python</span>
+                  <span class="tech-badge">Django</span>
+                  <span class="tech-badge">TCP/IP</span>
+                  <span class="tech-badge">D3.js</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-light me-2">Case Study</a>
+                  <a href="#" class="btn btn-sm btn-dark">GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 3: Energy Anomaly Detection -->
+      <div class="col-12 mb-4" data-aos="fade-up">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Energy Consumption Anomaly Detection</h3>
+            <span class="badge bg-primary">2021</span>
+          </div>
+          <div class="project-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="https://via.placeholder.com/600x300" class="img-fluid rounded" alt="Energy Anomaly Detection">
+              </div>
+              <div class="col-md-8">
+                <p class="project-description">
+                  LSTM neural network model for detecting anomalies in energy consumption data. Implemented during my internship at SADELABS to help identify unusual patterns and potential issues.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">Python</span>
+                  <span class="tech-badge">TensorFlow</span>
+                  <span class="tech-badge">LSTM</span>
+                  <span class="tech-badge">Pandas</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-light me-2">Research Paper</a>
+                  <a href="#" class="btn btn-sm btn-dark">GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 4: IoT Traffic Scheduler -->
+      <div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>IoT Device Traffic Scheduler</h3>
+            <span class="badge bg-primary">2019</span>
+          </div>
+          <div class="project-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="https://via.placeholder.com/600x300" class="img-fluid rounded" alt="IoT Traffic Scheduler">
+              </div>
+              <div class="col-md-8">
+                <p class="project-description">
+                  Machine learning model to optimize IoT device traffic scheduling. Developed at Yaşar University to reduce network congestion and improve device battery life.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">Python</span>
+                  <span class="tech-badge">Scikit-learn</span>
+                  <span class="tech-badge">IoT</span>
+                  <span class="tech-badge">Networking</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-light me-2">Documentation</a>
+                  <a href="#" class="btn btn-sm btn-dark">GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    
+  </div>
+  
+  <!-- More Projects CTA -->
+  <div class="text-center mt-5" data-aos="fade-up">
+    <p class="fs-5 mb-4">Interested in seeing more of my work?</p>
+    <a href="https://github.com/yourusername" target="_blank" class="btn btn-dark btn-lg">
+      <i class="bi bi-github me-2"></i> Visit My GitHub
+    </a>
+  </div>
 </div>
+
 {% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Force left alignment for all text in project cards */
+  .project-card .col-md-8,
+  .project-card .col-md-8 *,
+  .project-card .project-description,
+  .project-card .project-tech,
+  .project-card .project-links,
+  .project-card h3,
+  .project-card .project-header {
+    text-align: left !important;
+  }
+  
+  /* Project Card Styling */
+  .project-card {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  
+  .project-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .project-header h3 {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  .project-body {
+    padding: 1.5rem;
+  }
+  
+  .project-description {
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-badge {
+    background: linear-gradient(135deg, #435fce, #8616b9);
+    color: white;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .badge.bg-primary {
+    background: linear-gradient(135deg, #435fce, #8616b9) !important;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 991.98px) {
+    .project-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .project-header .badge {
+      margin-top: 0.5rem;
+    }
+    
+    .col-md-4 {
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
+{% endblock %}
+
+
+
