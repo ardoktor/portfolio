@@ -11,8 +11,8 @@
     <h1 class="display-2 fw-bold mb-4">Hi, I'm Arda</h1>
     <p class="lead mb-5 fs-3">I build AI-driven tools, ship MVPs, and love making ideas real with code.</p>
     <div class="mt-5">
-      <a href="{% url 'projects' %}" class="btn btn-dark btn-lg me-3">View My Work</a>
-      <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">Get in Touch</a>
+      <a href="{% url 'projects' %}" class="btn btn-contact me-3">View My Work</a>
+      <a href="{% url 'contact' %}" class="btn btn-contact btn-outline">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -67,12 +67,7 @@
     <p class="lead">
       I'm a Python/Django developer with a passion for building full-stack, user-centric products — from intelligent AI agents to productivity platforms that support real human goals. I enjoy the process of turning complex ideas into elegant code, using tools like Firebase, OpenAI, and Django to deliver scalable, meaningful apps. I believe in launching early, learning fast, and crafting real-world software that makes a difference.
     </p>
-      <a href="{% url 'about' %}" 
-      class="btn btn-lg px-4 py-2 mt-4"
-      style="background-color: #7d48c4; color: white; border: none; border-radius: 12px;">
-      Read More →
-      </a>
-  
+    <a href="{% url 'about' %}" class="btn btn-contact mt-4">Read More →</a>
   </div>
 </section>
 
@@ -95,4 +90,34 @@
   <!-- Content here -->
 </div>
 
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Button styling to match contacts page */
+  .btn-contact {
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    background-color: #1a1a1a;
+    color: white;
+    border: 2px solid #1a1a1a;
+  }
+
+  .btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    border: 2px solid white;
+  }
+
+  .btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+</style>
 {% endblock %}
