@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vq+)5s!^gzipz!erz5(#sc=kw2w$ng#&l-(+!eg^c927w%t8i0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['portfolio-1-fulx.onrender.com']
+ALLOWED_HOSTS = ['portfolio-2-a7qd.onrender.com']
 
 
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
