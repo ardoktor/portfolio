@@ -5,213 +5,432 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="about-hero-section py-5 text-center min-vh-30 d-flex align-items-center">
-    <div class="container py-4">
-      <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">About Me</h1>
-      <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100">Passionate about building AI-powered tools, scalable platforms, and products that help people grow.</p>
-    </div>
+<!-- Hero Section (matches home page sizing) -->
+<section class="hero-section" data-aos="fade-up">
+  <div class="hero-inner">
+    <div class="hero-label">About Me</div>
+    <h1 class="hero-title">Arda Asut</h1>
+    <p class="hero-subtitle">Passionate about building AI-powered tools, scalable platforms, and products that help people grow.</p>
+  </div>
 </section>
-
-<br><br>
-
-<div class="bg-light py-5">
-    <div class="container">
 
 <!-- Introduction -->
-<section class="mb-5">
-  <h2 class="h3 mb-4">🧑‍💻 A Bit About How I Work</h2>
-  <p class="fs-5 mb-3">
-    I'm Arda — a curious mind who found joy in creating things through code. My journey didn’t start in a classroom or a bootcamp, but by solving real problems, one by one. From managing complex network systems to building AI-powered platforms, I’ve always been driven by a simple idea: “How can I make this better?”
-  </p>
-  <p class="fs-5 mb-3">
-    I’m not just interested in writing clean code — I’m obsessed with the why behind what I build. I love the process of taking an idea, shaping it into something useful, and watching it come to life as a real product. That’s what inspired <strong>MentAI</strong>, a mentorship platform that combines AI and personal development — and it’s what continues to push me to explore new tools and frameworks.
-  </p>
-  <p class="fs-5 mb-3">
-    I treat every side project as if it could one day become a startup. I care about the details: user experience, performance, and whether what I’m building is actually helpful. I’m always looking to learn — not just new languages or libraries, but better ways to think, communicate, and create.
-  </p>
-  <p class="fs-5 mb-0">
-    Below you'll find the tools and technologies I currently use. They’re not just part of my stack — they’re the bricks and mortar behind the products I believe in.
-  </p>
+<section class="section">
+  <div class="section-inner">
+    <div class="card-theme card-theme-wide" data-aos="fade-up">
+      <h2>A Bit About How I Work</h2>
+      <p>I'm Arda -- a product-focused software engineer who builds AI-assisted systems around real operational problems.</p>
+      <p>My background spans network infrastructure and backend engineering, but my core strength lies in designing intelligent workflows: systems that combine LLMs, retrieval, and automation to support real users in healthcare, education, and career development. I don't build demos -- I build products. From clinical knowledge systems (ConsulDent), to long-term mentorship journeys (MentAI), to resume and interview gap analysis (mulakat.pro), my work consistently revolves around the same question:</p>
+      <p><strong>"How can AI reduce complexity and guide better decisions?"</strong></p>
+      <p>I'm deeply focused on retrieval-augmented generation (RAG), agent-based architectures, and structured AI outputs. I care about correctness, traceability, and usability -- not just model outputs, but how those outputs fit into real workflows.</p>
+      <p>Every project I build is treated as a potential product. That means owning the full lifecycle: system design, backend logic, deployment, iteration, and continuous improvement based on user feedback.</p>
+      <p class="text-muted-theme">Below are the tools and systems I actively use. They're not just part of my stack -- they're the foundation of the products I ship.</p>
+    </div>
+  </div>
 </section>
 
-
-<br><br>
-
-<!-- Tech Stack Section - Two Column Layout -->
-<div class="container tech-stack-container">
-  <div class="row">
-    <!-- Left Column: Development Stack -->
-    <div class="col-md-6 pe-md-2" data-aos="flip-left" data-aos-once="false" >
-      <div class="bg-secondary py-5 h-100">
-        <div class="container">
-          <section class="mb-0">
-            <h2 class="h3 mb-4">🛠️ Development Stack</h2>
-            <ul class="fs-5 mb-0">
-              <li class="mb-2">⚡ Python (Django, Flask)</li>
-              <li class="mb-2">⚡ Firebase, Google Cloud Functions</li>
-              <li class="mb-2">⚡ OpenAI API, LangChain, LLM Integrations</li>
-              <li class="mb-2">⚡ React Native & Flutter for mobile apps</li>
-              <li class="mb-2">⚡ HTML, CSS, JavaScript</li>
-              <li class="mb-2">⚡ Git, GitHub, CI/CD</li>
-              <li class="mb-2">⚡ RESTful APIs, GraphQL</li>
-              <li>⚡ PostgreSQL, MongoDB</li>
-            </ul>
-          </section>
+<!-- Skills Dashboard -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-inner">
+    <div class="skills-dashboard" data-aos="fade-up">
+      <!-- Dashboard titlebar -->
+      <div class="dashboard-titlebar">
+        <div class="dashboard-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="dashboard-title">skills & tools</div>
+        <div class="dashboard-dots" style="visibility:hidden;">
+          <span></span><span></span><span></span>
         </div>
       </div>
-    </div>
-    
-    <!-- Right Column: Specialized Skills -->
-    <div class="col-md-6 ps-md-2" data-aos="zoom-in" data-aos-once="false">
-      <div class="bg-dark py-5 h-100">
-        <div class="container">
-          <section class="mb-0">
-            <h2 class="h3 mb-4">🧠 Specialized Skills</h2>
-            <ul class="fs-5 mb-0">
-              <li class="mb-2">⚡ TCP/IP Networking (Nokia, Huawei Systems)</li>
-              <li class="mb-2">⚡ Data Science (NLP, LSTM, Machine Learning)</li>
-              <li class="mb-2">⚡ Full-stack MVP Building & Deployment</li>
-              <li class="mb-2">⚡ Product Management & Team Leadership</li>
-              <li class="mb-2">⚡ UX/UI Design Principles</li>
-              <li class="mb-2">⚡ Agile Development Methodologies</li>
-              <li>⚡ Cloud Infrastructure & Serverless Architecture</li>
-            </ul>
-          </section>
+      <!-- Dashboard body -->
+      <div class="dashboard-body">
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
+          <div class="sidebar-section">
+            <div class="sidebar-label">CATEGORIES</div>
+            <div class="sidebar-item active" data-tab="builder">Builder</div>
+            <div class="sidebar-item" data-tab="backend">Backend & AI</div>
+            <div class="sidebar-item" data-tab="domain">Domain Expertise</div>
+          </div>
+        </div>
+        <!-- Main content -->
+        <div class="dashboard-main">
+
+          <!-- Tab: Builder & Product Engineer -->
+          <div class="dashboard-tab active" id="tab-builder">
+            <h3 class="dashboard-section-title">Builder & Product Engineer</h3>
+            <div class="dashboard-grid">
+              <div class="dashboard-cell">
+                <div class="cell-label">Product Thinking</div>
+                <div class="cell-value">Problem discovery & validation</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Product Thinking</div>
+                <div class="cell-value">User-centric workflow design</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Product Thinking</div>
+                <div class="cell-value">Turning ideas into shippable products</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">MVP & Startup</div>
+                <div class="cell-value">End-to-end MVP building</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">MVP & Startup</div>
+                <div class="cell-value">Fast iteration & feedback loops</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">MVP & Startup</div>
+                <div class="cell-value">Zero-to-one product development</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Product Ownership</div>
+                <div class="cell-value">Feature scoping & prioritization</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Product Ownership</div>
+                <div class="cell-value">Deployment & production readiness</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Product Ownership</div>
+                <div class="cell-value">Long-term product evolution</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Entrepreneurial</div>
+                <div class="cell-value">Market-driven development</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Entrepreneurial</div>
+                <div class="cell-value">Building with constraints (time, cost, users)</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Entrepreneurial</div>
+                <div class="cell-value">Treating side projects as real startups</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Backend & AI Systems Engineer -->
+          <div class="dashboard-tab" id="tab-backend">
+            <h3 class="dashboard-section-title">Backend & AI Systems Engineer</h3>
+            <div class="dashboard-grid">
+              <div class="dashboard-cell">
+                <div class="cell-label">Backend Engineering</div>
+                <div class="cell-value">Python-based backend systems</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Backend Engineering</div>
+                <div class="cell-value">Django & FastAPI architectures</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Backend Engineering</div>
+                <div class="cell-value">RESTful API design</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Backend Engineering</div>
+                <div class="cell-value">Data modeling & persistence</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">AI-Assisted Systems</div>
+                <div class="cell-value">LLM integrations (OpenAI APIs)</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">AI-Assisted Systems</div>
+                <div class="cell-value">Retrieval-Augmented Generation (RAG)</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">AI-Assisted Systems</div>
+                <div class="cell-value">Structured AI outputs & validation</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Agent Architectures</div>
+                <div class="cell-value">Agent routing & orchestration</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Agent Architectures</div>
+                <div class="cell-value">Multi-step reasoning pipelines</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Agent Architectures</div>
+                <div class="cell-value">LangChain / LangGraph systems</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Data & Storage</div>
+                <div class="cell-value">PostgreSQL, SQLite</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Data & Storage</div>
+                <div class="cell-value">Vector search & embeddings (Supabase)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Domain & Specialized Engineering -->
+          <div class="dashboard-tab" id="tab-domain">
+            <h3 class="dashboard-section-title">Domain & Specialized Engineering</h3>
+            <div class="dashboard-grid">
+              <div class="dashboard-cell">
+                <div class="cell-label">Domain-Driven Systems</div>
+                <div class="cell-value">Healthcare knowledge workflows</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Domain-Driven Systems</div>
+                <div class="cell-value">Education & mentorship platforms</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Domain-Driven Systems</div>
+                <div class="cell-value">Career & interview preparation systems</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Network-Aware Engineering</div>
+                <div class="cell-value">TCP/IP fundamentals</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Network-Aware Engineering</div>
+                <div class="cell-value">Nokia & Huawei systems</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Network-Aware Engineering</div>
+                <div class="cell-value">Automation mindset from telecom infrastructure</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Applied Data Science</div>
+                <div class="cell-value">NLP-based analysis</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Applied Data Science</div>
+                <div class="cell-value">Anomaly detection & pattern discovery</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Applied Data Science</div>
+                <div class="cell-value">Data-informed product decisions</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Operational Thinking</div>
+                <div class="cell-value">Reliability & performance awareness</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Operational Thinking</div>
+                <div class="cell-value">Automation-first mindset</div>
+              </div>
+              <div class="dashboard-cell">
+                <div class="cell-label">Operational Thinking</div>
+                <div class="cell-value">Designing systems that survive real usage</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<br><br>
-<!-- Main Content -->
-<div class="bg-light py-5">
-  <div class="container">
+<!-- Experience Timeline -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title" data-aos="fade-up">Experience</h2>
+    <div class="timeline">
 
-    <!-- Experience Timeline -->
-    <section class="mb-5">
-      <h2 class="h3 mb-4">💼 Experience</h2>
-      <br><br>
-      <div class="timeline">
-        <!-- MentAI -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Jul 2024 - Present · 10 mos</span>
-          </div>
-          <div class="timeline-content" data-aos="flip-left" data-aos-once="true">
-            <h3 class="h5 fw-bold" >Product Lead, MentAI</h3>
-            <ul class="fs-5 mb-0">
-              <li class="mb-2">Developing AI-Based Mentorship App: Designed and developed an MVP using LLMs, LangChain, and retrieval-augmented generation (RAG) to provide personalized mentorship experiences.</li>
-              <li class="mb-2">Product Ownership: Led the end-to-end product lifecycle, including feature design, UI/UX development, and backend implementation using Python and Google Cloud Services.</li>
-              <li class="mb-2">Team Leadership: Managed a cross-functional team of developers, marketers, and designers, ensuring alignment between technical execution and marketing strategies.</li>
-              <li class="mb-2">Technical Implementation: Developed the app's backend using REST APIs, integrated LLM pipelines, and utilized frameworks like React Native and Flutter for cross-platform mobile development.</li>
-              <li class="mb-2">Data-Driven Iterations: Conducted A/B testing and user feedback analysis to improve app features and retention rates by 25%.</li>
-              <li>Skills: LangChain · Product Management · Python · React Native</li>
-            </ul>
-          </div>
+      <!-- ConsulDent -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">2024 - Present</span>
         </div>
-        <br><br>
-        <!-- Türk Telekom -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Dec 2021 - Present · 3 yrs 5 mos</span>
-          </div>
-
-          <div class="timeline-content" data-aos="zoom-in" data-aos-once="true">
-            <h3 class="h5 fw-bold">Network Engineer, Türk Telekom</h3>
-            <h4 class="h6 text-muted mb-2">İzmir, Türkiye</h4>
-            <ul class="fs-5 mb-0">
-              <li class="mb-2">Team Leadership: Led and coordinated cross-functional teams to manage regional network infrastructure, focusing on performance optimization and issue resolution. Successfully delivered a major network upgrade project, improving performance by 30%.</li>
-              <li class="mb-2">Technical Expertise: Proficient in TCP/IP protocols, VLANs, routing, and switching. Hands-on experience configuring and managing network devices, including Nokia and Huawei routers and switches.</li>
-              <li class="mb-2">Network Tools & Technologies: Skilled in using network monitoring and diagnostic tools to ensure availability and performance. Familiar with Linux-based systems for network management and optimization.</li>
-              <li class="mb-2">Process Automation: Streamlined network processes and developed automated solutions to reduce downtime and improve system efficiency.</li>
-              <li>Skills: Network Services · Computer Networking · Nokia · Linux</li>
-            </ul>
-          </div>
-        </div>
-        <br><br>
-        <!-- Miuul -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Jun 2023 - Oct 2023 · 5 mos</span>
-          </div>
-          <div class="timeline-content" data-aos="zoom-in" data-aos-once="true" data-aos-delay="200">
-            <h3 class="h5 fw-bold">Teaching Assistant & Bootcamp Participant, Miuul</h3>
-            <ul class="fs-5 mb-0">
-              <li class="mb-2">Teaching Assistant (Sep 2023 - Oct 2023): Assisted in Data Science & Machine Learning Bootcamp.</li>
-              <li class="mb-2">Bootcamp Participant (Jun 2023 - Sep 2023): Completed comprehensive training in data science and machine learning.</li>
-              <li>Skills: Statistical Modeling · Scikit-Learn · Generative AI · Data Analytics</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- SADELABS -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Jul 2021 - Aug 2021 · 2 mos</span>
-          </div>
-          <div class="timeline-content" data-aos="zoom-in" data-aos-once="true" data-aos-delay="200">
-            <h3 class="h5 fw-bold">Project Intern, SADELABS</h3>
-            <h4 class="h6 text-muted mb-2">İzmir, Türkiye</h4>
-            <p class="fs-5 mb-0">Anomaly detection on first party energy consumption data using LSTM neural network.</p>
-          </div>
-        </div>
-
-        <!-- Yaşar University -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Feb 2019 - Jan 2020 · 1 yr</span>
-          </div>
-          <div class="timeline-content" data-aos="zoom-in" data-aos-once="true">
-            <h3 class="h5 fw-bold">Part-time Project Assistant, Yaşar University</h3>
-            <h4 class="h6 text-muted mb-2">İzmir, Türkiye</h4>
-            <p class="fs-5 mb-0">Scheduling IoT device traffic with machine learning models.</p>
-          </div>
-        </div>
-
-        <!-- Green Energy Park -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Jun 2019 - Aug 2019 · 3 mos</span>
-          </div>
-          <div class="timeline-content" data-aos="zoom-in" data-aos-once="true">
-            <h3 class="h5 fw-bold">Intern, Green Energy Park Morocco </h3>
-            <h4 class="h6 text-muted mb-2">Fas</h4>
-            <p class="fs-5 mb-0">Developed a Windows application/interface using C# and SQL that automates the presentation of measurement results from PV panel performance tests in Excel reports.</p>
-          </div>
-        </div>
-
-        <!-- Izdemir Energy -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge bg-secondary">Jun 2018 - Aug 2018 · 3 mos</span>
-          </div>
-          <div class="timeline-content" data-aos="zoom-in" data-aos-once="true"   >
-            <h3 class="h5 fw-bold">Intern, Izdemir Energy Inc.</h3>
-            <h4 class="h6 text-muted mb-2">Izmir, Turkey</h4>
-            <p class="fs-5 mb-0">Voluntary Internship</p>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Founder & Developer, ConsulDent</h3>
+          <ul>
+            <li>Built a dental knowledge assistant that helps clinicians with patient case analysis, knowledge base search, and clinical decision support.</li>
+            <li>Designed a RAG-based system for querying dental literature and presenting structured, evidence-based responses.</li>
+            <li>Developed the full-stack application including navigation, query history, and specialty-based filtering.</li>
+            <li>Skills: Python, RAG, LLM Integration, FastAPI, Product Development</li>
+          </ul>
+          <div class="timeline-tags">
+            <a href="{% url 'blog' %}?tag=consuldent" class="timeline-tag">Blog</a>
+            <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Final Call to Action -->
-    <div class="text-center mt-5">
-      <a href="{% url 'projects' %}" class="btn btn-dark btn-lg">Explore My Projects →</a>
+      <!-- mulakat.pro -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">2025 - Present</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Founder & Developer, mulakat.pro</h3>
+          <ul>
+            <li>Built an AI-powered interview preparation platform that generates personalized mock interviews based on job descriptions and user profiles.</li>
+            <li>Designed and implemented the full product -- from LLM pipeline and prompt engineering to frontend interface and deployment.</li>
+            <li>Integrated voice-based interaction and real-time feedback to simulate realistic interview scenarios.</li>
+            <li>Skills: Python, OpenAI API, LangChain, Django, Product Design</li>
+          </ul>
+          <div class="timeline-tags">
+            <a href="{% url 'blog' %}?tag=mulakat-pro" class="timeline-tag">Blog</a>
+            <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MentAI -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Jul 2024 - Present</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Founder & Developer, MentAI</h3>
+          <ul>
+            <li>Developing AI-Based Mentorship App: Designed and developed an MVP using LLMs, LangChain, and retrieval-augmented generation (RAG) to provide personalized mentorship experiences.</li>
+            <li>Product Ownership: Led the end-to-end product lifecycle, including feature design, UI/UX development, and backend implementation using Python and Google Cloud Services.</li>
+            <li>Team Leadership: Managed a cross-functional team of developers, marketers, and designers, ensuring alignment between technical execution and marketing strategies.</li>
+            <li>Technical Implementation: Developed the app's backend using REST APIs, integrated LLM pipelines, and utilized frameworks like React Native and Flutter for cross-platform mobile development.</li>
+            <li>Data-Driven Iterations: Conducted A/B testing and user feedback analysis to improve app features and retention rates by 25%.</li>
+            <li>Skills: LangChain, Product Management, Python, React Native</li>
+          </ul>
+          <div class="timeline-tags">
+            <a href="{% url 'blog' %}?tag=mentai" class="timeline-tag">Blog</a>
+            <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Turk Telekom -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Dec 2021 - Present</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Network Engineer, Turk Telekom</h3>
+          <h4>Izmir, Turkiye</h4>
+          <p>Software-oriented network engineer working at scale on carrier-grade telecom infrastructure. I focus on automating network operations, translating low-level networking problems into reproducible, code-driven systems.</p>
+          <p><strong>Core Engineering Work</strong></p>
+          <ul>
+            <li>Automated network provisioning, validation, and troubleshooting using Python and Netmiko for Nokia and Huawei devices.</li>
+            <li>Designed and maintained MPLS service configurations (VPRN, IES), including service lifecycle operations, validation workflows, and failure analysis.</li>
+            <li>Built Python-based automation for 5G synchronization and GPON / OLT access network deployments, reducing manual intervention and configuration errors.</li>
+          </ul>
+          <p><strong>Systems & Protocols</strong></p>
+          <ul>
+            <li>Deep hands-on experience with TCP/IP, VLANs, routing, and service-oriented network design.</li>
+            <li>Worked directly with carrier-grade Nokia and Huawei routing and switching platforms in production environments.</li>
+            <li>Linux-based operational environments for scripting, monitoring, and automation workflows.</li>
+          </ul>
+          <p><strong>Automation & Intelligence Layer</strong></p>
+          <ul>
+            <li>Developed automation-first workflows to reduce downtime, standardize configurations, and improve operational reliability.</li>
+            <li>Experimented with local LLM usage to assist with configuration analysis, log interpretation, and operational knowledge extraction as part of internal tooling and personal R&D.</li>
+          </ul>
+          <p><strong>Engineering Mindset</strong></p>
+          <ul>
+            <li>Strong bias toward reproducibility, observability, and failure-aware system design.</li>
+            <li>Approach network infrastructure as a programmable system, not a static environment.</li>
+          </ul>
+          <p class="text-muted-theme"><strong>Technologies:</strong> Python, Netmiko, TCP/IP, MPLS (VPRN, IES), Nokia & Huawei systems, Linux, Network automation, 5G synchronization, GPON</p>
+        </div>
+      </div>
+
+      <!-- Miuul -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Jun 2023 - Oct 2023</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Teaching Assistant & Bootcamp Participant, Miuul</h3>
+          <ul>
+            <li>Teaching Assistant (Sep 2023 - Oct 2023): Assisted in Data Science & Machine Learning Bootcamp.</li>
+            <li>Bootcamp Participant (Jun 2023 - Sep 2023): Completed comprehensive training in data science and machine learning.</li>
+            <li>Skills: Statistical Modeling, Scikit-Learn, Generative AI, Data Analytics</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SADELABS -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Jul 2021 - Aug 2021</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Project Intern, SADELABS</h3>
+          <h4>Izmir, Turkiye</h4>
+          <p>Anomaly detection on first party energy consumption data using LSTM neural network.</p>
+        </div>
+      </div>
+
+      <!-- Yasar University -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Feb 2019 - Jan 2020</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Part-time Project Assistant, Yasar University</h3>
+          <h4>Izmir, Turkiye</h4>
+          <p>Scheduling IoT device traffic with machine learning models.</p>
+        </div>
+      </div>
+
+      <!-- Green Energy Park -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Jun 2019 - Aug 2019</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Intern, Green Energy Park Morocco</h3>
+          <p>Developed a Windows application using C# and SQL that automates the presentation of measurement results from PV panel performance tests in Excel reports.</p>
+        </div>
+      </div>
+
+      <!-- Izdemir Energy -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">Jun 2018 - Aug 2018</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">Intern, Izdemir Energy Inc.</h3>
+          <h4>Izmir, Turkiye</h4>
+          <p>Voluntary Internship</p>
+        </div>
+      </div>
+
     </div>
-
   </div>
-</div>
+</section>
 
+<!-- CTA -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-inner text-center">
+    <a href="{% url 'projects' %}" class="btn-theme">Explore My Projects</a>
+  </div>
+</section>
 
+{% endblock %}
 
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var items = document.querySelectorAll('.sidebar-item[data-tab]');
+  var tabs = document.querySelectorAll('.dashboard-tab');
 
+  items.forEach(function(item) {
+    item.addEventListener('click', function() {
+      items.forEach(function(i) { i.classList.remove('active'); });
+      item.classList.add('active');
+
+      var tabId = 'tab-' + item.getAttribute('data-tab');
+      tabs.forEach(function(tab) { tab.classList.remove('active'); });
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+});
+</script>
 {% endblock %}

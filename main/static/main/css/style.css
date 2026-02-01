@@ -540,8 +540,8 @@ body {
 }
 
 .timeline-content:hover {
-  box-shadow: 4px 4px 0px #111111;
-  transform: translateY(-2px);
+  box-shadow: none;
+  transform: none;
 }
 
 .timeline-content h3 {
@@ -560,53 +560,222 @@ body {
   font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   TECH STACK SECTIONS (About page)
-   ========================================================================== */
-.tech-stack-container {
-  max-width: 1000px;
-  margin: 0 auto;
+/* Timeline list styling */
+.timeline-content ul {
+  padding-left: 1.2rem;
+  margin: 0;
 }
 
-.tech-stack-container .bg-secondary,
-.tech-stack-container .bg-dark {
-  background: #ffffff !important;
-  color: #111111 !important;
+.timeline-content li {
+  font-size: 0.9rem;
+  color: #444444;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.timeline-content li:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline tags (right-bottom of card) */
+.timeline-tags {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.timeline-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #111111;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.timeline-tag:hover {
+  background-color: #444444;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   SKILLS DASHBOARD (About page)
+   ========================================================================== */
+.skills-dashboard {
   border: 2.5px solid #111111;
   border-radius: 4px;
-  padding: 2rem;
-  box-shadow: none;
-  transition: all 0.2s ease;
+  background-color: #ffffff;
+  overflow: hidden;
 }
 
-.tech-stack-container .bg-secondary:hover,
-.tech-stack-container .bg-dark:hover {
-  box-shadow: 4px 4px 0px #111111;
-  transform: translateY(-2px);
+.dashboard-titlebar {
+  background-color: #111111;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.tech-stack-container .bg-secondary {
-  border-radius: 4px 0 0 4px;
+.dashboard-dots {
+  display: flex;
+  gap: 6px;
 }
 
-.tech-stack-container .bg-dark {
-  border-radius: 0 4px 4px 0;
-  border-left: none;
+.dashboard-dots span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #444444;
 }
 
-.tech-stack-container h2,
-.tech-stack-container li {
-  color: #111111 !important;
+.dashboard-dots span:first-child { background-color: #ff5f57; }
+.dashboard-dots span:nth-child(2) { background-color: #febc2e; }
+.dashboard-dots span:last-child { background-color: #28c840; }
+
+.dashboard-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: #999999;
+  letter-spacing: 0.03em;
+}
+
+.dashboard-body {
+  display: flex;
+  min-height: 300px;
+}
+
+.dashboard-sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  border-right: 1.5px solid #e0e0e0;
+  padding: 1.25rem;
+  background-color: #fafafa;
+}
+
+.sidebar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #999999;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-item {
+  font-size: 0.85rem;
+  color: #666666;
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.15rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sidebar-item:hover {
+  color: #111111;
+  background-color: #eeeeee;
+}
+
+.sidebar-item.active {
+  background-color: #111111;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sidebar-item.active:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.dashboard-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.dashboard-cell {
+  padding: 0.75rem 1rem;
+  border: 1px solid #eeeeee;
+}
+
+.cell-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.cell-value {
+  font-size: 0.85rem;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.dashboard-divider {
+  height: 1.5px;
+  background-color: #e0e0e0;
+  margin: 1.25rem 0;
+}
+
+/* Dashboard tab switching */
+.dashboard-tab {
+  display: none;
+}
+
+.dashboard-tab.active {
+  display: block;
 }
 
 @media (max-width: 767.98px) {
-  .tech-stack-container .bg-secondary {
-    border-radius: 4px 4px 0 0;
+  .dashboard-body {
+    flex-direction: column;
   }
-  .tech-stack-container .bg-dark {
-    border-radius: 0 0 4px 4px;
-    border-left: 2.5px solid #111111;
-    border-top: none;
+  .dashboard-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1.5px solid #e0e0e0;
+    padding: 1rem;
+  }
+  .sidebar-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .sidebar-label {
+    margin-bottom: 0;
+  }
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
   }
 }
 
