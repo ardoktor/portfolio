@@ -231,7 +231,8 @@
 <!-- Experience Timeline -->
 <section class="section">
   <div class="section-inner">
-    <h2 class="section-title" data-aos="fade-up">Experience</h2>
+    <h2 class="section-title section-title-toggle" data-target="experience-section" data-aos="fade-up">Experience <span class="toggle-arrow">+</span></h2>
+    <div class="timeline-collapsible" id="experience-section">
     <div class="timeline">
 
       <!-- ConsulDent -->
@@ -242,12 +243,32 @@
         </div>
         <div class="timeline-content">
           <h3 class="h5 fw-bold">Founder & Developer, ConsulDent</h3>
+          <p>A domain-specific AI-assisted system designed to support dentists in daily clinical workflows, knowledge retrieval, and decision preparation. The core challenge it addresses is not lack of information, but fragmentation: clinical knowledge exists across books, guidelines, documents, and personal notes -- disconnected from the dentist's actual workflow.</p>
+          <p>I built ConsulDent as a backend-first, knowledge-centric system that integrates retrieval-augmented generation (RAG), structured outputs, and workflow-aware reasoning into a single product. The goal is not to replace clinical judgment, but to reduce cognitive load and friction around documentation, preparation, and reference lookup.</p>
+          <p><strong>System Philosophy</strong></p>
+          <p>ConsulDent is not a chat interface. It is a clinical support system. Every response is designed to be grounded in retrievable sources, structured for clinical usability, and aligned with real-world dental workflows. The system decomposes clinical interactions into retrieval, reasoning, and output layers -- allowing accuracy, traceability, and domain control to remain first-class concerns.</p>
+          <p><strong>Core Capabilities</strong></p>
           <ul>
-            <li>Built a dental knowledge assistant that helps clinicians with patient case analysis, knowledge base search, and clinical decision support.</li>
-            <li>Designed a RAG-based system for querying dental literature and presenting structured, evidence-based responses.</li>
-            <li>Developed the full-stack application including navigation, query history, and specialty-based filtering.</li>
-            <li>Skills: Python, RAG, LLM Integration, FastAPI, Product Development</li>
+            <li><strong>Knowledge-Centric Retrieval (RAG):</strong> Clinical books, guidelines, and reference documents are indexed and retrieved as first-class sources. Queries are resolved through retrieval-augmented pipelines ensuring section-aware responses, reduced hallucination risk, and consistent terminology.</li>
+            <li><strong>Workflow-Oriented Outputs:</strong> Visit preparation summaries, treatment explanations, clinical notes and documentation drafts, presentation-ready content for patient communication.</li>
+            <li><strong>Agent-Oriented Reasoning:</strong> Complex tasks handled through agent-like flows -- retrieval, reasoning, validation, and formatting as separate steps.</li>
+            <li><strong>Voice & Multimodal Input:</strong> Voice-based input for real clinical environments where typing is impractical. Speech transformed into structured, actionable data.</li>
           </ul>
+          <p><strong>ConsulDent Clinic (Operational Layer)</strong></p>
+          <p>Extends the knowledge system into day-to-day clinical operations: visit lifecycle tracking, task coordination, structured documentation outputs, and reducing administrative overhead. This layer bridges clinical reasoning with operational execution.</p>
+          <p><strong>What I Built End-to-End</strong></p>
+          <ul>
+            <li>Domain-specific RAG pipelines</li>
+            <li>Knowledge ingestion and indexing logic</li>
+            <li>Agent-style reasoning flows</li>
+            <li>Structured output generation</li>
+            <li>Voice-to-structure processing</li>
+            <li>Backend APIs and data models</li>
+            <li>Deployment, iteration, and product evolution</li>
+          </ul>
+          <p><strong>Why ConsulDent Matters</strong></p>
+          <p>ConsulDent represents how I approach AI products: as systems, not features. It combines domain expertise, backend engineering, and AI-assisted reasoning to solve real operational problems. This is the most complete expression of my architectural mindset.</p>
+          <p class="text-muted-theme"><strong>Tech:</strong> Python, Django, FastAPI, LLM integrations (OpenAI APIs), RAG, Agent-based orchestration (LangChain / LangGraph), Structured outputs & validation, Voice pipelines (Whisper), PostgreSQL, vector search</p>
           <div class="timeline-tags">
             <a href="{% url 'blog' %}?tag=consuldent" class="timeline-tag">Blog</a>
             <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
@@ -263,12 +284,22 @@
         </div>
         <div class="timeline-content">
           <h3 class="h5 fw-bold">Founder & Developer, mulakat.pro</h3>
+          <p>An AI-assisted interview preparation system designed to identify skill gaps, structure learning paths, and simulate real interview expectations. The core problem it solves is not "mock interviews" -- it's decision ambiguity: candidates don't know what to study, in what order, or how close they are to being interview-ready.</p>
+          <p>I designed mulakat.pro as a backend-first system that analyzes resumes and job requirements, extracts structured signals, and maps them into actionable preparation steps. The platform focuses on gap detection between candidate profiles and job roles, structured topic breakdowns instead of generic advice, and AI-assisted evaluation with explainable outputs.</p>
+          <p><strong>System Design & Architecture</strong></p>
+          <p>The system is built around retrieval-augmented generation (RAG) and structured reasoning pipelines. Job descriptions, resumes, and domain knowledge are processed as retrievable sources rather than raw prompts. Agent-like flows separate concerns: analysis, evaluation, feedback generation, and preparation guidance are handled as distinct steps instead of a single LLM call.</p>
+          <p><strong>What I Built</strong></p>
           <ul>
-            <li>Built an AI-powered interview preparation platform that generates personalized mock interviews based on job descriptions and user profiles.</li>
-            <li>Designed and implemented the full product -- from LLM pipeline and prompt engineering to frontend interface and deployment.</li>
-            <li>Integrated voice-based interaction and real-time feedback to simulate realistic interview scenarios.</li>
-            <li>Skills: Python, OpenAI API, LangChain, Django, Product Design</li>
+            <li>Resume and job-post parsing pipelines</li>
+            <li>Skill and requirement extraction logic</li>
+            <li>Gap analysis and readiness estimation</li>
+            <li>Structured interview topic generation</li>
+            <li>Backend APIs for evaluation and progress tracking</li>
+            <li>Deployment and iteration based on real user feedback</li>
           </ul>
+          <p><strong>Why This Project Matters</strong></p>
+          <p>mulakat.pro reflects how I approach AI products in general: not as chat interfaces, but as decision-support systems. The goal is not to "sound smart", but to guide users through complex processes with clarity, structure, and measurable progress.</p>
+          <p class="text-muted-theme"><strong>Tech:</strong> Python, Django, FastAPI, LLM integrations (OpenAI APIs), RAG, Structured outputs & evaluation pipelines, PostgreSQL, vector search</p>
           <div class="timeline-tags">
             <a href="{% url 'blog' %}?tag=mulakat-pro" class="timeline-tag">Blog</a>
             <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
@@ -284,14 +315,31 @@
         </div>
         <div class="timeline-content">
           <h3 class="h5 fw-bold">Founder & Developer, MentAI</h3>
+          <p>A personalized education and mentorship system designed to support long-term cognitive and behavioral development. The core problem it addresses is continuity: most learning tools treat users as stateless, forgetting context, goals, and progress over time.</p>
+          <p>MentAI was my first end-to-end product where I actively combined backend engineering, AI-assisted reasoning, and product thinking into a single system. More importantly, it was the project that introduced me to entrepreneurship and real-world product development.</p>
+          <p><strong>System Philosophy</strong></p>
+          <p>MentAI is not a content platform. It is a guidance system. The system is built around persistence: user history, feedback, and actions are treated as structured, evolving state rather than disposable input. Every interaction feeds the next one. The goal is not one good answer, but sustained guidance over time.</p>
+          <p><strong>Core Capabilities</strong></p>
           <ul>
-            <li>Developing AI-Based Mentorship App: Designed and developed an MVP using LLMs, LangChain, and retrieval-augmented generation (RAG) to provide personalized mentorship experiences.</li>
-            <li>Product Ownership: Led the end-to-end product lifecycle, including feature design, UI/UX development, and backend implementation using Python and Google Cloud Services.</li>
-            <li>Team Leadership: Managed a cross-functional team of developers, marketers, and designers, ensuring alignment between technical execution and marketing strategies.</li>
-            <li>Technical Implementation: Developed the app's backend using REST APIs, integrated LLM pipelines, and utilized frameworks like React Native and Flutter for cross-platform mobile development.</li>
-            <li>Data-Driven Iterations: Conducted A/B testing and user feedback analysis to improve app features and retention rates by 25%.</li>
-            <li>Skills: LangChain, Product Management, Python, React Native</li>
+            <li><strong>Long-Term User Modeling:</strong> User reflections, feedback, and responses stored as structured data models -- enabling progress tracking, pattern detection in behavior, and adaptive guidance.</li>
+            <li><strong>Structured Guidance & Workflows:</strong> Daily prompts, reflection questions, task suggestions, and periodic evaluations. Outputs designed to be actionable and contextual, not generic motivational text.</li>
+            <li><strong>AI-Assisted Reasoning:</strong> LLMs used as reasoning components -- summarizing user input, extracting structured signals, and shaping future guidance through controlled pipelines.</li>
+            <li><strong>Backend & Cloud Architecture:</strong> Google Cloud Functions for event-driven logic, asynchronous input processing, and scheduled workflows. Stateless execution units on top of stateful data models.</li>
           </ul>
+          <p><strong>Product & Entrepreneurship Journey</strong></p>
+          <p>MentAI was my first real exposure to entrepreneurship beyond writing code. We formed a small team, developed the product collaboratively, and actively engaged in early-stage startup communities. We built and managed an Instagram page to communicate the product vision, participated in the Karsiyaka Girisimcilik Merkezi collective, and discussed the product with other founders, mentors, and early users.</p>
+          <p><strong>What I Built End-to-End</strong></p>
+          <ul>
+            <li>User state and history models</li>
+            <li>Structured guidance workflows</li>
+            <li>LLM-assisted analysis pipelines</li>
+            <li>Event-driven backend logic (Cloud Functions)</li>
+            <li>APIs and persistence layers</li>
+            <li>Deployment, iteration, and user feedback loops</li>
+          </ul>
+          <p><strong>Why MentAI Matters</strong></p>
+          <p>MentAI represents the point where I stopped thinking like a developer working on features and started thinking like a product builder. It taught me how technical decisions, user behavior, and product direction are tightly connected. Many of the architectural patterns and product instincts I apply today in ConsulDent and mulakat.pro originated in this project.</p>
+          <p class="text-muted-theme"><strong>Tech:</strong> Python, Django, Google Cloud Functions, LLM integrations (OpenAI APIs), Structured user modeling, Stateful AI workflows, PostgreSQL</p>
           <div class="timeline-tags">
             <a href="{% url 'blog' %}?tag=mentai" class="timeline-tag">Blog</a>
             <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
@@ -335,73 +383,138 @@
         </div>
       </div>
 
-      <!-- Miuul -->
+        <!-- Miuul -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge">Jun 2023 - Oct 2023</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Teaching Assistant & Bootcamp Participant, Miuul</h3>
+            <ul>
+              <li>Teaching Assistant (Sep 2023 - Oct 2023): Assisted in Data Science & Machine Learning Bootcamp.</li>
+              <li>Bootcamp Participant (Jun 2023 - Sep 2023): Completed comprehensive training in data science and machine learning.</li>
+              <li>Skills: Statistical Modeling, Scikit-Learn, Generative AI, Data Analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SADELABS -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge">Jul 2021 - Aug 2021</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Project Intern, SADELABS</h3>
+            <h4>Izmir, Turkiye</h4>
+            <p>Anomaly detection on first party energy consumption data using LSTM neural network.</p>
+          </div>
+        </div>
+
+        <!-- Yasar University -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge">Feb 2019 - Jan 2020</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Part-time Project Assistant, Yasar University</h3>
+            <h4>Izmir, Turkiye</h4>
+            <p>Scheduling IoT device traffic with machine learning models.</p>
+          </div>
+        </div>
+
+        <!-- Green Energy Park -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge">Jun 2019 - Aug 2019</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Intern, Green Energy Park Morocco</h3>
+            <p>Developed a Windows application using C# and SQL that automates the presentation of measurement results from PV panel performance tests in Excel reports.</p>
+          </div>
+        </div>
+
+        <!-- Izdemir Energy -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">
+            <span class="badge">Jun 2018 - Aug 2018</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="h5 fw-bold">Intern, Izdemir Energy Inc.</h3>
+            <h4>Izmir, Turkiye</h4>
+            <p>Voluntary Internship</p>
+          </div>
+        </div>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title section-title-toggle" data-target="education-section" data-aos="fade-up">Education <span class="toggle-arrow">+</span></h2>
+    <div class="timeline-collapsible" id="education-section">
+    <div class="timeline">
+
+      <!-- Yasar University - EEE -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          <span class="badge">2017 - 2021</span>
+        </div>
+        <div class="timeline-content">
+          <h3 class="h5 fw-bold">B.Sc. Electrical & Electronics Engineering</h3>
+          <h4>Yasar University, Izmir</h4>
+          <p><strong>GPA:</strong> 3.42 / 4.00 | <strong>Scholarship:</strong> 100%</p>
+          <p>Studied core electrical and electronics engineering disciplines, with a strong focus on systems thinking, signal processing, and applied engineering problem-solving. My academic work emphasized how complex physical systems can be modeled, optimized, and controlled -- a mindset that later translated directly into backend systems, automation, and AI-driven architectures.</p>
+          <div class="timeline-tags">
+            <a href="https://ieeexplore.ieee.org/abstract/document/9677670" target="_blank" class="timeline-tag">IEEE Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yasar University - Energy Systems -->
       <div class="timeline-item" data-aos="fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-date">
-          <span class="badge">Jun 2023 - Oct 2023</span>
+          <span class="badge">2016 - 2020</span>
         </div>
         <div class="timeline-content">
-          <h3 class="h5 fw-bold">Teaching Assistant & Bootcamp Participant, Miuul</h3>
+          <h3 class="h5 fw-bold">B.Sc. Energy Systems Engineering</h3>
+          <h4>Yasar University, Izmir</h4>
+          <p><strong>GPA:</strong> 3.72 / 4.00 (Highest GPA in cohort)</p>
+          <p>Focused on energy production, distribution, and optimization, with particular interest in efficiency-driven system design and demand-side management. Graduation work centered on a Smart Home Energy Demand Management System, exploring how real-time consumption data, optimization logic, and control mechanisms can reduce energy usage while preserving user comfort.</p>
           <ul>
-            <li>Teaching Assistant (Sep 2023 - Oct 2023): Assisted in Data Science & Machine Learning Bootcamp.</li>
-            <li>Bootcamp Participant (Jun 2023 - Sep 2023): Completed comprehensive training in data science and machine learning.</li>
-            <li>Skills: Statistical Modeling, Scikit-Learn, Generative AI, Data Analytics</li>
+            <li>Model real-world systems</li>
+            <li>Reason about constraints and trade-offs</li>
+            <li>Design data-driven decision mechanisms</li>
           </ul>
+          <div class="timeline-tags">
+            <a href="https://ieeexplore.ieee.org/abstract/document/9677670" target="_blank" class="timeline-tag">IEEE Paper</a>
+          </div>
         </div>
       </div>
 
-      <!-- SADELABS -->
+      <!-- Izmir Ataturk Lisesi -->
       <div class="timeline-item" data-aos="fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-date">
-          <span class="badge">Jul 2021 - Aug 2021</span>
+          <span class="badge">2011 - 2015</span>
         </div>
         <div class="timeline-content">
-          <h3 class="h5 fw-bold">Project Intern, SADELABS</h3>
-          <h4>Izmir, Turkiye</h4>
-          <p>Anomaly detection on first party energy consumption data using LSTM neural network.</p>
+          <h3 class="h5 fw-bold">Izmir Ataturk Lisesi</h3>
+          <h4>Boarding Student</h4>
+          <p>Completed high school education as a boarding student, living independently in Izmir from an early age. Dormitory life played a significant role in developing discipline, responsibility, and self-management -- skills that later proved essential in both engineering and entrepreneurship.</p>
         </div>
       </div>
 
-      <!-- Yasar University -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">Feb 2019 - Jan 2020</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Part-time Project Assistant, Yasar University</h3>
-          <h4>Izmir, Turkiye</h4>
-          <p>Scheduling IoT device traffic with machine learning models.</p>
-        </div>
-      </div>
-
-      <!-- Green Energy Park -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">Jun 2019 - Aug 2019</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Intern, Green Energy Park Morocco</h3>
-          <p>Developed a Windows application using C# and SQL that automates the presentation of measurement results from PV panel performance tests in Excel reports.</p>
-        </div>
-      </div>
-
-      <!-- Izdemir Energy -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">Jun 2018 - Aug 2018</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Intern, Izdemir Energy Inc.</h3>
-          <h4>Izmir, Turkiye</h4>
-          <p>Voluntary Internship</p>
-        </div>
-      </div>
-
+    </div>
     </div>
   </div>
 </section>
@@ -429,6 +542,23 @@ document.addEventListener('DOMContentLoaded', function() {
       var tabId = 'tab-' + item.getAttribute('data-tab');
       tabs.forEach(function(tab) { tab.classList.remove('active'); });
       document.getElementById(tabId).classList.add('active');
+    });
+  });
+
+  // Collapsible timeline sections (click on section title)
+  var toggleTitles = document.querySelectorAll('.section-title-toggle');
+  toggleTitles.forEach(function(title) {
+    title.addEventListener('click', function() {
+      var targetId = title.getAttribute('data-target');
+      var target = document.getElementById(targetId);
+      var arrow = title.querySelector('.toggle-arrow');
+      if (target.classList.contains('expanded')) {
+        target.classList.remove('expanded');
+        arrow.textContent = '+';
+      } else {
+        target.classList.add('expanded');
+        arrow.textContent = '\u2212';
+      }
     });
   });
 });

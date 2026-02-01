@@ -7,3 +7,9 @@
 - Contact page: still uses old dark theme, needs restyle
 - ConsulDent and mulakat.pro demo_link URLs are placeholders (consuldent.com, mulakat.pro) -- update with real URLs when live
 - MentAI demo_link (mentai.app) is placeholder -- update when live
+
+
+
+arda : 
+
+Okuduklarım, hangi kitaplar ilgimi çekiyor, videolar vs. düzenli kaynak paylaşabileceğim bir ekran. 

@@ -604,6 +604,51 @@ body {
 }
 
 /* ==========================================================================
+   COLLAPSIBLE TIMELINE SECTIONS
+   ========================================================================== */
+.section:has(.section-title-toggle) {
+  padding: 0.75rem 0;
+}
+
+.section:has(.timeline-collapsible.expanded) {
+  padding: 0.75rem 0 5rem;
+}
+
+.timeline-collapsible {
+  display: none;
+}
+
+.timeline-collapsible.expanded {
+  display: block;
+  margin-top: 2.5rem;
+}
+
+.section-title-toggle {
+  cursor: pointer;
+  user-select: none;
+  background-color: #111111;
+  color: #ffffff;
+  margin: 0 -2rem 0;
+  padding: 0.9rem 2rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.2s ease;
+}
+
+.section-title-toggle:hover {
+  background-color: #333333;
+}
+
+.toggle-arrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
    SKILLS DASHBOARD (About page)
    ========================================================================== */
 .skills-dashboard {
