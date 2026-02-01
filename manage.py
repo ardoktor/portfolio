@@ -19,12 +19,12 @@ def main():
         User = get_user_model()
         if not User.objects.filter(username="admin").exists():
             User.objects.create_superuser("admin", "admin@example.com", "adminpassword123")
-            print("✅ Superuser created.")
+            print("Superuser created.")
         else:
-            print("ℹ️ Superuser already exists, skipping creation.")
+            print("Superuser already exists, skipping creation.")
 
     except Exception as e:
-        print(f"⚠️ Skipped superuser creation: {e}")
+        print(f"Skipped superuser creation: {e}")
 
     try:
         execute_from_command_line(sys.argv)

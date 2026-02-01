@@ -6,53 +6,86 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="hero-section py-7 text-center min-vh-80 d-flex align-items-center" data-aos="fade-up">
-  <div class="container py-5">
-    <h1 class="display-2 fw-bold mb-4">Hi, I'm Arda</h1>
-    <p class="lead mb-5 fs-3">I build AI-driven tools, ship MVPs, and love making ideas real with code.</p>
-    <div class="mt-5">
-      <a href="{% url 'projects' %}" class="btn btn-contact me-3">View My Work</a>
-      <a href="{% url 'contact' %}" class="btn btn-contact btn-outline">Get in Touch</a>
+<section class="hero-section" data-aos="fade-up">
+  <div class="hero-inner">
+    <div class="hero-label">Software Engineer & Builder</div>
+    <h1 class="hero-title">Hi, I'm Arda</h1>
+    <p class="hero-subtitle">I build AI-driven tools, ship MVPs, and love making ideas real with code.</p>
+    <div class="hero-actions">
+      <a href="{% url 'projects' %}" class="btn-theme">View My Work</a>
+      <a href="{% url 'contact' %}" class="btn-theme btn-theme-outline">Get in Touch</a>
     </div>
   </div>
 </section>
 
-<!-- What I Do -->
-<section class="skills-section py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">I work on mostly...</h2>
+<!-- What I Build -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title" data-aos="fade-up">What I Do...</h2>
     <div class="row g-4">
 
-    <!-- AI & Automation -->
-    <div class="col-md-3">
-        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
-        <h3 class="h5">AI & Automation</h3>
-        <p>I build GPT-powered tools and custom AI agents using Python and generative ai models.</p>
+      <!-- AI & Automation -->
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-theme">
+          <div class="card-theme-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.725 5.53 5.725h4.94C11.765 5.725 13 6.76 13 8.062v1.157a.53.53 0 0 1-.149.378l-1.167 1.167a.53.53 0 0 0-.149.378v.556a.53.53 0 0 1-.53.53H5.995a.53.53 0 0 1-.53-.53v-.556a.53.53 0 0 0-.15-.378L4.15 9.597A.53.53 0 0 1 4 9.22V8.062zM5.53 6.725C4.794 6.725 4 7.313 4 8.062v1.157c0 .116.046.227.128.31l1.167 1.166c.2.2.312.47.312.752v.556h4.786v-.556c0-.283.112-.553.312-.752l1.167-1.167a.44.44 0 0 0 .128-.31V8.063c0-.75-.794-1.338-1.53-1.338z"/>
+              <path d="M2.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5zm.5 1h10v1H3zm3 13a.5.5 0 0 0-.5.5v.5h5v-.5a.5.5 0 0 0-.5-.5z"/>
+            </svg>
+          </div>
+          <div class="card-theme-body">
+            <h3>AI & Automation</h3>
+            <p>I design and build AI-assisted systems that automate complex workflows. My work includes LLM-powered tools, RAG-based knowledge systems, and voice-driven pipelines that turn unstructured input into structured outputs.</p>
+            <p class="text-muted-theme">I focus on practical AI: systems that reduce operational friction, support real users, and integrate cleanly into backend architectures.</p>
+          </div>
         </div>
-    </div>
+      </div>
 
       <!-- Backend Engineering -->
-      <div class="col-md-3">
-        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
-          <h3 class="h5">Backend Engineering</h3>
-          <p>I’ve been learning how to build working backends using Django, Firebase, and Google Cloud Functions. I enjoy connecting APIs, storing user data, and making the logic behind the app actually work — one step at a time.</p>
-
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-theme">
+          <div class="card-theme-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8z"/>
+            </svg>
+          </div>
+          <div class="card-theme-body">
+            <h3>Backend Engineering</h3>
+            <p>I build backend systems using Python, Django, and FastAPI, with a strong focus on data models, APIs, and workflow orchestration.</p>
+            <p class="text-muted-theme">I enjoy turning product requirements into reliable backend logic — from database design and integrations to deployment, CI/CD, and production-ready services.</p>
+          </div>
         </div>
       </div>
 
       <!-- MVP & Startup Building -->
-      <div class="col-md-3">
-        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
-          <h3 class="h5">MVP & Startup Building</h3>
-          <p>I develop full-stack MVPs on my own from idea to deployment. I'm passionate about turning concepts into actual products, solving real problems, and validating fast. MentAI is a prime example, built with zero investment, reaching early users.</p>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-theme">
+          <div class="card-theme-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0m-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+            </svg>
+          </div>
+          <div class="card-theme-body">
+            <h3>MVP & Startup Building</h3>
+            <p>I take ideas from problem discovery to shipped MVPs with real users. I own the full product lifecycle — design, implementation, deployment, and iteration — focusing on fast validation and real-world impact.</p>
+            <p class="text-muted-theme">Healthcare, education, and interview preparation products I built are currently used and evolving based on user feedback.</p>
+          </div>
         </div>
       </div>
 
       <!-- Research & Data Science -->
-      <div class="col-md-3">
-        <div class="skill-card hover-card p-4 border rounded h-100 shadow-sm">
-          <h3 class="h5">Research & Data Science</h3>
-          <p>I've worked on applied research projects involving natural language processing, user analysis, and structured datasets. My approach is data-informed and insight-driven — blending scientific thinking with real-world product building.</p>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-theme">
+          <div class="card-theme-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+            </svg>
+          </div>
+          <div class="card-theme-body">
+            <h3>Research & Data Science</h3>
+            <p>I have a background in applied data science and research, working on topics such as anomaly detection, NLP, and user behavior analysis.</p>
+            <p class="text-muted-theme">My approach blends analytical thinking with product needs — using data not just for insight, but to inform decisions, automation, and system design.</p>
+          </div>
         </div>
       </div>
 
@@ -60,65 +93,54 @@
   </div>
 </section>
 
+<!-- Featured Projects -->
+{% if featured_projects %}
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+    <div class="row g-4">
+      {% for project in featured_projects %}
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+        <div class="card-theme card-theme-vertical">
+          <div class="project-year-badge">{{ project.year }}</div>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description|truncatewords:25 }}</p>
+          <div class="pill-group">
+            {% for tech in project.get_tech_stack_list %}
+              <span class="pill">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <div class="card-actions">
+            {% if project.demo_link %}
+              <a href="{{ project.demo_link }}" target="_blank" class="btn-theme btn-theme-sm">Demo</a>
+            {% endif %}
+            {% if project.github_link %}
+              <a href="{{ project.github_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">GitHub</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-5" data-aos="fade-up">
+      <a href="{% url 'projects' %}" class="btn-theme">See All Projects</a>
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <!-- About Me -->
-<section class="py-5">
-  <div class="container text-center">
-    <h2 class="mb-4">About Me</h2>
-    <p class="lead">
-      I'm a Python/Django developer with a passion for building full-stack, user-centric products — from intelligent AI agents to productivity platforms that support real human goals. I enjoy the process of turning complex ideas into elegant code, using tools like Firebase, OpenAI, and Django to deliver scalable, meaningful apps. I believe in launching early, learning fast, and crafting real-world software that makes a difference.
-    </p>
-    <a href="{% url 'about' %}" class="btn btn-contact mt-4">Read More →</a>
+<section class="section">
+  <div class="section-inner">
+    <div class="card-theme card-theme-wide" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p>I'm a Python/Django developer with a passion for building full-stack, user-centric products — from intelligent AI agents to productivity platforms that support real human goals. I enjoy the process of turning complex ideas into elegant code, using tools like Firebase, OpenAI, and Django to deliver scalable, meaningful apps.</p>
+      <p class="text-muted-theme">I believe in launching early, learning fast, and crafting real-world software that makes a difference.</p>
+      <div class="mt-4">
+        <a href="{% url 'about' %}" class="btn-theme">Read More</a>
+      </div>
+    </div>
   </div>
 </section>
 
-
-  
-</section>
-
-
-
-<!-- Contact Section 
-<section class="py-5 bg-dark text-white">
-  <div class="container text-center">
-    <h2>Let's Connect</h2>
-    <p>Email: arda@example.com | GitHub: ardoktor | LinkedIn: /arda-asut</p>
-    <a href="{% url 'contact' %}" class="btn btn-outline-light mt-3">Reach Out</a>
-  </div>
-</section>
--->
-<div class="wide-container py-5">
-  <!-- Content here -->
-</div>
-
-{% endblock %}
-
-{% block extra_css %}
-<style>
-  /* Button styling to match contacts page */
-  .btn-contact {
-    padding: 0.8rem 2rem;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-    background-color: #1a1a1a;
-    color: white;
-    border: 2px solid #1a1a1a;
-  }
-
-  .btn-contact:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
-
-  .btn-outline {
-    background-color: transparent;
-    border: 2px solid white;
-  }
-
-  .btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-</style>
 {% endblock %}

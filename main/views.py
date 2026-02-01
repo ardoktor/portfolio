@@ -4,7 +4,8 @@ from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def home(request):
-    return render(request, 'main/home.html')  # For now, just rendering base.html
+    featured_projects = Project.objects.all()[:3]
+    return render(request, 'main/home.html', {'featured_projects': featured_projects})
 
 def about(request):
     return render(request, 'main/about.html')

@@ -1,377 +1,484 @@
-/* Base styles */
+/* ==========================================================================
+   DESIGN SYSTEM — Graph-paper notebook aesthetic
+   See claude/design_theme.md for full reference
+   ========================================================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-    background-color: #111111;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-/* Navigation */
-.navbar {
-    padding: 1rem 0;
-    background-color: #111111;
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.time-location {
-    color: #ffffff;
-    font-size: 0.9rem;
-}
-
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-.nav-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-}
-
-.nav-link.active {
-    background-color: #333;
-}
-
-/* Content */
-.intro {
-    color: rgb(255, 221, 0);
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 4rem;
-}
-
-.name {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-.description {
-    color: #aaa;
-    margin-bottom: 2rem;
-    max-width: 800px;
-    font-size: 1.1rem;
-}
-
-/* Social Links */
-.social-links {
-    display: flex;
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.social-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.75rem;
-    border-radius: 8px;
-    background-color: #333;
-}
-
-.email-btn {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    background-color: #333;
-    margin-left: 1rem;
-}
-
-/* Experience Section */
-.experience {
-    margin-top: 4rem;
-}
-
-.experience h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.job {
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
-
-.job-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.job-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.job-company {
-    color: rgb(255, 221, 0);
-    margin-bottom: 0.5rem;
-}
-
-.job-date {
-    color: #aaa;
-}
-
-.job-description {
-    margin: 1rem 0;
-}
-
-.job-description li {
-    margin-bottom: 0.5rem;
-    color: #aaa;
-}
-
-.tech-stack {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.tech-tag {
-    background-color: #222;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-/* Links */
-.link-wrapper {
-    margin: 2rem 0;
-}
-
-.link-wrapper h3 {
-    margin-bottom: 0.5rem;
-}
-
-.link-wrapper p {
-    color: #aaa;
-    margin-bottom: 2rem;
-}
-
-/* Tech Stack */
-.tech-stack img {
-    width: 30px;
-    height: 30px;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-
-.tech-stack img:hover {
-    opacity: 1;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .name {
-        font-size: 3rem;
-    }
-    
-    .nav-links {
-        gap: 1rem;
-    }
-}
-
-.py-7 {
-  padding-top: 6rem !important;
-  padding-bottom: 6rem !important;
-}
-
-.min-vh-85 {
-  min-height: 85vh !important;
-}
-
-.min-vh-90 {
-  min-height: 90vh !important;
-}
-
-/* Skill Cards - Base styles */
-.skill-card {
-  background-color: #0f1113;
-  border: 2px solid #343a40 !important;
-  transition: all 0.3s ease;
-  border-radius: 20px !important;
-  -webkit-border-radius: 20px !important;
-  -moz-border-radius: 20px !important;
-  overflow: hidden;
-  padding: 1.5rem !important;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* Override any Bootstrap classes that might be interfering */
-.skill-card.rounded {
-  border-radius: 20px !important;
-}
-
-.skill-card.border {
-  border: 2px solid #343a40 !important;
-}
-
-.hover-card {
-  cursor: pointer;
-}
-
-.hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-  background-color: #2c3034;
-}
-
-.skill-card h3 {
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.skill-card p {
-  color: #e9ecef;
-  font-size: 0.95rem;
+  margin: 0;
+  background-color: #e8e8e8;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #111111;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-.skill-card span.text-primary {
-  color: #0066cc !important;
+/* --- Layout --- */
+.section {
+  padding: 5rem 0;
 }
 
-
-/* Hero Section */
-.hero-section {
-  width: 100%;
-  background: linear-gradient(135deg, #435fce, #8616b9, #000000);
-  color: #ffffff;
-  transition: all 0.2s ease;
-  border-radius: 30px;
-  overflow: hidden;
-}
-
-.hero-section:hover {
-  background: linear-gradient(135deg, #000000, #3d2dd1, #8616b9);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #435fce, #8616b9, #000000);
-  z-index: 1;
-}
-
-.hero-content {
-  padding: 2rem;
-  max-width: 1200px;
-  color: #ffffff;
-}
-
-
-/* About Page Hero Section */
-.about-hero-section {
-  width: 100%;
-  background: linear-gradient(135deg, #17141d, #6148eb, #332294);
-  color: #ffffff;
-  transition: all 0.5s ease;
-  border-radius: 30px 30px 30px 30px;  /* Same as your tech stack section */
-  overflow: hidden;
-}
-
-.about-hero-section:hover {
-  transform: none;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.bg-light.py-5 {
-  border-radius: 20px;
-}
-
-/* Tech Stack Sections */
-.bg-secondary.py-5 {
-  border-radius: 30px 30px 0 0;  /* Rounded top corners only */
-  background: linear-gradient(135deg, #435fce, #8616b9) !important;
-  color: white;
-  margin-bottom: 0;  /* Remove bottom margin */
-  padding-bottom: 3rem;  /* Add more padding at bottom */
-}
-
-.bg-dark.py-5 {
-  border-radius: 0 0 30px 30px;  /* Rounded bottom corners only */
-  background: linear-gradient(135deg, #17141d, #332294) !important;
-  color: white;
-  margin-top: 0;  /* Remove top margin */
-  padding-top: 3rem;  /* Add more padding at top */
-}
-
-/* Ensure text is visible in both sections */
-.bg-secondary.py-5 h2, 
-.bg-secondary.py-5 li,
-.bg-dark.py-5 h2,
-.bg-dark.py-5 li {
-  color: white;
-}
-
-/* Add shadow only to the bottom section */
-.bg-dark.py-5 {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Add some margin between sections */
-.bg-light.py-5 + br + br + .bg-secondary.py-5,
-.bg-secondary.py-5 + br + br + .bg-light.py-5 {
-  margin-top: -30px;  /* Negative margin to reduce the space from <br><br> */
-}
-
-.wide-container {
-  max-width: 1400px;  /* Adjust this value as needed */
+.section-inner {
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Button Hover Style */
-.btn-dark {
-  background-color: #222;
-  color: #fff;
-  border: none;
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
 }
 
-.btn-dark:hover {
-  background-color: #000;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+.site-nav {
+  background-color: #111111;
+  border-bottom: 2.5px solid #111111;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.btn-outline-light {
-  border: 2px solid #fff;
-  color: #fff;
+.site-nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 60px;
+}
+
+.nav-brand {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-brand:hover {
+  color: #ffffff;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li a {
+  color: #999999;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav-list li a:hover {
+  color: #ffffff;
+  background-color: #222222;
+}
+
+.nav-cta {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  font-weight: 600 !important;
+}
+
+.nav-cta:hover {
+  background-color: #e8e8e8 !important;
+  color: #111111 !important;
+}
+
+/* Responsive nav */
+@media (max-width: 767.98px) {
+  .site-nav-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 0.75rem 2rem;
+    gap: 0.5rem;
+  }
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  background-color: #111111;
+  border-bottom: 2.5px solid #111111;
+  padding: 3rem 0 2.75rem;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero-label {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #999999;
+  background-color: #222222;
+  border: 1px solid #333333;
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #999999;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn-theme {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  color: #ffffff;
+  background-color: #111111;
+  border: 2.5px solid #111111;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.btn-theme:hover {
+  background-color: #444444;
+  border-color: #444444;
+  color: #ffffff;
+}
+
+.btn-theme-outline {
   background-color: transparent;
+  color: #111111;
+  border-color: #111111;
 }
 
-.btn-outline-light:hover {
-  background-color: #fff;
-  color: #000;
-  transition: all 0.3s ease;
+.btn-theme-outline:hover {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
 }
 
-/* Timeline Styling */
+/* Outline on dark backgrounds */
+.hero-section .btn-theme-outline {
+  border-color: #555555;
+  color: #cccccc;
+}
+
+.hero-section .btn-theme-outline:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #111111;
+}
+
+.hero-section .btn-theme:not(.btn-theme-outline) {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #111111;
+}
+
+.hero-section .btn-theme:not(.btn-theme-outline):hover {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #111111;
+}
+
+.btn-theme-sm {
+  padding: 0.35rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+.card-theme {
+  display: flex;
+  gap: 1.25rem;
+  background-color: #ffffff;
+  border: 2.5px solid #111111;
+  border-radius: 4px;
+  padding: 1.75rem;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.card-theme:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.card-theme h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+.card-theme p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #444444;
+  margin-bottom: 0.4rem;
+}
+
+.card-theme h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 1rem;
+}
+
+/* Vertical card (projects) */
+.card-theme-vertical {
+  flex-direction: column;
+  padding-top: 0;
+  overflow: hidden;
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.card-theme-vertical:hover {
+  transform: none;
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.card-theme-vertical .project-year-badge {
+  background-color: #111111;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  margin: 0 -1.75rem 1.25rem;
+  padding: 0.6rem 1.75rem;
+  width: calc(100% + 3.5rem);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.card-theme-vertical p {
+  flex-grow: 1;
+}
+
+/* Wide card (about) */
+.card-theme-wide {
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Icon container */
+.card-theme-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.card-theme-body {
+  flex: 1;
+}
+
+/* Card actions row */
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   MUTED TEXT
+   ========================================================================== */
+.text-muted-theme {
+  font-size: 0.85rem !important;
+  color: #777777 !important;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   PILLS / BADGES
+   ========================================================================== */
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pill {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #444444;
+  border: 1px solid #cccccc;
+}
+
+/* Year badge on project cards */
+.project-year-badge {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #111111;
+  background-color: #f0f0f0;
+  border: 1px solid #cccccc;
+  padding: 0.15rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  background-color: #111111;
+  border-top: 2.5px solid #111111;
+  padding: 1.75rem 0;
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-brand {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+.footer-right {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-right a {
+  color: #999999;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-right a:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   PAGE-SPECIFIC HERO VARIANTS (About, Blog, Projects, Contact)
+   These keep the dark hero style but match the new sharp aesthetic.
+   ========================================================================== */
+.about-hero-section,
+.blog-hero-section,
+.projects-hero-section,
+.contact-hero-section {
+  background-color: #111111;
+  border-bottom: 2.5px solid #111111;
+  border-radius: 0;
+  padding: 4rem 0;
+  text-align: center;
+  color: #ffffff;
+  width: 100%;
+  overflow: hidden;
+}
+
+.about-hero-section:hover,
+.blog-hero-section:hover,
+.projects-hero-section:hover,
+.contact-hero-section:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   TIMELINE (About page)
+   ========================================================================== */
 .timeline {
   position: relative;
   padding-left: 30px;
@@ -384,8 +491,8 @@ body {
   left: 0;
   top: 0;
   height: 100%;
-  width: 2px;
-  background: #435fce;
+  width: 2.5px;
+  background: #111111;
 }
 
 .timeline-item {
@@ -401,12 +508,12 @@ body {
   position: absolute;
   left: -39px;
   top: 0;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #8616b9;
-  border: 4px solid #1a1a1a;
-  box-shadow: 0 0 0 2px #8616b9;
+  background: #111111;
+  border: 3px solid #e8e8e8;
+  box-shadow: 0 0 0 2.5px #111111;
 }
 
 .timeline-date {
@@ -414,122 +521,223 @@ body {
 }
 
 .timeline-date .badge {
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  background-color: #8616b9;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.85rem;
+  background-color: #111111 !important;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
 .timeline-content {
-  background: #1a1a1a;
-  color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  background: #ffffff;
+  color: #111111;
+  padding: 1.5rem;
+  border-radius: 4px;
+  border: 2.5px solid #111111;
+  box-shadow: none;
+  transition: all 0.2s ease;
 }
 
-.timeline-content h3, .timeline-content h4, .timeline-content p {
-  color: #ffffff;
+.timeline-content:hover {
+  box-shadow: 4px 4px 0px #111111;
+  transform: translateY(-2px);
+}
+
+.timeline-content h3 {
+  color: #111111;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .timeline-content h4 {
-  color: #aaaaaa;
+  color: #777777;
+  font-size: 0.95rem;
 }
 
-/* Two-column Tech Stack Layout */
+.timeline-content p {
+  color: #444444;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   TECH STACK SECTIONS (About page)
+   ========================================================================== */
 .tech-stack-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.tech-stack-container .bg-secondary {
-  border-radius: 30px 0 0 30px;
-  background: linear-gradient(135deg, #435fce, #8616b9) !important;
-  padding: 2.5rem;
-}
-
-.tech-stack-container .bg-dark {
-  border-radius: 0 30px 30px 0;
-  background: linear-gradient(135deg, #17141d, #332294) !important;
-  padding: 2.5rem;
-}
-
-/* For mobile devices, make both columns have rounded corners */
-@media (max-width: 767.98px) {
-  .tech-stack-container .bg-secondary {
-    border-radius: 30px 30px 0 0;
-    margin-bottom: 1rem;
-  }
-  
-  .tech-stack-container .bg-dark {
-    border-radius: 0 0 30px 30px;
-  }
-  
-  .tech-stack-container .col-md-6 {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-}
-
-/* Ensure text is visible in both sections */
-.tech-stack-container h2, 
-.tech-stack-container li {
-  color: white;
-}
-
-/* Add shadow to both columns */
 .tech-stack-container .bg-secondary,
 .tech-stack-container .bg-dark {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Container padding adjustments */
-.tech-stack-container .container {
-  padding: 0 1rem;
-}
-
-/* Blog Page Hero Section */
-.blog-hero-section {
-  width: 100%;
-  background: linear-gradient(135deg, #dd5026, #6148eb, #ec441a);
-  color: #ffffff;
-  transition: all 0.5s ease;
-  border-radius: 30px 30px 30px 30px;  /* Same as your tech stack section */
-  overflow: hidden;
-}
-
-.blog-hero-section:hover {
-  transform: none;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.blog-hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #435fce, #8616b9, #000000);
-  z-index: 1;
-}
-
-.blog-hero-content {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 2.5px solid #111111;
+  border-radius: 4px;
   padding: 2rem;
-  max-width: 1200px;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.tech-stack-container .bg-secondary:hover,
+.tech-stack-container .bg-dark:hover {
+  box-shadow: 4px 4px 0px #111111;
+  transform: translateY(-2px);
+}
+
+.tech-stack-container .bg-secondary {
+  border-radius: 4px 0 0 4px;
+}
+
+.tech-stack-container .bg-dark {
+  border-radius: 0 4px 4px 0;
+  border-left: none;
+}
+
+.tech-stack-container h2,
+.tech-stack-container li {
+  color: #111111 !important;
+}
+
+@media (max-width: 767.98px) {
+  .tech-stack-container .bg-secondary {
+    border-radius: 4px 4px 0 0;
+  }
+  .tech-stack-container .bg-dark {
+    border-radius: 0 0 4px 4px;
+    border-left: 2.5px solid #111111;
+    border-top: none;
+  }
+}
+
+/* ==========================================================================
+   BLOG CARDS
+   ========================================================================== */
+.blog-card {
+  background-color: #ffffff;
+  border: 2.5px solid #111111;
+  border-radius: 4px;
+  padding: 1.75rem;
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.blog-card h3,
+.blog-card h5 {
+  color: #111111;
+}
+
+.blog-card p {
+  color: #444444;
+}
+
+/* ==========================================================================
+   PROJECT CARDS (Projects page)
+   ========================================================================== */
+.project-card {
+  background-color: #ffffff;
+  border: 2.5px solid #111111;
+  border-radius: 4px;
+  padding: 1.75rem;
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.project-card h3,
+.project-card h5 {
+  color: #111111;
+}
+
+.project-card p {
+  color: #444444;
+}
+
+/* ==========================================================================
+   CONTACT BUTTONS (Contact page)
+   ========================================================================== */
+.btn-contact {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #111111;
+  border: 2.5px solid #111111;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-contact:hover {
+  background-color: #444444;
+  border-color: #444444;
   color: #ffffff;
 }
 
-/* About Page Hero Section */
-.projects-hero-section {
-  width: 100%;
-  background: linear-gradient(135deg, #d8a5a5, #d63a6e, #2b0cdd);
-  color: #ffffff;
-  transition: all 0.5s ease;
-  border-radius: 30px 30px 30px 30px;  /* Same as your tech stack section */
-  overflow: hidden;
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .card-theme {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-inner {
+    padding: 0 1.25rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    justify-content: center;
+  }
 }
 
-.projects-hero-section:hover {
-  transform: none;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+/* ==========================================================================
+   UTILITY OVERRIDES (Bootstrap cleanup)
+   ========================================================================== */
+
+/* Prevent Bootstrap dark classes from interfering */
+.bg-dark {
+  background-color: #111111 !important;
 }
 
+/* Override Bootstrap .container max-width where we use section-inner */
+.section-inner .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Keep old .wide-container for backwards compat but match theme */
+.wide-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
