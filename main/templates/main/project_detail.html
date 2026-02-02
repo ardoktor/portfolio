@@ -1,0 +1,548 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} - Arda Asut{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section" data-aos="fade-up">
+  <div class="hero-inner">
+    {% if project.slug == 'mentai' %}
+    <img src="{% static 'mentai_logo.png' %}" alt="MentAI Logo" style="max-width: 480px; width: 100%; margin-bottom: 1.5rem; filter: invert(1) brightness(2);">
+    {% else %}
+    <div class="hero-label">Deep Dive</div>
+    <h1 class="hero-title">{{ project.title }}</h1>
+    {% endif %}
+    <p class="hero-subtitle">{{ project.description|truncatewords:25 }}</p>
+    <div class="hero-actions">
+      {% if project.slug == 'mentai' %}
+        {% if project.demo_link %}
+          <a href="{{ project.demo_link }}" target="_blank" class="btn-theme">Website</a>
+        {% endif %}
+        {% if project.github_link %}
+          <a href="{{ project.github_link }}" target="_blank" class="btn-theme btn-theme-outline">GitHub</a>
+        {% endif %}
+        {% if project.other_link %}
+          <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline">Instagram</a>
+        {% endif %}
+      {% else %}
+        {% if project.demo_link %}
+          <a href="{{ project.demo_link }}" target="_blank" class="btn-theme">View Demo</a>
+        {% endif %}
+        {% if project.github_link %}
+          <a href="{{ project.github_link }}" target="_blank" class="btn-theme btn-theme-outline">GitHub</a>
+        {% endif %}
+        {% if project.other_link %}
+          <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline">{{ project.other_link_text|default:"Learn More" }}</a>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% if project.slug == 'mentai' %}
+    <div class="dd-meta">
+      <div class="dd-meta-item">Status: <span>Inactive</span></div>
+      <div class="dd-meta-item">Stack: <span>Python &middot; Django &middot; GCF</span></div>
+      <div class="dd-meta-item">Focus: <span>Long-term user state</span></div>
+    </div>
+    {% elif project.slug == 'consuldent' %}
+    <div class="dd-meta">
+      <div class="dd-meta-item">Status: <span>Shipped</span></div>
+      <div class="dd-meta-item">Stack: <span>Python &middot; Django &middot; FastAPI &middot; RAG</span></div>
+      <div class="dd-meta-item">Focus: <span>Clinical knowledge workflows</span></div>
+    </div>
+    {% elif project.slug == 'mulakat-pro' %}
+    <div class="dd-meta">
+      <div class="dd-meta-item">Status: <span>Shipped</span></div>
+      <div class="dd-meta-item">Stack: <span>Python &middot; Django &middot; FastAPI &middot; RAG</span></div>
+      <div class="dd-meta-item">Focus: <span>Interview gap analysis</span></div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Deep Dive Content -->
+{% if project.slug == 'mentai' %}
+<section class="section">
+  <div class="section-inner">
+    <div class="dd-stream">
+
+      <!-- Block 1: The Problem -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>The Problem</h3>
+        <p>Most learning tools treat users as stateless — forgetting context, goals, and progress over time. MentAI targets continuity: building a system that remembers where a learner is, what they struggle with, and what they need next — without turning everything into a chat history.</p>
+        <p>MentAI was my first end-to-end product where I combined backend engineering, AI-assisted reasoning, and product thinking into one system. More importantly, it introduced me to entrepreneurship and real-world product development through building as a team and engaging early startup communities.</p>
+      </div>
+
+      <!-- Block 2: Continuity as a Systems Constraint -->
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>Continuity as a Systems Constraint</h3>
+        <h4>Constraints I designed for</h4>
+        <ul>
+          <li>Stateful guidance (progress, goals, patterns) on top of stateless execution (serverless)</li>
+          <li>Unstructured user input &rarr; structured signals</li>
+          <li>Repeatable loop: input &rarr; analysis &rarr; guidance &rarr; action &rarr; feedback</li>
+        </ul>
+        <h4>System loop</h4>
+        <div class="dd-flow">input -> normalize -> extract signals -> update user_state
+     -> generate guidance -> assign actions -> collect feedback</div>
+      </div>
+
+      <!-- Block 3: System Philosophy -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>System Philosophy</h3>
+        <p>MentAI is not a content platform. It is a guidance system. The product is built around persistence: user history, feedback, and actions are treated as structured, evolving state rather than disposable input. Each interaction feeds the next one. The goal is not one good answer — it's sustained guidance over time.</p>
+      </div>
+
+      <!-- Block 4: State Model -->
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>State Model</h3>
+        <h4>Core entities</h4>
+        <ul>
+          <li>user_profile (stable)</li>
+          <li>goals (explicit targets)</li>
+          <li>daily_inputs (mood / energy / notes)</li>
+          <li>actions_tasks (assigned + completed)</li>
+          <li>progress_signals (habit streaks, friction points)</li>
+          <li>weekly_summary (compressed memory)</li>
+        </ul>
+        <h4>Why structured state beats raw chat</h4>
+        <ul>
+          <li>Queryable (progress tracking)</li>
+          <li>Explainable (why this suggestion?)</li>
+          <li>Safer outputs (less randomness)</li>
+        </ul>
+      </div>
+
+      <!-- Block 5: Core Capabilities -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>Core Capabilities</h3>
+        <ul>
+          <li><strong>Long-Term User Modeling:</strong> Reflections and feedback are stored as structured data to enable progress tracking and adaptive guidance.</li>
+          <li><strong>Structured Guidance & Workflows:</strong> Daily prompts, reflection questions, task suggestions, and periodic evaluations — designed to be actionable, not motivational filler.</li>
+          <li><strong>AI-Assisted Reasoning:</strong> LLMs are used as reasoning components to summarize input, extract signals, and shape future guidance through controlled pipelines.</li>
+          <li><strong>Backend & Cloud Architecture:</strong> Event-driven logic powers asynchronous processing, scheduled nudges, and background evaluations.</li>
+        </ul>
+      </div>
+
+      <!-- Block 6: API Response Example -->
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>Example API Response — Guidance Output</h3>
+        <div class="dd-code-wrap">
+          <div class="dd-code-label">
+            <span>response.json</span>
+            <button class="dd-copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre>{
+  <span class="json-key">"success"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"data"</span>: {
+    <span class="json-key">"markdown"</span>: <span class="json-string">"## Today's Focus\n- 1 task...\n\n## Why this matters\n..."</span>,
+    <span class="json-key">"html"</span>: <span class="json-string">"&lt;h2&gt;Today's Focus&lt;/h2&gt;&lt;ul&gt;...&lt;/ul&gt;"</span>,
+    <span class="json-key">"metadata"</span>: {
+      <span class="json-key">"title"</span>: <span class="json-string">"MentAI — Daily Guidance"</span>,
+      <span class="json-key">"description"</span>: <span class="json-string">"Personalized daily guidance generated from structured user state"</span>,
+      <span class="json-key">"confidence"</span>: <span class="json-number">0.82</span>,
+      <span class="json-key">"sources"</span>: [<span class="json-string">"user_state"</span>, <span class="json-string">"weekly_summary"</span>, <span class="json-string">"goal_model_v1"</span>]
+    },
+    <span class="json-key">"actions"</span>: [
+      {
+        <span class="json-key">"id"</span>: <span class="json-string">"task_7f2a"</span>,
+        <span class="json-key">"label"</span>: <span class="json-string">"10-minute deep work block"</span>,
+        <span class="json-key">"type"</span>: <span class="json-string">"timebox"</span>,
+        <span class="json-key">"difficulty"</span>: <span class="json-string">"easy"</span>,
+        <span class="json-key">"why"</span>: <span class="json-string">"low energy day + high avoidance pattern"</span>
+      }
+    ],
+    <span class="json-key">"links"</span>: {
+      <span class="json-key">"internal"</span>: [<span class="json-string">"/progress"</span>, <span class="json-string">"/weekly-review"</span>, <span class="json-string">"/settings"</span>],
+      <span class="json-key">"external"</span>: []
+    },
+    <span class="json-key">"stats"</span>: {
+      <span class="json-key">"fetchTimeMs"</span>: <span class="json-number">241</span>,
+      <span class="json-key">"analysisTimeMs"</span>: <span class="json-number">138</span>,
+      <span class="json-key">"llmTimeMs"</span>: <span class="json-number">912</span>,
+      <span class="json-key">"totalTimeMs"</span>: <span class="json-number">1291</span>
+    }
+  }
+}</pre>
+        </div>
+        <p class="dd-note">Design note: this format is deliberate — the UI can render markdown/html, while product logic relies on actions + metadata.</p>
+      </div>
+
+      <!-- Block 7: Architecture -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>Architecture</h3>
+        <p>MentAI was built backend-first to validate the system logic before UI expansion. The product relies on structured user state + event-driven processing so the platform can maintain continuity while scaling and iterating fast.</p>
+      </div>
+
+      <!-- Block 8: Cloud Functions -->
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>Google Cloud Functions — Event-Driven Layer</h3>
+        <h4>Why Cloud Functions</h4>
+        <ul>
+          <li>Async processing (don't block UX)</li>
+          <li>Scheduled jobs (daily nudges / weekly review)</li>
+          <li>Stateless compute + stateful DB = scalable pattern</li>
+        </ul>
+        <h4>Function examples</h4>
+        <div class="dd-code-wrap">
+          <div class="dd-code-label">
+            <span>cloud_functions.py</span>
+            <button class="dd-copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="json-key">on_daily_input_submitted</span>(user_id)
+  <span class="json-string">normalize text</span> → <span class="json-string">extract signals</span> → <span class="json-string">update state</span> → <span class="json-string">generate guidance</span>
+
+<span class="json-key">nightly_scheduler</span>()
+  <span class="json-string">check inactive users</span> → <span class="json-string">send "gentle nudge"</span>
+
+<span class="json-key">weekly_review_generator</span>()
+  <span class="json-string">compress the week</span> → <span class="json-string">write weekly_summary (memory)</span></pre>
+        </div>
+      </div>
+
+      <!-- Block 9: What Didn't Work -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>What Didn't Work & What I Learned</h3>
+        <p>Not everything worked. The hardest part wasn't generating content — it was sustaining engagement, balancing structure with flexibility, and building a real feedback loop early. MentAI taught me that a well-designed system doesn't automatically create product-market fit. Distribution, messaging, and iteration speed matter as much as architecture.</p>
+        <p>MentAI also introduced me to entrepreneurship: we built as a team, grew an Instagram presence, and participated in the Kar&#351;&#305;yaka Giri&#351;imcilik Merkezi collective. Even though it didn't proceed as a full startup, it shaped my product instincts and directly influenced how I later built mulakat.pro and ConsulDent.</p>
+      </div>
+
+      <!-- Block 10: Iteration Notes -->
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>Iteration Notes & Trade-offs</h3>
+        <div class="dd-fix-problem">Over-structured early UX &rarr; users felt "boxed in"</div>
+        <div class="dd-fix-solution">fix: allow "free input" + structured extraction later</div>
+        <div class="dd-fix-problem">Too much generation &rarr; inconsistent tone and verbosity</div>
+        <div class="dd-fix-solution">fix: templates + structured outputs + validation</div>
+        <div class="dd-fix-problem">Hard to measure progress</div>
+        <div class="dd-fix-solution">fix: define a few core signals (streak, friction, task completion)</div>
+      </div>
+
+      <!-- Block 11: Community & Go-to-Market -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+        <h3>Community, Go-to-Market & Early Validation</h3>
+        <p>MentAI was developed collaboratively with close friends as part of a small, self-organized team. Beyond technical development, we actively worked on validation, visibility, and early community building — treating the project as a real product rather than a prototype.</p>
+        <p>We participated in two entrepreneurship-focused conferences, where we presented MentAI publicly, shared the product vision, and discussed our approach with founders, mentors, and early-stage teams.</p>
+        <p>As part of the Kar&#351;&#305;yaka Giri&#351;imcilik Merkezi collective, we engaged with local startup communities, exchanged feedback with other teams, and gained first-hand exposure to early-stage product challenges beyond code.</p>
+      </div>
+
+      <!-- Block 12: User Research & Brand -->
+      <div class="dd-card dd-technical" data-aos="fade-up">
+        <h3>User Research & Brand Work</h3>
+        <h4>User Research & Feedback</h4>
+        <p>We conducted surveys and informal user interviews to better understand learning habits, motivation patterns, and pain points.</p>
+        <p>These insights directly influenced:</p>
+        <ul>
+          <li>How guidance was structured</li>
+          <li>How frequently the system interacted with users</li>
+          <li>Which features were prioritized or dropped</li>
+        </ul>
+        <h4>Brand & Content Work</h4>
+        <p>We built and managed MentAI's Instagram presence as an experiment in early distribution and communication.</p>
+        <ul>
+          <li>Designing visual posts and short-form content</li>
+          <li>Producing and sharing reels</li>
+          <li>Communicating the product philosophy publicly</li>
+          <li>Testing which messages resonated with users</li>
+        </ul>
+        <p>Through this process, we developed a clear brand identity, completed logo design and brand approval, and learned how product positioning directly affects user engagement.</p>
+      </div>
+
+      <!-- Block 13: Why This Experience Matters -->
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+        <h3>Why This Experience Matters</h3>
+        <p>This phase of MentAI taught me that building a product is not only a technical challenge. Validation, communication, design, and distribution are tightly coupled with system decisions. Many of the product instincts I apply today — especially around clarity, structure, and user focus — originated from this experience.</p>
+        <p>Even though MentAI did not proceed as a full startup, the lessons from this phase became foundational for how I later approached mulakat.pro and ConsulDent.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Journey & People — editorial white section -->
+<section class="journey-section">
+  <div class="journey-inner">
+
+    <!-- Header -->
+    <div class="journey-header" data-aos="fade-up">
+      <h2 class="journey-title">Journey & People</h2>
+      <p class="journey-subtitle">How MentAI moved from idea to reality — beyond code.</p>
+    </div>
+
+    <!-- Block A: Context -->
+    <div class="journey-context" data-aos="fade-up">
+      <p>Building MentAI extended far beyond system design. It involved collaboration, public sharing, early validation attempts, and learning through real-world feedback.</p>
+    </div>
+
+    <!-- 1: Product in the Wild -->
+    <div class="journey-subsection" data-aos="fade-up">
+      <div class="journey-sub-number">01</div>
+      <h3 class="journey-sub-title">Product in the Wild</h3>
+      <p class="journey-sub-desc">Screenshots, early UI, and outputs from the working product — proof that MentAI was real, not just an idea.</p>
+      <div class="journey-gallery">
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">screenshot</div>
+          <div class="journey-caption">Early MentAI dashboard — daily guidance generated from structured user state.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">screenshot</div>
+          <div class="journey-caption">Prototype UI used during early user testing and feedback collection.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">screenshot</div>
+          <div class="journey-caption">Structured guidance output — actionable daily flow.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">screenshot</div>
+          <div class="journey-caption">User progress view — tracking streaks and reflection patterns.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: Thinking & Design Artifacts -->
+    <div class="journey-subsection" data-aos="fade-up">
+      <div class="journey-sub-number">02</div>
+      <h3 class="journey-sub-title">Thinking & Design Artifacts</h3>
+      <p class="journey-sub-desc">System sketches and design notes that shaped the architecture — each one connects to something we later built.</p>
+      <div class="journey-gallery">
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">sketch</div>
+          <div class="journey-caption">Early system sketch exploring long-term user state and feedback loops before implementation.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">sketch</div>
+          <div class="journey-caption">Design notes used to reason about constraints and agent boundaries.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: People, Community & Collaboration -->
+    <div class="journey-subsection" data-aos="fade-up">
+      <div class="journey-sub-number">03</div>
+      <h3 class="journey-sub-title">People, Community & Collaboration</h3>
+      <p class="journey-sub-desc">Conferences, team sessions, and community engagement — proof that building a product means building with people.</p>
+      <div class="journey-gallery">
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">photo</div>
+          <div class="journey-caption">Team working session — early product discussions and feature prioritization.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">photo</div>
+          <div class="journey-caption">Presenting MentAI at an entrepreneurship conference.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">photo</div>
+          <div class="journey-caption">Kar&#351;&#305;yaka Giri&#351;imcilik Merkezi — exchanging feedback with other early-stage teams.</div>
+        </div>
+        <div class="journey-gallery-item">
+          <div class="journey-placeholder">photo</div>
+          <div class="journey-caption">Instagram content and brand work — testing product messaging publicly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="journey-subsection" data-aos="fade-up">
+      <div class="journey-sub-number">Team</div>
+      <h3 class="journey-sub-title">The People Behind MentAI</h3>
+      <p class="journey-sub-desc">MentAI was built by a small, self-organized team of close friends who shared a belief that technology should guide real growth.</p>
+      <div class="journey-team">
+        <div class="journey-team-member">
+          <div class="journey-team-avatar">photo</div>
+          <div class="journey-team-name">Arda Asut</div>
+          <div class="journey-team-role">Founder & Developer</div>
+        </div>
+        <div class="journey-team-member">
+          <div class="journey-team-avatar">photo</div>
+          <div class="journey-team-name">Team Member</div>
+          <div class="journey-team-role">Role</div>
+        </div>
+        <div class="journey-team-member">
+          <div class="journey-team-avatar">photo</div>
+          <div class="journey-team-name">Team Member</div>
+          <div class="journey-team-role">Role</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reflection -->
+    <div class="journey-reflection" data-aos="fade-up">
+      <p>This phase taught me that products are shaped as much by people, communication, and feedback as by architecture and code.</p>
+      <p>Many of the technical and product decisions I apply today originated during this process.</p>
+    </div>
+
+  </div>
+</section>
+
+{% elif project.slug == 'consuldent' %}
+<section class="section">
+  <div class="section-inner">
+    <div class="dd-stream">
+
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>The Problem</h3>
+        <p>The core challenge ConsulDent addresses is not lack of information, but <strong>fragmentation</strong>: clinical knowledge exists across books, guidelines, documents, and personal notes — disconnected from the dentist's actual workflow.</p>
+        <p>I built ConsulDent as a backend-first, knowledge-centric system that integrates retrieval-augmented generation (RAG), structured outputs, and workflow-aware reasoning into a single product. The goal is not to replace clinical judgment, but to reduce cognitive load and friction around documentation, preparation, and reference lookup.</p>
+      </div>
+
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>System Philosophy</h3>
+        <p>ConsulDent is not a chat interface. It is a clinical support system. Every response is designed to be grounded in retrievable sources, structured for clinical usability, and aligned with real-world dental workflows.</p>
+        <h4>Decomposition layers</h4>
+        <ul>
+          <li>Retrieval — source-aware document lookup</li>
+          <li>Reasoning — agent-style multi-step flows</li>
+          <li>Output — structured, validated, clinically formatted</li>
+        </ul>
+      </div>
+
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>Core Capabilities</h3>
+        <ul>
+          <li><strong>Knowledge-Centric Retrieval (RAG):</strong> Clinical books, guidelines, and reference documents are indexed and retrieved as first-class sources with section-aware responses.</li>
+          <li><strong>Workflow-Oriented Outputs:</strong> Visit preparation summaries, treatment explanations, clinical notes, and patient communication content.</li>
+          <li><strong>Agent-Oriented Reasoning:</strong> Complex tasks handled through retrieval, reasoning, validation, and formatting as separate steps.</li>
+          <li><strong>Voice & Multimodal Input:</strong> Voice-based input for real clinical environments where typing is impractical.</li>
+        </ul>
+      </div>
+
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>ConsulDent Clinic — Operational Layer</h3>
+        <p>Extends the knowledge system into day-to-day clinical operations.</p>
+        <ul>
+          <li>Visit lifecycle tracking</li>
+          <li>Task coordination</li>
+          <li>Structured documentation outputs</li>
+          <li>Reduced administrative overhead</li>
+        </ul>
+      </div>
+
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>Why ConsulDent Matters</h3>
+        <p>ConsulDent represents how I approach AI products: as <strong>systems, not features</strong>. It combines domain expertise, backend engineering, and AI-assisted reasoning to solve real operational problems. This is the most complete expression of my architectural mindset.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% elif project.slug == 'mulakat-pro' %}
+<section class="section">
+  <div class="section-inner">
+    <div class="dd-stream">
+
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>The Problem</h3>
+        <p>The core problem mulakat.pro solves is not "mock interviews" — it's <strong>decision ambiguity</strong>: candidates don't know what to study, in what order, or how close they are to being interview-ready.</p>
+        <p>I designed mulakat.pro as a backend-first system that analyzes resumes and job requirements, extracts structured signals, and maps them into actionable preparation steps.</p>
+      </div>
+
+      <div class="dd-card dd-technical" data-aos="fade-up">
+
+        <h3>System Design & Architecture</h3>
+        <p>Built around RAG and structured reasoning pipelines. Job descriptions, resumes, and domain knowledge are processed as retrievable sources rather than raw prompts.</p>
+        <h4>Separation of concerns</h4>
+        <ul>
+          <li>Analysis — resume + job post parsing</li>
+          <li>Evaluation — gap detection + readiness scoring</li>
+          <li>Feedback — structured, explainable output</li>
+          <li>Guidance — preparation steps + topic generation</li>
+        </ul>
+      </div>
+
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>What I Built</h3>
+        <ul>
+          <li>Resume and job-post parsing pipelines</li>
+          <li>Skill and requirement extraction logic</li>
+          <li>Gap analysis and readiness estimation</li>
+          <li>Structured interview topic generation</li>
+          <li>Backend APIs for evaluation and progress tracking</li>
+          <li>Deployment and iteration based on real user feedback</li>
+        </ul>
+      </div>
+
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+
+        <h3>Why This Project Matters</h3>
+        <p>mulakat.pro reflects how I approach AI products in general: not as chat interfaces, but as <strong>decision-support systems</strong>. The goal is not to "sound smart", but to guide users through complex processes with clarity, structure, and measurable progress.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% else %}
+<section class="section">
+  <div class="section-inner">
+    <!-- Generic project detail -->
+    <div class="dd-stream">
+      <div class="dd-card dd-narrative" data-aos="fade-up">
+        <h3>About This Project</h3>
+        <p>{{ project.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if project.slug != 'mentai' %}
+<!-- Tech Stack -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-inner">
+    <div class="dd-stream">
+      <div class="dd-card dd-technical" data-aos="fade-up" style="text-align: center;">
+        <div class="pill-group" style="justify-content: center; gap: 0.5rem;">
+          {% for tech in project.get_tech_stack_list %}
+            <span class="pill" style="background-color: rgba(99,102,241,0.1); color: #818cf8; border-color: rgba(99,102,241,0.25);">{{ tech }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Back to Projects -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-inner text-center">
+    <a href="{% url 'projects' %}" class="btn-theme btn-theme-outline">Back to Projects</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function copyCode(btn) {
+  var pre = btn.closest('.dd-code-wrap').querySelector('pre');
+  var text = pre.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+{% endblock %}

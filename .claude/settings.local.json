@@ -3,7 +3,14 @@
     "allow": [
       "Bash(python.exe:*)",
       "Bash(python manage.py:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(where:*)",
+      "Bash(pip show:*)",
+      "Bash(D:/software_development/portfolio_site/env_portfolio/Scripts/python.exe:*)",
+      "Bash(env_portfolioScriptspython.exe manage.py makemigrations)",
+      "Bash(env_portfolioScriptspython.exe manage.py migrate)",
+      "Bash(./env_portfolio/Scripts/python.exe:*)",
+      "Bash(./env_portfolio/Scripts/python.exe manage.py migrate:*)"
     ]
   }
 }

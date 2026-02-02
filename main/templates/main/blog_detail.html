@@ -1,63 +1,49 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}{{ post.text|truncatechars:50 }} - Arda Asut{% endblock %}
+{% block title %}{{ post.text|truncatewords:8 }} - Arda Asut{% endblock %}
 
 {% block content %}
 
-<!-- Blog Post Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 mx-auto">
-      <div class="card blog-detail-card">
-        <div class="card-body">
-          {% if post.image %}
-            <img src="{{ post.image.url }}" class="img-fluid rounded mb-4" alt="{{ post.text|truncatechars:50 }}">
-          {% endif %}
-          
-          <div class="blog-content">
-            {{ post.text|linebreaks }}
-          </div>
-          
-          <div class="mt-5 pt-4 border-top">
-            <a href="{% url 'blog' %}" class="btn btn-outline-light">← Back to Blog</a>
-          </div>
+<!-- Hero Section -->
+<section class="hero-section" data-aos="fade-up">
+  <div class="hero-inner">
+    <div class="hero-label">Blog</div>
+    <h1 class="hero-title">{{ post.text|truncatewords:8 }}</h1>
+    <p class="hero-subtitle">{{ post.created_at|date:"F d, Y" }}{% if post.tag %} · {{ post.tag.name }}{% endif %}</p>
+  </div>
+</section>
+
+<!-- Reading Surface -->
+<section class="section">
+  <div class="section-inner">
+    <div class="reading-surface" data-aos="fade-up">
+      <!-- Chrome-tab titlebar -->
+      <div class="reading-titlebar">
+        <div class="reading-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="reading-titlebar-text">{{ post.text|truncatewords:5 }}</div>
+        <div class="reading-dots" style="visibility:hidden;">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <!-- Reading body -->
+      <div class="reading-body">
+        {% if post.tag %}
+        <div class="reading-tag">{{ post.tag.name }}</div>
+        {% endif %}
+        <div class="reading-content">
+          {{ post.text|linebreaks }}
         </div>
       </div>
     </div>
+
+    <!-- Back link -->
+    <div style="margin-top: 2rem;" data-aos="fade-up">
+      <a href="{% url 'blog' %}" class="btn-theme btn-theme-outline">&larr; Back to Blog</a>
+    </div>
   </div>
-</div>
+</section>
 
 {% endblock %}
-
-{% block extra_css %}
-<style>
-  .blog-detail-card {
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
-  
-  .blog-detail-card .card-body {
-    padding: 3rem;
-  }
-  
-  .blog-content {
-    font-size: 1.2rem;
-    line-height: 1.8;
-  }
-  
-  .blog-content p {
-    margin-bottom: 1.8rem;
-  }
-  
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1300px;
-    }
-  }
-</style>
-{% endblock %} 

@@ -6,203 +6,63 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="projects-hero-section py-5 text-center min-vh-30 d-flex align-items-center">
-    <div class="container py-4">
-      <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">Projects</h1>
-      <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100">A showcase of my work, side projects, and experiments</p>
-    </div>
+<section class="hero-section" data-aos="fade-up">
+  <div class="hero-inner">
+    <div class="hero-label">Portfolio</div>
+    <h1 class="hero-title">Projects</h1>
+    <p class="hero-subtitle">A showcase of my work, side projects, and experiments.</p>
+  </div>
 </section>
 
-<br><br>
-
-<!-- Projects Container -->
-<div class="container">
-  <div class="row g-4">
-    
+<!-- Projects List -->
+<section class="section">
+  <div class="section-inner">
     {% if projects %}
       {% for project in projects %}
-        <div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
-          <div class="project-card">
-            <div class="project-header" style="text-align: left !important; direction: ltr !important;">
-              <h3 style="text-align: left !important; direction: ltr !important;">{{ project.title }}</h3>
-              <span class="badge bg-primary">{{ project.year }}</span>
-            </div>
-            <div class="project-body">
-              <div class="project-content" style="text-align: left !important; direction: ltr !important;">
-                <div class="project-description-container">
-                  <p class="project-description project-description-short" style="text-align: left !important; direction: ltr !important;">
-                    {{ project.description }}
-                  </p>
-                </div>
-                <div class="project-tech" style="text-align: left !important; direction: ltr !important; margin-bottom: 15px;">
-                  {% for tech in project.get_tech_stack_list %}
-                    <span class="tech-badge">{{ tech }}</span>
-                  {% endfor %}
-                </div>
-                <div class="project-links" style="text-align: left !important; direction: ltr !important;">
-                  {% if project.demo_link %}
-                    <a href="{{ project.demo_link }}" class="btn btn-sm btn-outline-light me-2" target="_blank">View Demo</a>
-                  {% endif %}
-                  {% if project.github_link %}
-                    <a href="{{ project.github_link }}" class="btn btn-sm btn-dark" target="_blank">GitHub</a>
-                  {% endif %}
-                  {% if project.other_link %}
-                    <a href="{{ project.other_link }}" class="btn btn-sm btn-outline-light me-2" target="_blank">{{ project.other_link_text|default:"Learn More" }}</a>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="project-card-full" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+        <div class="project-card-full-header">
+          <h3>{{ project.title }}</h3>
+          <div class="project-year-badge">{{ project.year }}</div>
         </div>
+        <p class="project-card-full-desc">{{ project.description }}</p>
+        <div class="pill-group">
+          {% for tech in project.get_tech_stack_list %}
+            <span class="pill">{{ tech }}</span>
+          {% endfor %}
+        </div>
+        <div class="card-actions">
+          {% if project.slug == 'mentai' %}
+            {% if project.demo_link %}
+              <a href="{{ project.demo_link }}" target="_blank" class="btn-theme btn-theme-sm">Website</a>
+            {% endif %}
+            {% if project.other_link %}
+              <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">Instagram</a>
+            {% endif %}
+          {% else %}
+            {% if project.demo_link %}
+              <a href="{{ project.demo_link }}" target="_blank" class="btn-theme btn-theme-sm">View Demo</a>
+            {% endif %}
+            {% if project.github_link %}
+              <a href="{{ project.github_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">GitHub</a>
+            {% endif %}
+            {% if project.other_link %}
+              <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">{{ project.other_link_text|default:"Learn More" }}</a>
+            {% endif %}
+          {% endif %}
+          {% if project.is_featured %}
+            <a href="{% url 'project_detail' project.slug %}" class="btn-theme btn-theme-sm">Deep Dive</a>
+          {% endif %}
+        </div>
+      </div>
       {% endfor %}
     {% endif %}
+
+    <!-- GitHub CTA -->
+    <div class="text-center" style="margin-top: 3rem;" data-aos="fade-up">
+      <p class="text-muted-theme" style="margin-bottom: 1rem;">Interested in seeing more of my work?</p>
+      <a href="https://github.com/ardoktor" target="_blank" class="btn-theme">Visit My GitHub</a>
+    </div>
   </div>
-  
-  <!-- More Projects CTA -->
-  <div class="text-center mt-5" data-aos="fade-up">
-    <p class="fs-5 mb-4">Interested in seeing more of my work?</p>
-    <a href="https://github.com/ardoktor" target="_blank" class="btn btn-dark btn-lg">
-      <i class="bi bi-github me-2"></i> Visit My GitHub
-    </a>
-  </div>
-</div>
+</section>
 
 {% endblock %}
-
-{% block extra_css %}
-<style>
-  /* Force left alignment for all text in project cards */
-  .project-card .col-md-8,
-  .project-card .col-md-8 *,
-  .project-card .project-description,
-  .project-card .project-tech,
-  .project-card .project-links,
-  .project-card h3,
-  .project-card .project-header {
-    text-align: left !important;
-  }
-  
-  /* Project Card Styling */
-  .project-card {
-    background-color: #1a1a1a;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, max-height 0.5s ease;
-    height: auto;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
-    z-index: 3;
-  }
-  
-  .project-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .project-header h3 {
-    margin-bottom: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #ffffff;
-  }
-  
-  .project-body {
-    padding: 1.5rem;
-  }
-  
-  .project-content {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .project-description {
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    font-weight: 400;
-    position: relative;
-  }
-  
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .tech-badge {
-    background: linear-gradient(135deg, #435fce, #8616b9);
-    color: white;
-    padding: 0.35rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    display: inline-block;
-  }
-  
-  .badge.bg-primary {
-    background: linear-gradient(135deg, #435fce, #8616b9) !important;
-    font-weight: 500;
-    padding: 0.5rem 0.75rem;
-  }
-  
-  /* Expanding description on hover */
-  .project-description-container {
-    position: relative;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-    max-height: 100px; /* Adjust this value to control initial height */
-  }
-  
-  .project-card:hover .project-description-container {
-    max-height: 1000px; /* Large enough to show full content */
-  }
-  
-  .project-description-container::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(to bottom, rgba(26, 26, 26, 0), rgba(26, 26, 26, 1));
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  
-  .project-card:hover .project-description-container::after {
-    opacity: 0;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 991.98px) {
-    .project-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .project-header .badge {
-      margin-top: 0.5rem;
-    }
-    
-    .col-md-4 {
-      margin-bottom: 1.5rem;
-    }
-  }
-</style>
-{% endblock %}
-
-
-
