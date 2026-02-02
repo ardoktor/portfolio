@@ -8,6 +8,9 @@
 <!-- Hero Section (matches home page sizing) -->
 <section class="hero-section" data-aos="fade-up">
   <div class="hero-inner">
+    <div class="hero-portrait-frame">
+      <img src="{% static 'morpheus.jpg' %}" alt="Arda Asut" class="hero-portrait-img">
+    </div>
     <div class="hero-label">About Me</div>
     <h1 class="hero-title">Arda Asut</h1>
     <p class="hero-subtitle">Passionate about building AI-powered tools, scalable platforms, and products that help people grow.</p>
@@ -520,7 +523,7 @@
 </section>
 
 <!-- CTA -->
-<section class="section" style="padding-top: 0;">
+<section class="section" style="padding-top: 3rem;">
   <div class="section-inner text-center">
     <a href="{% url 'projects' %}" class="btn-theme">Explore My Projects</a>
   </div>
