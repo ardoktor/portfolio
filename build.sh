@@ -10,23 +10,12 @@ echo "=== Collecting static files ==="
 python manage.py collectstatic --noinput
 
 echo "=== Running migrations ==="
-python manage.py migrate --run-syncdb
+python manage.py migrate
 
 echo "=== Loading initial data ==="
-python manage.py loaddata main/fixtures/initial_data.json -v 2 || {
-    echo "Fixture load failed, trying alternate path..."
-    python manage.py loaddata initial_data -v 2
-}
-
-echo "=== Checking loaded data ==="
-python manage.py shell -c "
-from main.models import Project
-print(f'Projects in database: {Project.objects.count()}')
-for p in Project.objects.all():
-    print(f'  - {p.title}')
-"
+python manage.py loaddata main/fixtures/initial_data.json || echo "Fixture may already be loaded"
 
 echo "=== Creating superuser ==="
-python manage.py createsuperuser --noinput || echo "Superuser exists or env vars not set"
+python manage.py createsuperuser --noinput || echo "Superuser exists"
 
 echo "=== Build complete ==="

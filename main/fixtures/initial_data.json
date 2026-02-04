@@ -1,28 +1,24 @@
 [
   {
     "model": "main.tag",
-    "pk": 2,
     "fields": {
       "name": "ConsulDent"
     }
   },
   {
     "model": "main.tag",
-    "pk": 1,
     "fields": {
       "name": "MentAI"
     }
   },
   {
     "model": "main.tag",
-    "pk": 3,
     "fields": {
       "name": "mulakat.pro"
     }
   },
   {
     "model": "main.project",
-    "pk": 4,
     "fields": {
       "title": "ConsulDent - Dental Knowledge Assistant",
       "slug": "consuldent",
@@ -34,12 +30,12 @@
       "other_link": "",
       "other_link_text": "",
       "order": 1,
-      "is_featured": true
+      "is_featured": true,
+      "image_url": ""
     }
   },
   {
     "model": "main.project",
-    "pk": 5,
     "fields": {
       "title": "mulakat.pro - AI Interview Preparation",
       "slug": "mulakat-pro",
@@ -51,12 +47,12 @@
       "other_link": "",
       "other_link_text": "",
       "order": 2,
-      "is_featured": true
+      "is_featured": true,
+      "image_url": ""
     }
   },
   {
     "model": "main.project",
-    "pk": 3,
     "fields": {
       "title": "MentAI - Personalized AI Mentorship Platform",
       "slug": "mentai",
@@ -68,12 +64,12 @@
       "other_link": "https://www.instagram.com/mentai.app/",
       "other_link_text": "",
       "order": 3,
-      "is_featured": true
+      "is_featured": true,
+      "image_url": ""
     }
   },
   {
     "model": "main.project",
-    "pk": 2,
     "fields": {
       "title": "Data Science Practices Repository",
       "slug": "data-science-practices-repository",
@@ -85,12 +81,12 @@
       "other_link": "",
       "other_link_text": "",
       "order": 10,
-      "is_featured": false
+      "is_featured": false,
+      "image_url": ""
     }
   },
   {
     "model": "main.project",
-    "pk": 1,
     "fields": {
       "title": "Basic Collaborative Filtering Model",
       "slug": "basic-collaborative-filtering-model",
@@ -102,7 +98,8 @@
       "other_link": "",
       "other_link_text": "",
       "order": 11,
-      "is_featured": false
+      "is_featured": false,
+      "image_url": ""
     }
   }
 ]
