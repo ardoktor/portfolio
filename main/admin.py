@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import BlogPost, Project, Tag
+from .models import BlogPost, Project, Tag, ContactMessage
 
 
 # Custom admin site configuration
@@ -134,3 +134,29 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tag, TagAdmin)
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('email', 'message_short', 'created_at', 'is_read')
+    list_filter = ('is_read', 'created_at')
+    search_fields = ('email', 'message')
+    ordering = ('-created_at',)
+    list_per_page = 20
+    readonly_fields = ('email', 'message', 'created_at')
+
+    def message_short(self, obj):
+        return obj.message[:50] + '...' if len(obj.message) > 50 else obj.message
+    message_short.short_description = 'Message'
+
+    actions = ['mark_as_read', 'mark_as_unread']
+
+    def mark_as_read(self, request, queryset):
+        count = queryset.update(is_read=True)
+        self.message_user(request, f'{count} message(s) marked as read.')
+    mark_as_read.short_description = 'Mark as read'
+
+    def mark_as_unread(self, request, queryset):
+        count = queryset.update(is_read=False)
+        self.message_user(request, f'{count} message(s) marked as unread.')
+    mark_as_unread.short_description = 'Mark as unread'

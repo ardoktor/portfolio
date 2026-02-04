@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from .models import BlogPost, Project, Tag
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import BlogPost, Project, Tag, ContactMessage
 from django.views.generic import ListView, DetailView
 
 # Create your views here.
@@ -11,6 +12,17 @@ def about(request):
     return render(request, 'main/about.html')
 
 def contact(request):
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+        message = request.POST.get('message', '').strip()
+
+        if email and message:
+            ContactMessage.objects.create(email=email, message=message[:280])
+            messages.success(request, 'Message sent! I\'ll get back to you soon.')
+            return redirect('contact')
+        else:
+            messages.error(request, 'Please fill in both fields.')
+
     return render(request, 'main/contacts.html')
 
 

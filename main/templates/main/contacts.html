@@ -26,7 +26,18 @@
         <p class="challenge-desc">Tell me what you're working on in one sentence. I'll respond within 48 hours.</p>
       </div>
 
-      <form class="challenge-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      {% if messages %}
+      <div class="form-messages">
+        {% for message in messages %}
+        <div class="form-message {% if message.tags %}{{ message.tags }}{% endif %}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <form class="challenge-form" action="{% url 'contact' %}" method="POST">
+        {% csrf_token %}
         <div class="form-group">
           <label for="email">Your Email</label>
           <input type="email" id="email" name="email" placeholder="you@example.com" required>
@@ -68,6 +79,30 @@
 
 {% block extra_css %}
 <style>
+/* Form Messages */
+.form-messages {
+  margin-bottom: 1.5rem;
+}
+
+.form-message {
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.form-message.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+}
+
+.form-message.error {
+  background: #ffebee;
+  color: #c62828;
+  border: 2px solid #c62828;
+}
+
 /* Challenge Card */
 .contact-challenge {
   background: #ffffff;
