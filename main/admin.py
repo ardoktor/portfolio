@@ -61,10 +61,9 @@ class BlogPostForm(forms.ModelForm):
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
     form = BlogPostForm
-    list_display = ('title_short', 'tag', 'status_badge', 'created_at')
+    list_display = ('title_short', 'tag', 'is_published', 'created_at')
     list_filter = ('is_published', 'tag')
     search_fields = ('title', 'text')
-    list_editable = ('is_published',)
     ordering = ('-created_at',)
     list_per_page = 20
 
