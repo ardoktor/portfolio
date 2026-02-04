@@ -1,0 +1,108 @@
+[
+  {
+    "model": "main.tag",
+    "pk": 2,
+    "fields": {
+      "name": "ConsulDent"
+    }
+  },
+  {
+    "model": "main.tag",
+    "pk": 1,
+    "fields": {
+      "name": "MentAI"
+    }
+  },
+  {
+    "model": "main.tag",
+    "pk": 3,
+    "fields": {
+      "name": "mulakat.pro"
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 4,
+    "fields": {
+      "title": "ConsulDent - Dental Knowledge Assistant",
+      "slug": "consuldent",
+      "description": "An AI-powered dental knowledge assistant that helps clinicians with patient case analysis, knowledge base search, and clinical decision support. Built with a RAG-based system for querying dental literature and presenting structured, evidence-based responses.",
+      "year": "2024",
+      "tech_stack": "Python, RAG, LLM Integration, FastAPI, React",
+      "demo_link": "https://consuldent.com",
+      "github_link": "",
+      "other_link": "",
+      "other_link_text": "",
+      "order": 1,
+      "is_featured": true
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 5,
+    "fields": {
+      "title": "mulakat.pro - AI Interview Preparation",
+      "slug": "mulakat-pro",
+      "description": "An AI-powered interview preparation platform that generates personalized mock interviews based on job descriptions and user profiles. Features voice-based interaction and real-time feedback to simulate realistic interview scenarios.",
+      "year": "2025",
+      "tech_stack": "Python, OpenAI API, LangChain, Django, Whisper",
+      "demo_link": "https://mulakat.pro",
+      "github_link": "",
+      "other_link": "",
+      "other_link_text": "",
+      "order": 2,
+      "is_featured": true
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 3,
+    "fields": {
+      "title": "MentAI - Personalized AI Mentorship Platform",
+      "slug": "mentai",
+      "description": "MentAI is a personalized mentorship application designed to help users achieve their cognitive, emotional, and productivity goals through daily guidance, structured tasks, and adaptive content. Built using Python, Django, and Firebase Firestore, MentAI integrates advanced AI models with practical personal development strategies. \r\n\r\nThe platform delivers daily letters, tasks, and feedback loops tailored to each user's needs by leveraging Retrieval-Augmented Generation (RAG) techniques, LangChain frameworks, and OpenAI’s large language models.\r\n\r\nMentAI's backend architecture is designed with scalability and flexibility in mind, utilizing Google Cloud Functions, RESTful APIs, and Firestore's NoSQL database for smooth performance and real-time personalization. The frontend is being prototyped in Flutter to ensure cross-platform accessibility.\r\n\r\nKey features include dynamic goal-setting roadmaps, daily habit challenges, mood tracking, and a curated discovery hub offering personalized articles, podcasts, and book summaries.\r\n\r\nMentAI is built with the belief that technology should not just provide information but guide and empower users to become better versions of themselves through meaningful, daily action. It is a project where software development, psychology, and AI come together to serve real human growth.",
+      "year": "2025",
+      "tech_stack": "python,langchain,firebase,gcp,flutter",
+      "demo_link": "https://mentai.app",
+      "github_link": "https://github.com/ardoktor",
+      "other_link": "https://www.instagram.com/mentai.app/",
+      "other_link_text": "",
+      "order": 3,
+      "is_featured": true
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 2,
+    "fields": {
+      "title": "Data Science Practices Repository",
+      "slug": "data-science-practices-repository",
+      "description": "This repository is a curated collection of my hands-on data science mini-projects, built to deepen my skills across the core areas of data analysis, machine learning, deep learning, and storytelling with data. Each project is structured around real-world datasets, aiming to replicate challenges and scenarios that a data scientist might encounter in the industry.\r\n\r\nThroughout these projects, I apply techniques such as exploratory data analysis (EDA), data cleaning, feature engineering, model selection, evaluation, and visualization. I also experiment with various machine learning algorithms and deep learning architectures like Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) networks. Natural Language Processing (NLP) tasks are explored through classification and zero-shot learning approaches, demonstrating the flexibility of modern AI tools.\r\n\r\nThe repository showcases my ability to move beyond textbook examples, applying analytical thinking, critical evaluation, and creative problem-solving to open-ended challenges.\r\n\r\nProject Highlights:\r\n\r\nMovie Ratings Bias Detection: Explored biases in movie rating systems by analyzing the Fandango dataset, applying statistical analysis and visualization to detect systematic rating inflation.\r\n\r\nTraffic Pattern Anomaly Analysis: Built an LSTM-based anomaly detection model to uncover unusual traffic behaviors based on time-series data, demonstrating advanced sequence modeling techniques.\r\n\r\nImage Classification with CNNs: Implemented convolutional neural networks (CNNs) to classify CIFAR image data, focusing on improving accuracy through data augmentation and fine-tuning architectures.\r\n\r\nZero-Shot Text Classification: Developed a text classification system capable of categorizing documents without labeled training examples, using cutting-edge zero-shot learning strategies.\r\n\r\nPredictive Modeling for Diabetes and Bike Sharing Demand: Built machine learning regression and classification models to predict health outcomes (diabetes diagnosis) and bike rental demand based on various environmental and user features.",
+      "year": "2021",
+      "tech_stack": "python,tensorflow,pandas,hugging face, sql, cnn",
+      "demo_link": "",
+      "github_link": "https://github.com/ardoktor/DataSciencePractises/tree/main",
+      "other_link": "",
+      "other_link_text": "",
+      "order": 10,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 1,
+    "fields": {
+      "title": "Basic Collaborative Filtering Model",
+      "slug": "basic-collaborative-filtering-model",
+      "description": "In this project, I built a basic collaborative filtering recommendation system using Microsoft's recommenders library. As a benchmark, I used the popular MovieLens dataset to evaluate model performance. The system predicts user preferences based on historical interaction data, laying the foundation for more advanced personalized recommendation engines.\r\n\r\nTech Stack: Python, Recommenders Library, Pandas, MovieLens Dataset",
+      "year": "2021",
+      "tech_stack": "python,numpy,sklearn",
+      "demo_link": "",
+      "github_link": "https://github.com/ardoktor/RecommenderSystems/blob/main/huaweiReccomenderv3.ipynb",
+      "other_link": "",
+      "other_link_text": "",
+      "order": 11,
+      "is_featured": false
+    }
+  }
+]

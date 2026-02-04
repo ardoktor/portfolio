@@ -19,31 +19,44 @@ input, textarea, select {
     font-size: 16px !important;
     line-height: 1.8 !important;
     padding: 16px !important;
-    border: 2px solid #ddd !important;
+    border: 2px solid #333 !important;
     border-radius: 10px !important;
     min-height: 300px !important;
     resize: vertical !important;
-    background: #fafafa !important;
+    background: #ffffff !important;
+    color: #111111 !important;
 }
 
 #id_text:focus {
     border-color: #417690 !important;
-    background: #fff !important;
+    background: #ffffff !important;
     outline: none !important;
-    box-shadow: 0 0 0 3px rgba(65, 118, 144, 0.15) !important;
+    box-shadow: 0 0 0 3px rgba(65, 118, 144, 0.25) !important;
+    color: #111111 !important;
 }
 
 /* Title input */
 #id_title {
     font-size: 16px !important;
     padding: 14px !important;
-    border: 2px solid #ddd !important;
+    border: 2px solid #333 !important;
     border-radius: 10px !important;
+    background: #ffffff !important;
+    color: #111111 !important;
 }
 
 #id_title:focus {
     border-color: #417690 !important;
     outline: none !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+}
+
+/* All inputs and textareas - high contrast */
+textarea, input[type="text"], input[type="email"], input[type="password"], input[type="url"], select {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: 2px solid #333 !important;
 }
 
 /* Radio buttons for tags - big and tappable */
