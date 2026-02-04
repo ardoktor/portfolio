@@ -10,7 +10,8 @@
       "Bash(env_portfolioScriptspython.exe manage.py makemigrations)",
       "Bash(env_portfolioScriptspython.exe manage.py migrate)",
       "Bash(./env_portfolio/Scripts/python.exe:*)",
-      "Bash(./env_portfolio/Scripts/python.exe manage.py migrate:*)"
+      "Bash(./env_portfolio/Scripts/python.exe manage.py migrate:*)",
+      "Bash(env_portfolio\\\\Scripts\\\\python.exe manage.py makemigrations:*)"
     ]
   }
 }

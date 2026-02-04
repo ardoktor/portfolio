@@ -14,30 +14,40 @@ class Tag(models.Model):
         ordering = ['name']
 
 class BlogPost(models.Model):
-    text = models.TextField()
+    title = models.CharField(max_length=200, blank=True, help_text="Optional title (auto-generated from text if empty)")
+    text = models.TextField(help_text="Your note content")
     slug = models.SlugField(unique=True, blank=True)
     tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=True, related_name='blog_posts')
+    is_published = models.BooleanField(default=True, help_text="Uncheck to save as draft")
     created_at = models.DateTimeField(auto_now_add=True)
-    
+    updated_at = models.DateTimeField(auto_now=True)
+
     def save(self, *args, **kwargs):
+        # Auto-generate title from text if not provided
+        if not self.title:
+            self.title = self.text[:100].split('\n')[0][:100]
+
         # Generate a slug if one doesn't exist
         if not self.slug:
-            self.slug = slugify(self.text[:50])
-            
+            self.slug = slugify(self.title[:50]) or slugify(self.text[:50])
+
             # Ensure the slug is unique
             original_slug = self.slug
             counter = 1
-            while BlogPost.objects.filter(slug=self.slug).exists():
+            while BlogPost.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
                 self.slug = f"{original_slug}-{counter}"
                 counter += 1
-                
+
         super().save(*args, **kwargs)
-    
+
     def get_absolute_url(self):
         return reverse('blog_detail', args=[self.slug])
-    
+
     def __str__(self):
-        return self.text[:50]
+        return self.title or self.text[:50]
+
+    class Meta:
+        ordering = ['-created_at']
 
 class Project(models.Model):
     title = models.CharField(max_length=200)

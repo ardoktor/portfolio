@@ -1,15 +1,15 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}{{ post.text|truncatewords:8 }} - Arda Asut{% endblock %}
+{% block title %}{{ post.title|default:post.text|truncatewords:8 }} - Arda Asut{% endblock %}
 
 {% block content %}
 
 <!-- Hero Section -->
 <section class="hero-section" data-aos="fade-up">
   <div class="hero-inner">
-    <div class="hero-label">Blog</div>
-    <h1 class="hero-title">{{ post.text|truncatewords:8 }}</h1>
+    <div class="hero-label">Notes</div>
+    <h1 class="hero-title">{{ post.title|default:post.text|truncatewords:8 }}</h1>
     <p class="hero-subtitle">{{ post.created_at|date:"F d, Y" }}{% if post.tag %} · {{ post.tag.name }}{% endif %}</p>
   </div>
 </section>
@@ -23,7 +23,7 @@
         <div class="reading-dots">
           <span></span><span></span><span></span>
         </div>
-        <div class="reading-titlebar-text">{{ post.text|truncatewords:5 }}</div>
+        <div class="reading-titlebar-text">{{ post.title|default:post.text|truncatewords:5 }}</div>
         <div class="reading-dots" style="visibility:hidden;">
           <span></span><span></span><span></span>
         </div>
@@ -41,7 +41,7 @@
 
     <!-- Back link -->
     <div style="margin-top: 2rem;" data-aos="fade-up">
-      <a href="{% url 'blog' %}" class="btn-theme btn-theme-outline">&larr; Back to Blog</a>
+      <a href="{% url 'blog' %}" class="btn-theme btn-theme-outline">&larr; Back to Notes</a>
     </div>
   </div>
 </section>

@@ -28,8 +28,17 @@ class BlogListView(ListView):
     template_name = 'main/blog.html'
     context_object_name = 'blog_posts'
 
+    def get_queryset(self):
+        # Only show published posts on public site
+        return BlogPost.objects.filter(is_published=True)
+
+
 class BlogDetailView(DetailView):
     model = BlogPost
     template_name = 'main/blog_detail.html'
     context_object_name = 'post'
+
+    def get_queryset(self):
+        # Only show published posts on public site
+        return BlogPost.objects.filter(is_published=True)
 
