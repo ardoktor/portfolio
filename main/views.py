@@ -1,29 +1,18 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
-from .models import BlogPost, Project, Tag, ContactMessage
+from django.shortcuts import render, get_object_or_404
+from .models import BlogPost, Project
 from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def home(request):
-    featured_projects = Project.objects.all()[:3]
-    return render(request, 'main/home.html', {'featured_projects': featured_projects})
+    return render(request, 'main/home.html', {
+        'current_project': Project.objects.filter(status='active').first(),
+        'work_projects': Project.objects.filter(status='work'),
+        'archived_projects': Project.objects.filter(status='archived'),
+        'recent_posts': BlogPost.objects.filter(is_published=True)[:3],
+    })
 
 def about(request):
     return render(request, 'main/about.html')
-
-def contact(request):
-    if request.method == 'POST':
-        email = request.POST.get('email', '').strip()
-        message = request.POST.get('message', '').strip()
-
-        if email and message:
-            ContactMessage.objects.create(email=email, message=message[:280])
-            messages.success(request, 'Message sent! I\'ll get back to you soon.')
-            return redirect('contact')
-        else:
-            messages.error(request, 'Please fill in both fields.')
-
-    return render(request, 'main/contacts.html')
 
 
 def projects(request):
@@ -53,4 +42,3 @@ class BlogDetailView(DetailView):
     def get_queryset(self):
         # Only show published posts on public site
         return BlogPost.objects.filter(is_published=True)
-

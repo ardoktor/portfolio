@@ -49,7 +49,7 @@
               <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">{{ project.other_link_text|default:"Learn More" }}</a>
             {% endif %}
           {% endif %}
-          {% if project.is_featured %}
+          {% if project.slug == 'consuldent' or project.slug == 'mentai' or project.slug == 'mulakat-pro' %}
             <a href="{% url 'project_detail' project.slug %}" class="btn-theme btn-theme-sm">Deep Dive</a>
           {% endif %}
         </div>

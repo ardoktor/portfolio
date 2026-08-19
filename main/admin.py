@@ -112,22 +112,26 @@ class BlogPostAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'year', 'is_featured', 'order')
-    list_editable = ('is_featured', 'order')
+    list_display = ('title', 'year', 'status', 'order')
+    list_editable = ('status', 'order')
     search_fields = ('title', 'description')
-    list_filter = ('is_featured', 'year')
+    list_filter = ('status', 'year')
     prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'description', 'year', 'tech_stack')
+            'fields': ('title', 'slug', 'status', 'description', 'year', 'tech_stack')
+        }),
+        ('Homepage', {
+            'fields': ('metrics', 'postmortem', 'app_store_link'),
+            'description': 'Metrics show on the active project; postmortem shows on archived ones.',
         }),
         ('Links', {
             'fields': ('demo_link', 'github_link', 'other_link', 'other_link_text'),
             'classes': ('collapse',)
         }),
         ('Display', {
-            'fields': ('image_url', 'is_featured', 'order'),
+            'fields': ('image_url', 'order'),
             'classes': ('collapse',)
         }),
     )

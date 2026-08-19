@@ -1,0 +1,221 @@
+/* ==========================================================================
+   HOMEPAGE — quiet, dense, near-monochrome. Scoped under body.page-home;
+   other pages keep style.css untouched.
+   ========================================================================== */
+
+.page-home {
+  --paper:      #F5F6F4;
+  --ink:        #15191A;
+  --ink-muted:  #5C6462;
+  --rule:       #DCDFDA;
+  --accent:     #1F4D3F;
+
+  --font-body:  "Inter Tight", -apple-system, system-ui, sans-serif;
+  --font-mono:  "IBM Plex Mono", ui-monospace, monospace;
+
+  --gap: 72px;
+
+  background-color: var(--paper);
+  background-image: none;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* --- Layout: single column, one spacing rule for all sections --- */
+.page-home main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.page-home main > * + * {
+  margin-top: var(--gap);
+}
+
+/* The lead project is isolated with 1.5x the section gap */
+.page-home main > .lead-project,
+.page-home main > .lead-project + * {
+  margin-top: calc(var(--gap) * 1.5);
+}
+
+/* --- Nav & footer: paper + hairline, nothing heavier --- */
+.page-home .site-nav {
+  position: static;
+  background-color: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-home .nav-brand {
+  color: var(--ink);
+  font-family: var(--font-mono);
+}
+
+.page-home .nav-list li a {
+  color: var(--ink-muted);
+  background: none;
+}
+
+.page-home .nav-list li a:hover {
+  color: var(--ink);
+  background: none;
+}
+
+.page-home .site-footer {
+  background-color: var(--paper);
+  border-top: 1px solid var(--rule);
+  color: var(--ink-muted);
+}
+
+.page-home .site-footer .footer-brand,
+.page-home .site-footer .footer-copy {
+  color: var(--ink-muted);
+}
+
+.page-home .site-footer a {
+  color: var(--ink);
+}
+
+/* --- Intro --- */
+.page-home .intro h1 {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.page-home .intro-line {
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.page-home .intro-sub {
+  margin: 0;
+}
+
+/* --- Lead project: set at display scale, no card, no box --- */
+.page-home .lead-project h2 {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 20px 0 16px;
+  color: var(--ink);
+}
+
+.page-home .lead-project p {
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+/* Metrics strip — the one place the page raises its voice */
+.page-home .metrics {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 0;
+  margin: 28px 0;
+}
+
+.page-home .store-badge {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.page-home .store-badge img {
+  height: 44px;
+  width: auto;
+}
+
+.page-home .lead-shot {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* --- Minor sections: body scale, eyebrow does the separating --- */
+.page-home .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+}
+
+.page-home .minor p {
+  margin: 0 0 10px;
+}
+
+.page-home .plain-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.page-home .plain-list li {
+  margin: 0 0 10px;
+}
+
+.page-home .muted {
+  font-size: 15px;
+  color: var(--ink-muted);
+}
+
+/* --- Links & focus --- */
+.page-home main a {
+  color: var(--accent);
+}
+
+.page-home .quiet-link {
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 3px;
+}
+
+.page-home .quiet-link:hover {
+  text-decoration-color: var(--accent);
+}
+
+.page-home a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --- Mobile --- */
+@media (max-width: 480px) {
+  .page-home {
+    --gap: 52px;
+  }
+
+  .page-home main {
+    padding: 44px 20px 72px;
+  }
+
+  .page-home .intro h1 {
+    font-size: 32px;
+  }
+
+  .page-home .intro-line {
+    font-size: 19px;
+  }
+
+  .page-home .lead-project h2 {
+    font-size: 27px;
+  }
+
+  .page-home .lead-project p {
+    font-size: 17px;
+  }
+}

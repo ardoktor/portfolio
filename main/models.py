@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -63,10 +64,23 @@ class ContactMessage(models.Model):
 
 
 class Project(models.Model):
+    STATUS_CHOICES = [
+        ("active", "Active — currently building"),
+        ("work", "Day job / internal"),
+        ("archived", "Archived — stopped"),
+    ]
+
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="archived")
     description = models.TextField()
     year = models.CharField(max_length=20)
+    metrics = models.CharField(max_length=200, blank=True,
+                               help_text="Comma-separated proof points. e.g. "
+                                         "'12 dentists in cohort, live on App Store, payments active'")
+    postmortem = models.CharField(max_length=200, blank=True,
+                                  help_text="One sentence: why this stopped. Shown on archived projects.")
+    app_store_link = models.URLField(blank=True)
     image_url = models.URLField(blank=True, null=True, help_text="URL to project image")
     tech_stack = models.CharField(max_length=255, help_text="Comma-separated list of technologies")
     demo_link = models.URLField(blank=True, null=True)
@@ -74,10 +88,19 @@ class Project(models.Model):
     other_link = models.URLField(blank=True, null=True)
     other_link_text = models.CharField(max_length=50, blank=True, null=True)
     order = models.IntegerField(default=0)
-    is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def clean(self):
+        # The homepage design assumes a single lead project
+        if self.status == "active":
+            clash = Project.objects.filter(status="active").exclude(pk=self.pk)
+            if clash.exists():
+                raise ValidationError(
+                    {"status": f'Only one project can be active at a time — "{clash.first()}" already is.'}
+                )
+
     def save(self, *args, **kwargs):
+        self.clean()
         if not self.slug:
             self.slug = slugify(self.title)
 
@@ -92,6 +115,9 @@ class Project(models.Model):
 
     def get_tech_stack_list(self):
         return [tech.strip() for tech in self.tech_stack.split(',')]
+
+    def get_metrics_list(self):
+        return [m.strip() for m in self.metrics.split(',') if m.strip()]
 
     def __str__(self):
         return self.title

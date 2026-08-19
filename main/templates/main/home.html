@@ -1,146 +1,94 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}Home - Arda's Portfolio{% endblock %}
+{% block title %}Arda Asut — AI products for regulated work{% endblock %}
+{% block body_class %}page-home{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="hero-section" data-aos="fade-up">
-  <div class="hero-inner">
-    <div class="hero-label">Software Engineer & Builder</div>
-    <h1 class="hero-title">Hi, I'm Arda</h1>
-    <p class="hero-subtitle">I build AI-driven tools, ship MVPs, and love making ideas real with code.</p>
-    <div class="hero-actions">
-      <a href="{% url 'projects' %}" class="btn-theme">View My Work</a>
-      <a href="{% url 'contact' %}" class="btn-theme btn-theme-outline">Get in Touch</a>
-    </div>
-  </div>
-</section>
+<header class="intro">
+  <h1>Arda Asut</h1>
+  <p class="intro-line">I build AI products for professionals in regulated, high-stakes fields.</p>
+  <p class="intro-sub muted">Alongside a full-time job as a network engineer at Türk Telekom.</p>
+</header>
 
-<!-- What I Build -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="section-title" data-aos="fade-up">What I Do...</h2>
-    <div class="row g-4">
+{% if current_project %}
+<section class="lead-project">
+  <p class="eyebrow">Currently building</p>
+  <h2>{{ current_project.title }}</h2>
+  <p>{{ current_project.description }}</p>
 
-      <!-- AI & Automation -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="card-theme">
-          <div class="card-theme-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.725 5.53 5.725h4.94C11.765 5.725 13 6.76 13 8.062v1.157a.53.53 0 0 1-.149.378l-1.167 1.167a.53.53 0 0 0-.149.378v.556a.53.53 0 0 1-.53.53H5.995a.53.53 0 0 1-.53-.53v-.556a.53.53 0 0 0-.15-.378L4.15 9.597A.53.53 0 0 1 4 9.22V8.062zM5.53 6.725C4.794 6.725 4 7.313 4 8.062v1.157c0 .116.046.227.128.31l1.167 1.166c.2.2.312.47.312.752v.556h4.786v-.556c0-.283.112-.553.312-.752l1.167-1.167a.44.44 0 0 0 .128-.31V8.063c0-.75-.794-1.338-1.53-1.338z"/>
-              <path d="M2.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5zm.5 1h10v1H3zm3 13a.5.5 0 0 0-.5.5v.5h5v-.5a.5.5 0 0 0-.5-.5z"/>
-            </svg>
-          </div>
-          <div class="card-theme-body">
-            <h3>AI & Automation</h3>
-            <p>I design and build AI-assisted systems that automate complex workflows. My work includes LLM-powered tools, RAG-based knowledge systems, and voice-driven pipelines that turn unstructured input into structured outputs.</p>
-            <p class="text-muted-theme">I focus on practical AI: systems that reduce operational friction, support real users, and integrate cleanly into backend architectures.</p>
-          </div>
-        </div>
-      </div>
+  {# TODO(owner): real metrics — dentist count, cohort status, payment status. #}
+  {# Set them in admin as comma-separated values; the strip stays hidden until then. #}
+  {% if current_project.metrics %}
+  <p class="metrics">
+    {% for m in current_project.get_metrics_list %}{{ m }}{% if not forloop.last %} · {% endif %}{% endfor %}
+  </p>
+  {% endif %}
 
-      <!-- Backend Engineering -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="card-theme">
-          <div class="card-theme-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8z"/>
-            </svg>
-          </div>
-          <div class="card-theme-body">
-            <h3>Backend Engineering</h3>
-            <p>I build backend systems using Python, Django, and FastAPI, with a strong focus on data models, APIs, and workflow orchestration.</p>
-            <p class="text-muted-theme">I enjoy turning product requirements into reliable backend logic — from database design and integrations to deployment, CI/CD, and production-ready services.</p>
-          </div>
-        </div>
-      </div>
+  {% if current_project.app_store_link or current_project.demo_link %}
+  <p>
+    {# TODO(owner): App Store URL + Apple's official badge SVG from developer.apple.com #}
+    {# marketing guidelines, saved to main/static/main/img/app-store-badge.svg — do not #}
+    {# substitute a custom button. Block stays hidden until app_store_link is set. #}
+    {% if current_project.app_store_link %}
+    <a class="store-badge" href="{{ current_project.app_store_link }}" rel="noopener">
+      <img src="{% static 'main/img/app-store-badge.svg' %}" alt="Download on the App Store" loading="lazy">
+    </a>
+    {% endif %}
+    {% if current_project.demo_link %}
+    <a class="quiet-link" href="{{ current_project.demo_link }}" rel="noopener">consuldent.com &rarr;</a>
+    {% endif %}
+  </p>
+  {% endif %}
 
-      <!-- MVP & Startup Building -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="card-theme">
-          <div class="card-theme-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0m-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
-            </svg>
-          </div>
-          <div class="card-theme-body">
-            <h3>MVP & Startup Building</h3>
-            <p>I take ideas from problem discovery to shipped MVPs with real users. I own the full product lifecycle — design, implementation, deployment, and iteration — focusing on fast validation and real-world impact.</p>
-            <p class="text-muted-theme">Healthcare, education, and interview preparation products I built are currently used and evolving based on user feedback.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Research & Data Science -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="card-theme">
-          <div class="card-theme-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-            </svg>
-          </div>
-          <div class="card-theme-body">
-            <h3>Research & Data Science</h3>
-            <p>I have a background in applied data science and research, working on topics such as anomaly detection, NLP, and user behavior analysis.</p>
-            <p class="text-muted-theme">My approach blends analytical thinking with product needs — using data not just for insight, but to inform decisions, automation, and system design.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Featured Projects -->
-{% if featured_projects %}
-<section class="section">
-  <div class="section-inner">
-    <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
-    <div class="row g-4">
-      {% for project in featured_projects %}
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
-        <div class="card-theme card-theme-vertical">
-          <div class="project-year-badge">{{ project.year }}</div>
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description|truncatewords:25 }}</p>
-          <div class="pill-group">
-            {% for tech in project.get_tech_stack_list %}
-              <span class="pill">{{ tech }}</span>
-            {% endfor %}
-          </div>
-          <div class="card-actions">
-            {% if project.demo_link %}
-              <a href="{{ project.demo_link }}" target="_blank" class="btn-theme btn-theme-sm">Demo</a>
-            {% endif %}
-            {% if project.github_link %}
-              <a href="{{ project.github_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">GitHub</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="text-center mt-5" data-aos="fade-up">
-      <a href="{% url 'projects' %}" class="btn-theme">See All Projects</a>
-    </div>
-  </div>
+  {# TODO(owner): product screenshot — set image_url in admin (a committed static file works too). #}
+  {% if current_project.image_url %}
+  <img class="lead-shot" src="{{ current_project.image_url }}" alt="{{ current_project.title }} screenshot" loading="lazy">
+  {% endif %}
 </section>
 {% endif %}
 
-<!-- About Me -->
-<section class="section">
-  <div class="section-inner">
-    <div class="card-theme card-theme-wide" data-aos="fade-up">
-      <h2>About Me</h2>
-      <p>I'm a Python/Django developer with a passion for building full-stack, user-centric products — from intelligent AI agents to productivity platforms that support real human goals. I enjoy the process of turning complex ideas into elegant code, using tools like Firebase, OpenAI, and Django to deliver scalable, meaningful apps.</p>
-      <p class="text-muted-theme">I believe in launching early, learning fast, and crafting real-world software that makes a difference.</p>
-      <div class="mt-4">
-        <a href="{% url 'about' %}" class="btn-theme">Read More</a>
-      </div>
-    </div>
-  </div>
+<section class="minor">
+  <p class="eyebrow">Day job</p>
+  <p>Network engineer at Türk Telekom. I build internal software alongside the network work.</p>
+  {# TODO(owner): internal software entries — add projects with status="work" in admin. #}
+  {% if work_projects %}
+  <ul class="plain-list">
+    {% for project in work_projects %}
+    <li>{{ project.title }} — {{ project.description|truncatewords:18 }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 </section>
+
+{% if archived_projects %}
+<section class="minor">
+  <p class="eyebrow">Also built, then stopped</p>
+  <ul class="plain-list">
+    {% for project in archived_projects %}
+    {# TODO(owner): one honest postmortem sentence per product, set in admin. #}
+    <li>{{ project.title }} — <span class="muted">{% if project.postmortem %}{{ project.postmortem }}{% else %}{{ project.description|truncatewords:14 }}{% endif %}</span></li>
+    {% endfor %}
+  </ul>
+  <p><a class="quiet-link" href="{% url 'projects' %}">All projects &rarr;</a></p>
+</section>
+{% endif %}
+
+{% if recent_posts %}
+<section class="minor">
+  <p class="eyebrow">Notes</p>
+  <ul class="plain-list">
+    {% for post in recent_posts %}
+    <li><a class="quiet-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a> <span class="muted">{{ post.created_at|date:"M Y" }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
 
 {% endblock %}
