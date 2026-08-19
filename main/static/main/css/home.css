@@ -30,6 +30,12 @@
   padding: 64px 24px 96px;
 }
 
+/* Reading measure: headings may span the column, running text may not */
+.page-home main p,
+.page-home main li {
+  max-width: 66ch;
+}
+
 .page-home main > * + * {
   margin-top: var(--gap);
 }
@@ -114,6 +120,7 @@
 
 /* Metrics strip — the one place the page raises its voice */
 .page-home .metrics {
+  max-width: none;
   font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 500;
