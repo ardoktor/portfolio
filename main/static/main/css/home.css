@@ -53,6 +53,14 @@
   border-bottom: 1px solid var(--rule);
 }
 
+/* Nav and footer line up with the 680px content column */
+.page-home .site-nav-inner,
+.page-home .footer-inner {
+  max-width: 680px;
+  padding: 0 24px;
+  justify-content: space-between;
+}
+
 .page-home .nav-brand {
   color: var(--ink);
   font-family: var(--font-mono);
@@ -151,13 +159,13 @@
 }
 
 /* Wide screens: app screenshot sits in a second column to the right of
-   the lead text, breaking out past the 680px reading column */
+   the lead text, top-aligned with the project title */
 @media (min-width: 1280px) {
   .page-home .lead-project:has(.lead-shot) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 250px;
+    grid-template-columns: minmax(0, 1fr) 175px;
     column-gap: 56px;
-    width: calc(100% + 306px);
+    width: calc(100% + 231px);
   }
 
   .page-home .lead-project:has(.lead-shot) > * {
@@ -166,9 +174,9 @@
 
   .page-home .lead-project .lead-shot {
     grid-column: 2;
-    grid-row: 1 / span 6;
+    grid-row: 2 / span 5;
     align-self: start;
-    margin-top: 44px;
+    margin-top: 20px;
   }
 }
 
@@ -195,6 +203,20 @@
 
 .page-home .plain-list li {
   margin: 0 0 10px;
+}
+
+/* Tight variant: compact bulleted lines (day job) */
+.page-home .tight li {
+  margin: 0 0 4px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.page-home .tight li::before {
+  content: "\00B7";
+  position: absolute;
+  left: 2px;
+  color: var(--ink-muted);
 }
 
 .page-home .muted {
