@@ -6,8 +6,9 @@ from django.views.generic import ListView, DetailView
 def home(request):
     return render(request, 'main/home.html', {
         'current_project': Project.objects.filter(status='active').first(),
-        'work_projects': Project.objects.filter(status='work'),
-        'archived_projects': Project.objects.filter(status='archived'),
+        # Homepage lists only archived products with a postmortem written;
+        # the rest stay on /projects/.
+        'archived_projects': Project.objects.filter(status='archived').exclude(postmortem=''),
         'recent_posts': BlogPost.objects.filter(is_published=True)[:3],
     })
 

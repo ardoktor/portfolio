@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}Arda Asut — AI products for regulated work{% endblock %}
+{% block title %}Arda Asut — AI products for real workflows{% endblock %}
 {% block body_class %}page-home{% endblock %}
 
 {% block extra_css %}
@@ -13,8 +13,8 @@
 
 <header class="intro">
   <h1>Arda Asut</h1>
-  <p class="intro-line">I build AI products for professionals in regulated, high-stakes fields.</p>
-  <p class="intro-sub muted">Alongside a full-time job as a network engineer at Türk Telekom.</p>
+  <p class="intro-line">I build AI products that professionals use in their actual workflow.</p>
+  <p class="intro-sub muted">Currently ConsulDent, a clinical assistant for dentists.</p>
 </header>
 
 {% if current_project %}
@@ -53,15 +53,13 @@
 
 <section class="minor">
   <p class="eyebrow">Day job</p>
-  <p>Network engineer at Türk Telekom. I build internal software alongside the network work.</p>
-  {# TODO(owner): internal software entries — add projects with status="work" in admin. #}
-  {% if work_projects %}
+  <p>Network engineer at Türk Telekom, where I also build the software the network work needs.</p>
   <ul class="plain-list">
-    {% for project in work_projects %}
-    <li>{{ project.title }} — {{ project.description|truncatewords:18 }}</li>
-    {% endfor %}
+    <li><span class="muted">·</span> Automation tooling for OLT / GPON rollouts</li>
+    <li><span class="muted">·</span> 5G synchronization interface definitions</li>
+    <li><span class="muted">·</span> Data analysis for network optimization</li>
+    <li><span class="muted">·</span> A .NET application for tracking and resolving enterprise customer faults</li>
   </ul>
-  {% endif %}
 </section>
 
 {% if archived_projects %}
@@ -69,8 +67,7 @@
   <p class="eyebrow">Also built, then stopped</p>
   <ul class="plain-list">
     {% for project in archived_projects %}
-    {# TODO(owner): one honest postmortem sentence per product, set in admin. #}
-    <li>{{ project.title }} — <span class="muted">{% if project.postmortem %}{{ project.postmortem }}{% else %}{{ project.description|truncatewords:14 }}{% endif %}</span></li>
+    <li>{{ project.title }} — <span class="muted">{{ project.postmortem }}</span></li>
     {% endfor %}
   </ul>
   <p><a class="quiet-link" href="{% url 'projects' %}">All projects &rarr;</a></p>

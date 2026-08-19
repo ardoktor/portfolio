@@ -37,8 +37,7 @@ class Command(BaseCommand):
                 'tech_stack': 'Python, RAG, LLM Integration, FastAPI, React',
                 'demo_link': 'https://consuldent.app',
                 'app_store_link': 'https://apps.apple.com/tr/app/consuldent/id6781041991',
-                'metrics': 'live on the App Store, payments active',
-                # TODO(owner): cohort/dentist numbers in metrics
+                'metrics': '50 dentists reached, 3 test cohorts, payments active',
                 'order': 1,
             },
             {
@@ -49,7 +48,7 @@ class Command(BaseCommand):
                 'year': '2025',
                 'tech_stack': 'Python, OpenAI API, LangChain, Django, Whisper',
                 # demo_link intentionally empty: mulakat.pro domain has expired
-                # TODO(owner): one-sentence postmortem
+                'postmortem': "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on.",
                 'order': 2,
             },
             {
@@ -60,7 +59,7 @@ class Command(BaseCommand):
                 'year': '2025',
                 'tech_stack': 'Python, LangChain, Firebase, GCP, Flutter',
                 # demo_link intentionally empty: mentai.app is offline
-                # TODO(owner): one-sentence postmortem
+                'postmortem': "a personalized mentorship app with daily guidance and adaptive tasks. Stopped after MVP testing: the users we spoke to didn't have the need we had designed for.",
                 'github_link': 'https://github.com/ardoktor',
                 'other_link': 'https://www.instagram.com/mentai.app/',
                 'order': 3,
