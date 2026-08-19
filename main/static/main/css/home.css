@@ -143,11 +143,34 @@
 }
 
 .page-home .lead-shot {
-  max-width: 100%;
+  max-width: 280px;
+  width: 100%;
   height: auto;
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 12px;
   margin-top: 8px;
+}
+
+/* Wide screens: app screenshot sits in a second column to the right of
+   the lead text, breaking out past the 680px reading column */
+@media (min-width: 1280px) {
+  .page-home .lead-project:has(.lead-shot) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    column-gap: 56px;
+    width: calc(100% + 306px);
+  }
+
+  .page-home .lead-project:has(.lead-shot) > * {
+    grid-column: 1;
+  }
+
+  .page-home .lead-project .lead-shot {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+    align-self: start;
+    margin-top: 44px;
+  }
 }
 
 /* --- Minor sections: body scale, eyebrow does the separating --- */
