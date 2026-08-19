@@ -67,7 +67,7 @@
   <p class="eyebrow">Also built, then stopped</p>
   <ul class="plain-list">
     {% for project in archived_projects %}
-    <li>{{ project.title }} — <span class="muted">{{ project.postmortem }}</span></li>
+    <li><strong>{{ project.title }}</strong> — {{ project.postmortem }}</li>
     {% endfor %}
   </ul>
   <p><a class="quiet-link" href="{% url 'projects' %}">All projects &rarr;</a></p>

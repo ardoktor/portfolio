@@ -205,6 +205,16 @@
   margin: 0 0 10px;
 }
 
+/* Minor sections stay on one size and one color; titles separate by
+   weight only, gray is reserved for dates and eyebrows */
+.page-home .plain-list strong {
+  font-weight: 500;
+}
+
+.page-home .plain-list .muted {
+  font-size: inherit;
+}
+
 /* Tight variant: compact bulleted lines (day job) */
 .page-home .tight li {
   margin: 0 0 4px;
