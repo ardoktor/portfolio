@@ -142,12 +142,11 @@
   width: auto;
 }
 
+/* Screenshot ships inside its own device frame — no extra border */
 .page-home .lead-shot {
   max-width: 280px;
   width: 100%;
   height: auto;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
   margin-top: 8px;
 }
 

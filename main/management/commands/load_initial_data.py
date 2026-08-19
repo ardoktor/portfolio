@@ -38,6 +38,7 @@ class Command(BaseCommand):
                 'demo_link': 'https://consuldent.app',
                 'app_store_link': 'https://apps.apple.com/tr/app/consuldent/id6781041991',
                 'metrics': '50 dentists reached, 3 test cohorts, payments active',
+                'image_url': '/static/main/img/consuldent-screenshot.png',
                 'order': 1,
             },
             {
