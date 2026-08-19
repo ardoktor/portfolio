@@ -33,11 +33,10 @@
 
   {% if current_project.app_store_link or current_project.demo_link %}
   <p>
-    {# TODO(owner): swap this text link for Apple's official badge SVG (from Apple's #}
-    {# marketing tools page) saved to main/static/main/img/app-store-badge.svg — #}
-    {# custom badge artwork is not allowed by Apple's brand guidelines. #}
     {% if current_project.app_store_link %}
-    <a class="store-badge quiet-link" href="{{ current_project.app_store_link }}" rel="noopener">Download on the App Store &rarr;</a>
+    <a class="store-badge" href="{{ current_project.app_store_link }}" rel="noopener">
+      <img src="{% static 'main/img/app-store-badge.svg' %}" alt="Download on the App Store" loading="lazy">
+    </a>
     {% endif %}
     {% if current_project.demo_link %}
     <a class="quiet-link" href="{{ current_project.demo_link }}" rel="noopener">{{ current_project.demo_link|cut:"https://"|cut:"http://" }} &rarr;</a>
