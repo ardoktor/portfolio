@@ -35,9 +35,10 @@ class Command(BaseCommand):
                 'description': CONSULDENT_DESCRIPTION,
                 'year': '2024',
                 'tech_stack': 'Python, RAG, LLM Integration, FastAPI, React',
-                'demo_link': 'https://consuldent.com',
+                'demo_link': 'https://consuldent.app',
+                'app_store_link': 'https://apps.apple.com/tr/app/consuldent/id6781041991',
                 'metrics': 'live on the App Store, payments active',
-                # TODO(owner): cohort/dentist numbers in metrics, plus app_store_link
+                # TODO(owner): cohort/dentist numbers in metrics
                 'order': 1,
             },
             {
