@@ -36,9 +36,8 @@
 .page-detail .title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 4px;
+  gap: 14px;
+  margin: 2px 0 16px;
 }
 
 .page-detail .title-row h1 {
@@ -46,9 +45,9 @@
 }
 
 .page-detail .app-logo {
-  width: 84px;
-  height: 84px;
-  border-radius: 19px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   flex-shrink: 0;
 }
 
