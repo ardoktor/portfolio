@@ -11,11 +11,22 @@
   padding: 56px 24px 80px;
 }
 
-/* Entries are plain blocks separated by hairlines, not boxes */
+.page-about .portrait {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+}
+
+/* Entries are plain blocks separated by hairlines, not boxes.
+   28px + 28px around the hairline = 56px total, matching --gap, so the
+   whole page runs on one vertical rhythm. */
 .page-about .entry + .entry {
   border-top: 1px solid var(--rule);
-  margin-top: 24px;
-  padding-top: 24px;
+  margin-top: 28px;
+  padding-top: 28px;
 }
 
 .page-about .entry-date {

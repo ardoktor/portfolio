@@ -12,10 +12,9 @@
 
 {% block content %}
 
-{# TODO(owner): real headshot — drop it at main/static/main/img/headshot.jpg and #}
-{# uncomment the img below. A real face is worth more here than anywhere else. #}
 <header class="intro">
-  {# <img class="lead-shot" src="{% static 'main/img/headshot.jpg' %}" alt="Arda Asut" loading="lazy"> #}
+  {# TODO(owner): swap for a real headshot when ready — same filename works #}
+  <img class="portrait" src="{% static 'morpheus.jpg' %}" alt="Arda Asut">
   <h1>Arda Asut</h1>
   <p class="intro-line">I build AI products that professionals use in their actual workflow.</p>
 </header>
@@ -94,12 +93,12 @@
 </section>
 
 <section class="minor">
-  <p class="eyebrow">Earlier</p>
+  <p class="eyebrow">Earlier roles</p>
   <ul class="plain-list tight">
-    <li><strong>SADELABS</strong> (2021) — anomaly detection on energy data with LSTM</li>
-    <li><strong>Yaşar University</strong> (2019 — 2020) — scheduling IoT device traffic with ML</li>
-    <li><strong>Green Energy Park, Morocco</strong> (2019) — C#/SQL reporting tool for PV panel tests</li>
-    <li><strong>İzdemir Energy</strong> (2018) — internship</li>
+    <li>SADELABS (2021) — anomaly detection on energy data with LSTM</li>
+    <li>Yaşar University (2019 — 2020) — scheduling IoT device traffic with ML</li>
+    <li>Green Energy Park, Morocco (2019) — C#/SQL reporting tool for PV panel tests</li>
+    <li>İzdemir Energy (2018) — internship</li>
   </ul>
 </section>
 
@@ -138,12 +137,10 @@
 <section class="minor">
   <p>If you're building something where AI has to work inside a real professional
   workflow — or you just want to compare notes — I'd like to hear from you.
-  I'm most interested in clinical and other regulated domains, where structured,
-  source-grounded output matters more than a chat box.</p>
+  I'm most interested in clinical and other high-consequence domains, where
+  structured, source-grounded output matters more than a chat box.</p>
   <p>
-    {# TODO(owner): CV — activates together with the footer link once the PDF #}
-    {# lands at main/static/main/files/arda-asut-cv.pdf: #}
-    {# <a class="cv-btn" href="{% static 'main/files/arda-asut-cv.pdf' %}" target="_blank" rel="noopener">CV (PDF) &rarr;</a> #}
+    <a class="cv-btn" href="{% static 'main/files/arda-asut-cv.pdf' %}" target="_blank" rel="noopener">CV (PDF) &rarr;</a>
     <a class="quiet-link" href="mailto:arda.asut@gmail.com">arda.asut@gmail.com</a>
   </p>
 </section>
