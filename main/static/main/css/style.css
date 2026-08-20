@@ -515,7 +515,14 @@ body {
 
 .footer-right {
   display: flex;
-  gap: 1.5rem;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.footer-right a + a::before {
+  content: "\00B7";
+  margin-right: 0.75rem;
+  color: #666666;
 }
 
 .footer-right a {

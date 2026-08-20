@@ -91,6 +91,10 @@
   color: var(--ink);
 }
 
+.page-home .footer-right a + a::before {
+  color: var(--ink-muted);
+}
+
 /* --- Intro --- */
 .page-home .intro h1 {
   font-size: 44px;
