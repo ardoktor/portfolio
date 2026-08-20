@@ -22,6 +22,8 @@ def projects(request):
 
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
+    if slug == 'consuldent':
+        return render(request, 'main/project_consuldent.html', {'project': project})
     return render(request, 'main/project_detail.html', {'project': project})
 
 

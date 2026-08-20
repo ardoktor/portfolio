@@ -1,0 +1,278 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}ConsulDent — Arda Asut{% endblock %}
+{% block body_class %}page-quiet page-detail{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/quiet.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section>
+  <p class="p-meta">{{ project.year }} — present · <span>Active</span></p>
+  <h1>ConsulDent</h1>
+  <p>ConsulDent is a clinical support system for dentists, built together with a
+  practising dentist — my co-founder — rather than for an imagined one. She brings
+  the cases, the vocabulary, and the veto; I build the system. It answers clinical
+  questions from retrievable sources and returns structured output that slots into
+  the day's work: visit preparation, clinical notes, patient communication. It is
+  live on the App Store and in paid use.</p>
+
+  {% if project.metrics %}
+  <p class="metrics">
+    {% for m in project.get_metrics_list %}{{ m }}{% if not forloop.last %} · {% endif %}{% endfor %}
+  </p>
+  {% endif %}
+
+  <p>
+    {% if project.app_store_link %}
+    <a class="store-badge" href="{{ project.app_store_link }}" rel="noopener">
+      <img src="{% static 'main/img/app-store-badge.svg' %}" alt="Download on the App Store" loading="lazy">
+    </a>
+    {% endif %}
+    {% if project.demo_link %}
+    <a class="quiet-link" href="{{ project.demo_link }}" rel="noopener">{{ project.demo_link|cut:"https://"|cut:"http://" }} &rarr;</a>
+    {% endif %}
+  </p>
+</section>
+
+<section>
+  <h2>The problem</h2>
+  <p>A dentist's knowledge isn't missing — it's scattered. Guidelines live in one
+  PDF, dosages in a textbook, the department's preferred protocol in someone's
+  notes, and none of it is reachable in the two minutes between patients. The
+  failure mode isn't ignorance; it's friction: looking something up costs more
+  than it should, so it gets skipped, half-remembered, or asked in a WhatsApp
+  group.</p>
+  <p>Working with my co-founder made the shape of the problem concrete. Watching
+  her actual day made one thing obvious that I would have gotten wrong alone: the
+  bottleneck isn't answering a question, it's what happens after — the answer has
+  to become a note, a preparation sheet, or something a patient can understand.
+  A system that stops at the answer solves the smaller half of the problem.
+  {# TODO(owner): replace the generic line above with ONE specific example — a #}
+  {# decision she changed with a real case. This is the single strongest thing #}
+  {# the page can carry (spec §2.1). #}</p>
+</section>
+
+<section>
+  <h2>Why it isn't a chat box</h2>
+  <p>The obvious build was a chat interface over a RAG pipeline. We didn't ship
+  that, for a product reason rather than a technical one: chat pushes the hard
+  work back onto the dentist. She has to phrase the question well, judge whether
+  the fluent answer is actually grounded, and then manually turn the transcript
+  into something usable. Mid-procedure, none of that is realistic.</p>
+  <p>So the unit of output is a document, not a message. Each task — visit
+  preparation, a treatment explanation, a clinical note, patient-facing wording —
+  has a defined output shape with the source references attached. Structure makes
+  answers checkable (the citation is right there), reusable (a note is a note,
+  not a chat excerpt), and honest about scope: the system does defined jobs
+  instead of pretending to converse about anything.</p>
+  <p>Voice input exists for the same reason. Typing mid-procedure isn't possible
+  with gloves on; speech is the only interface the clinic actually allows.
+  Whisper turns it into text, and the same structured pipeline takes over.</p>
+</section>
+
+<section>
+  <h2>Architecture</h2>
+  <p>Two paths share one store. Offline, sources are ingested, chunked along
+  their own structure, embedded, and written to Postgres. At query time,
+  retrieval pulls candidate sections, a reasoning step composes and validates
+  the answer against them, and the output layer renders the task's structure.</p>
+
+  <figure>
+    <svg class="diagram" viewBox="0 0 600 352" role="img"
+         aria-label="ConsulDent architecture: an offline ingestion path (clinical sources, section-aware chunking and embedding) writing into Supabase Postgres with pgvector, and a query-time path (dentist query by text or voice, retrieval, reasoning and validation, structured output) reading from the same store.">
+      <defs>
+        <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L8,4 L0,8 z" fill="#1F4D3F"/>
+        </marker>
+      </defs>
+
+      <!-- lane captions -->
+      <text x="20" y="22" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="var(--ink-muted)">INGESTION · OFFLINE</text>
+      <text x="330" y="22" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="var(--ink-muted)">QUERY · IN CLINIC</text>
+
+      <!-- ingestion lane -->
+      <rect x="20" y="36" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="34" y="60" font-size="15" font-weight="500" fill="currentColor">Clinical sources</text>
+      <text x="34" y="80" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">guidelines · textbooks · TR + EN</text>
+
+      <line x1="145" y1="94" x2="145" y2="128" stroke="#1F4D3F" marker-end="url(#arr)"/>
+
+      <rect x="20" y="132" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="34" y="156" font-size="15" font-weight="500" fill="currentColor">Section-aware chunking</text>
+      <text x="34" y="176" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">headings kept · embedded</text>
+
+      <line x1="145" y1="190" x2="145" y2="224" stroke="#1F4D3F" marker-end="url(#arr)"/>
+
+      <rect x="20" y="228" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="34" y="252" font-size="15" font-weight="500" fill="currentColor">Supabase · pgvector</text>
+      <text x="34" y="272" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">vectors + app data, one DB</text>
+
+      <!-- store feeds retrieval -->
+      <path d="M270,257 L300,257 L300,143 L326,143" fill="none" stroke="#1F4D3F" marker-end="url(#arr)"/>
+      <text x="308" y="200" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-muted)" transform="rotate(-90 308 200)">top-k</text>
+
+      <!-- query lane -->
+      <rect x="330" y="36" width="250" height="50" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="344" y="57" font-size="15" font-weight="500" fill="currentColor">Dentist query</text>
+      <text x="344" y="75" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">text or voice (Whisper)</text>
+
+      <line x1="455" y1="86" x2="455" y2="114" stroke="#1F4D3F" marker-end="url(#arr)"/>
+
+      <rect x="330" y="118" width="250" height="50" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="344" y="139" font-size="15" font-weight="500" fill="currentColor">Retrieval</text>
+      <text x="344" y="157" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">candidate sections + metadata</text>
+
+      <line x1="455" y1="168" x2="455" y2="196" stroke="#1F4D3F" marker-end="url(#arr)"/>
+
+      <rect x="330" y="200" width="250" height="50" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="344" y="221" font-size="15" font-weight="500" fill="currentColor">Reasoning &amp; validation</text>
+      <text x="344" y="239" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">stepwise · checked against sources</text>
+
+      <line x1="455" y1="250" x2="455" y2="278" stroke="#1F4D3F" marker-end="url(#arr)"/>
+
+      <rect x="330" y="282" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
+      <text x="344" y="305" font-size="15" font-weight="500" fill="currentColor">Structured output</text>
+      <text x="344" y="323" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">visit prep · notes · patient info</text>
+    </svg>
+    <figcaption>Ingestion runs offline; the clinic-time path only reads. Both sides meet in one Postgres instance.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Decisions and trade-offs</h2>
+
+  <div class="decision">
+    <h3>Vector storage</h3>
+    <p class="choice">Supabase with pgvector, not a dedicated vector database.</p>
+    <p>The alternatives were the usual ones — Pinecone, Qdrant, Weaviate. I chose
+    pgvector because it keeps vectors and application data in the same Postgres
+    instance: one connection, one auth story, and retrieval results join directly
+    against chunk metadata in SQL instead of being stitched together across two
+    systems. At this corpus size that simplicity wins outright. The cost is a
+    known ceiling: pgvector's index performance won't match a purpose-built HNSW
+    store at tens of millions of vectors, and heavy retrieval competes with
+    ordinary app queries for the same database. If the corpus grows past what one
+    instance handles comfortably, this decision gets revisited — knowingly.</p>
+  </div>
+
+  <div class="decision">
+    <h3>Tenancy</h3>
+    <p class="choice">A single-tenant system with a dentist_id seam, not multi-tenant infrastructure.</p>
+    <p>The honest version of where the product is: one paying user class, cohorts
+    of testers, no clinics with isolation requirements yet. Building multi-tenant
+    infrastructure now would have been engineering for a customer that doesn't
+    exist. Instead the system runs as a singleton with a dentist_id threaded
+    through every table from day one — a seam, not a feature. It buys shipping
+    speed today and a defined migration path later. The cost is real: some
+    queries quietly assume one user's corpus, and turning the seam into actual
+    tenancy will be a project, not a config change. I consider that debt taken on
+    deliberately, at a known interest rate.</p>
+  </div>
+
+  <div class="decision">
+    <h3>Chunking</h3>
+    <p class="choice">Section-aware chunking, after naive splitting failed.</p>
+    <p>The first pipeline did what every tutorial does: fixed-size chunks with
+    overlap. For clinical texts that broke in a specific, dangerous way — a
+    dosage table separated from the heading that says which patient group it
+    applies to, contraindications split from the indication they belong to.
+    Retrieval then returned sections that were topically right and clinically
+    wrong. The fix was chunking along the documents' own structure: chunks keyed
+    to headings, carrying their section path as metadata the retrieval and
+    validation steps can check. The cost is ingestion effort — every new source
+    format needs mapping work before it enters the corpus, so the library grows
+    slower than a naive pipeline would allow. In this domain that trade is not
+    close.</p>
+  </div>
+
+  <div class="decision">
+    <h3>Output contract</h3>
+    <p class="choice">Schema-validated structured output, not free-form generation.</p>
+    <p>Every task type has a defined output schema; generation is validated
+    against it and retried on a miss. That's what makes outputs land as usable
+    artifacts — a note, a prep sheet — with source references attached, and it
+    caps how far a hallucination can travel: a claim without a retrievable source
+    has nowhere to sit in the structure. The cost is rigidity. The system does
+    its defined jobs well and open-ended questions worse, and every new output
+    type is engineering work — schema, template, validation — rather than a
+    prompt tweak. For a clinical tool I'll take predictable-and-narrow over
+    flexible-and-occasionally-wrong.</p>
+  </div>
+
+  <div class="decision">
+    <h3>Payments</h3>
+    <p class="choice">Lemon Squeezy as merchant of record, not Stripe.</p>
+    <p>Stripe doesn't serve Turkey-origin businesses without a foreign entity,
+    and incorporating abroad to run a test cohort's payments would have been
+    absurd. Lemon Squeezy acts as merchant of record — it owns tax handling and
+    card acceptance globally, which is how "payments live" became true in days
+    instead of months. The costs: a noticeably higher fee than raw card
+    processing, less control over the checkout, and payout delay. It's the right
+    tool for this stage and probably the wrong one at scale; that switch is a
+    future problem I accepted on purpose.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What was hard</h2>
+  <p>Plausible-but-wrong retrieval was the defining fight. Embeddings are good at
+  topical similarity and indifferent to clinical correctness — the paragraph
+  about the adult protocol ranks beautifully for a question about a child. The
+  chunking rework above was half the answer; the other half is validation that
+  checks composed answers against the retrieved sections and a hard rule at the
+  output layer: no source, no claim. When grounding fails, the honest behavior is
+  to return less — a narrower answer with references — rather than a fluent
+  guess. Getting the system to prefer "less" took longer than building the happy
+  path.</p>
+  <p>The corpus itself is a constraint nobody warns you about: dental sources are
+  a mix of Turkish and English, and embedding quality is not symmetric across
+  them. Queries arrive in Turkish clinical shorthand; the best source for the
+  answer may be an English textbook section. Cross-language retrieval works, but
+  it needed deliberate evaluation with my co-founder reviewing outputs
+  case-by-case — her review queue, on top of her actual job, was the scarcest
+  resource in the project.</p>
+  <p>And the unglamorous part: none of this mattered until it survived a real
+  clinic. A tool that needs two free hands loses to habit instantly — which is
+  why voice input stopped being a nice-to-have — and a dentist who has asked a
+  colleague for twenty years doesn't switch because your architecture is sound.
+  The cohorts exist to fight for that habit change one workflow at a time.
+  {# TODO(owner): add specifics that only you know — App Store review history #}
+  {# if noteworthy, corpus size, query volume, typical latency (spec §2.2). #}</p>
+</section>
+
+{# TODO(owner): two unframed interface screenshots (spec §4.5): #}
+{# 1) structured output with visible source references, 2) a workflow surface #}
+{# (visit prep or notes). Drop at main/static/main/img/consuldent-output.png #}
+{# and consuldent-workflow.png, then uncomment: #}
+{# <section> #}
+{#   <h2>In the interface</h2> #}
+{#   <figure> #}
+{#     <img src="{% static 'main/img/consuldent-output.png' %}" alt="ConsulDent structured answer with source references" loading="lazy"> #}
+{#     <figcaption>A structured answer — every claim carries its source section.</figcaption> #}
+{#   </figure> #}
+{#   <figure> #}
+{#     <img src="{% static 'main/img/consuldent-workflow.png' %}" alt="ConsulDent visit preparation workflow" loading="lazy"> #}
+{#     <figcaption>Visit preparation — the output is a document, not a transcript.</figcaption> #}
+{#   </figure> #}
+{# </section> #}
+
+<section>
+  <h2>Where it stands</h2>
+  <p>Live on the App Store, roughly fifty dentists reached across three test
+  cohorts, payments running. The mobile release moved usage from "I'll check at
+  my desk" toward the chairside moments the product was designed for. The current
+  cohort is about retention: whether the workflow outputs — not the answers —
+  are what people come back for. Deliberately not built yet: clinic-level
+  accounts and multi-dentist operations. That's what the tenancy seam is waiting
+  for, and it stays unbuilt until a clinic asks.</p>
+</section>
+
+<a class="quiet-link back-link" href="{% url 'projects' %}">&larr; Back to projects</a>
+
+{% endblock %}
