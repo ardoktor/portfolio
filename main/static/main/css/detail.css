@@ -22,6 +22,9 @@
 .page-detail .p-meta span {
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+.page-detail .p-meta .is-active {
   color: var(--accent);
 }
 
