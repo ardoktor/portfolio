@@ -74,6 +74,9 @@ class Project(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="archived")
     description = models.TextField()
+    short_description = models.CharField(max_length=280, blank=True,
+                                         help_text="2-3 sentences for the projects index; "
+                                                   "the detail page keeps the long description.")
     year = models.CharField(max_length=20)
     metrics = models.CharField(max_length=200, blank=True,
                                help_text="Comma-separated proof points. e.g. "

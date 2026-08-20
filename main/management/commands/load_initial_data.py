@@ -35,6 +35,7 @@ class Command(BaseCommand):
                 'description': CONSULDENT_DESCRIPTION,
                 'year': '2024',
                 'tech_stack': 'Python, RAG, LLM Integration, FastAPI, React',
+                'short_description': "A clinical AI assistant for dentists, live on the App Store. Answers come from retrievable clinical sources and land as structured output that fits the clinic's day: visit preparation, clinical notes, patient communication.",
                 'demo_link': 'https://consuldent.app',
                 'app_store_link': 'https://apps.apple.com/tr/app/consuldent/id6781041991',
                 'metrics': '50 dentists reached, 3 test cohorts, payments active',
@@ -50,6 +51,7 @@ class Command(BaseCommand):
                 'tech_stack': 'Python, OpenAI API, LangChain, Django, Whisper',
                 # demo_link intentionally empty: mulakat.pro domain has expired
                 'postmortem': "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on.",
+                'short_description': "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on.",
                 'order': 2,
             },
             {
@@ -57,33 +59,12 @@ class Command(BaseCommand):
                 'slug': 'mentai',
                 'status': 'archived',
                 'description': 'MentAI is a personalized mentorship application designed to help users achieve their cognitive, emotional, and productivity goals through daily guidance, structured tasks, and adaptive content.',
-                'year': '2025',
+                'year': '2024',
                 'tech_stack': 'Python, LangChain, Firebase, GCP, Flutter',
                 # demo_link intentionally empty: mentai.app is offline
                 'postmortem': "a personalized mentorship app with daily guidance and adaptive tasks. Stopped after MVP testing: the users we spoke to didn't have the need we had designed for.",
-                'github_link': 'https://github.com/ardoktor',
-                'other_link': 'https://www.instagram.com/mentai.app/',
+                'short_description': "A personalized mentorship app with daily guidance and adaptive tasks. Stopped after MVP testing: the users we spoke to didn't have the need we had designed for.",
                 'order': 3,
-            },
-            {
-                'title': 'Data Science Practices Repository',
-                'slug': 'data-science-practices-repository',
-                'status': 'archived',
-                'description': 'A curated collection of hands-on data science mini-projects covering data analysis, machine learning, deep learning, and storytelling with data.',
-                'year': '2021',
-                'tech_stack': 'Python, TensorFlow, Pandas, Hugging Face, SQL, CNN',
-                'github_link': 'https://github.com/ardoktor/DataSciencePractises/tree/main',
-                'order': 10,
-            },
-            {
-                'title': 'Basic Collaborative Filtering Model',
-                'slug': 'basic-collaborative-filtering-model',
-                'status': 'archived',
-                'description': 'A basic collaborative filtering recommendation system using Microsoft recommenders library with MovieLens dataset.',
-                'year': '2021',
-                'tech_stack': 'Python, NumPy, Sklearn',
-                'github_link': 'https://github.com/ardoktor/RecommenderSystems/blob/main/huaweiReccomenderv3.ipynb',
-                'order': 11,
             },
         ]
 

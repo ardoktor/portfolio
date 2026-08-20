@@ -34,7 +34,8 @@
             "other_link": "",
             "other_link_text": "",
             "order": 1,
-            "image_url": "/static/main/img/consuldent-screenshot.png"
+            "image_url": "/static/main/img/consuldent-screenshot.png",
+            "short_description": "A clinical AI assistant for dentists, live on the App Store. Answers come from retrievable clinical sources and land as structured output that fits the clinic's day: visit preparation, clinical notes, patient communication."
         }
     },
     {
@@ -54,7 +55,8 @@
             "other_link": "",
             "other_link_text": "",
             "order": 2,
-            "image_url": ""
+            "image_url": "",
+            "short_description": "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on."
         }
     },
     {
@@ -64,57 +66,18 @@
             "slug": "mentai",
             "status": "archived",
             "description": "MentAI is a personalized mentorship application designed to help users achieve their cognitive, emotional, and productivity goals through daily guidance, structured tasks, and adaptive content.",
-            "year": "2025",
-            "tech_stack": "python,langchain,firebase,gcp,flutter",
+            "year": "2024",
+            "tech_stack": "Python, LangChain, Firebase, GCP, Flutter",
             "metrics": "",
             "postmortem": "a personalized mentorship app with daily guidance and adaptive tasks. Stopped after MVP testing: the users we spoke to didn't have the need we had designed for.",
             "app_store_link": "",
             "demo_link": "",
-            "github_link": "https://github.com/ardoktor",
-            "other_link": "https://www.instagram.com/mentai.app/",
+            "github_link": "",
+            "other_link": "",
             "other_link_text": "",
             "order": 3,
-            "image_url": ""
-        }
-    },
-    {
-        "model": "main.project",
-        "fields": {
-            "title": "Data Science Practices Repository",
-            "slug": "data-science-practices-repository",
-            "status": "archived",
-            "description": "A curated collection of hands-on data science mini-projects covering data analysis, machine learning, deep learning, and storytelling with data.",
-            "year": "2021",
-            "tech_stack": "python,tensorflow,pandas,hugging face, sql, cnn",
-            "metrics": "",
-            "postmortem": "",
-            "app_store_link": "",
-            "demo_link": "",
-            "github_link": "https://github.com/ardoktor/DataSciencePractises/tree/main",
-            "other_link": "",
-            "other_link_text": "",
-            "order": 10,
-            "image_url": ""
-        }
-    },
-    {
-        "model": "main.project",
-        "fields": {
-            "title": "Basic Collaborative Filtering Model",
-            "slug": "basic-collaborative-filtering-model",
-            "status": "archived",
-            "description": "A basic collaborative filtering recommendation system using Microsoft recommenders library with MovieLens dataset.",
-            "year": "2021",
-            "tech_stack": "python,numpy,sklearn",
-            "metrics": "",
-            "postmortem": "",
-            "app_store_link": "",
-            "demo_link": "",
-            "github_link": "https://github.com/ardoktor/RecommenderSystems/blob/main/huaweiReccomenderv3.ipynb",
-            "other_link": "",
-            "other_link_text": "",
-            "order": 11,
-            "image_url": ""
+            "image_url": "",
+            "short_description": "A personalized mentorship app with daily guidance and adaptive tasks. Stopped after MVP testing: the users we spoke to didn't have the need we had designed for."
         }
     }
 ]

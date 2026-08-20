@@ -1,68 +1,41 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}Projects - Arda Asut{% endblock %}
+{% block title %}Projects — Arda Asut{% endblock %}
+{% block body_class %}page-quiet page-projects{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/quiet.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/projects.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="hero-section" data-aos="fade-up">
-  <div class="hero-inner">
-    <div class="hero-label">Portfolio</div>
-    <h1 class="hero-title">Projects</h1>
-    <p class="hero-subtitle">A showcase of my work, side projects, and experiments.</p>
-  </div>
-</section>
+<header>
+  <h1 class="page-title">Projects</h1>
+  <p class="page-intro">Three products I've built and shipped. Two of them stopped — those write-ups cover why.</p>
+</header>
 
-<!-- Projects List -->
-<section class="section">
-  <div class="section-inner">
-    {% if projects %}
-      {% for project in projects %}
-      <div class="project-card-full" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
-        <div class="project-card-full-header">
-          <h3>{{ project.title }}</h3>
-          <div class="project-year-badge">{{ project.year }}</div>
-        </div>
-        <p class="project-card-full-desc">{{ project.description }}</p>
-        <div class="pill-group">
-          {% for tech in project.get_tech_stack_list %}
-            <span class="pill">{{ tech }}</span>
-          {% endfor %}
-        </div>
-        <div class="card-actions">
-          {% if project.slug == 'mentai' %}
-            {% if project.demo_link %}
-              <a href="{{ project.demo_link }}" target="_blank" class="btn-theme btn-theme-sm">Website</a>
-            {% endif %}
-            {% if project.other_link %}
-              <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">Instagram</a>
-            {% endif %}
-          {% else %}
-            {% if project.demo_link %}
-              <a href="{{ project.demo_link }}" target="_blank" class="btn-theme btn-theme-sm">View Demo</a>
-            {% endif %}
-            {% if project.github_link %}
-              <a href="{{ project.github_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">GitHub</a>
-            {% endif %}
-            {% if project.other_link %}
-              <a href="{{ project.other_link }}" target="_blank" class="btn-theme btn-theme-outline btn-theme-sm">{{ project.other_link_text|default:"Learn More" }}</a>
-            {% endif %}
-          {% endif %}
-          {% if project.slug == 'consuldent' or project.slug == 'mentai' or project.slug == 'mulakat-pro' %}
-            <a href="{% url 'project_detail' project.slug %}" class="btn-theme btn-theme-sm">Deep Dive</a>
-          {% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    {% endif %}
-
-    <!-- GitHub CTA -->
-    <div class="text-center" style="margin-top: 3rem;" data-aos="fade-up">
-      <p class="text-muted-theme" style="margin-bottom: 1rem;">Interested in seeing more of my work?</p>
-      <a href="https://github.com/ardoktor" target="_blank" class="btn-theme">Visit My GitHub</a>
-    </div>
-  </div>
+<section>
+  {% for project in projects %}
+  <article class="p-entry">
+    <p class="p-meta">
+      {% if project.status == 'active' %}{{ project.year }} — present · <span class="is-active">Active</span>
+      {% else %}{{ project.year }} · <span>Stopped</span>{% endif %}
+    </p>
+    <h2>{{ project.title }}</h2>
+    <p class="p-desc">{% if project.short_description %}{{ project.short_description }}{% else %}{{ project.description }}{% endif %}</p>
+    <p class="p-tech">
+      {% for tech in project.get_tech_stack_list %}{{ tech }}{% if not forloop.last %} · {% endif %}{% endfor %}
+    </p>
+    <p class="p-links">
+      <a href="{% url 'project_detail' project.slug %}">Deep dive &rarr;</a>
+      {% if project.app_store_link %}<a href="{{ project.app_store_link }}" rel="noopener">App Store &rarr;</a>
+      {% elif project.demo_link %}<a href="{{ project.demo_link }}" rel="noopener">Website &rarr;</a>{% endif %}
+    </p>
+  </article>
+  {% endfor %}
 </section>
 
 {% endblock %}

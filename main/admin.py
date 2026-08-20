@@ -120,7 +120,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'status', 'description', 'year', 'tech_stack')
+            'fields': ('title', 'slug', 'status', 'description', 'short_description', 'year', 'tech_stack')
         }),
         ('Homepage', {
             'fields': ('metrics', 'postmortem', 'app_store_link'),
