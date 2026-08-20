@@ -1,575 +1,151 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}About - Arda Asut{% endblock %}
+{% block title %}About — Arda Asut{% endblock %}
+{% block body_class %}page-quiet page-about{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/quiet.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/about.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<!-- Hero Section (matches home page sizing) -->
-<section class="hero-section" data-aos="fade-up">
-  <div class="hero-inner">
-    <div class="hero-portrait-frame">
-      <img src="{% static 'morpheus.jpg' %}" alt="Arda Asut" class="hero-portrait-img">
-    </div>
-    <div class="hero-label">About Me</div>
-    <h1 class="hero-title">Arda Asut</h1>
-    <p class="hero-subtitle">Passionate about building AI-powered tools, scalable platforms, and products that help people grow.</p>
+{# TODO(owner): real headshot — drop it at main/static/main/img/headshot.jpg and #}
+{# uncomment the img below. A real face is worth more here than anywhere else. #}
+<header class="intro">
+  {# <img class="lead-shot" src="{% static 'main/img/headshot.jpg' %}" alt="Arda Asut" loading="lazy"> #}
+  <h1>Arda Asut</h1>
+  <p class="intro-line">I build AI products that professionals use in their actual workflow.</p>
+</header>
+
+<section class="minor">
+  <p>My background is a double engineering degree — electrical &amp; electronics and
+  energy systems — and, since the end of 2021, a day job on carrier-grade network
+  infrastructure at Türk Telekom. Four years of that work taught me one reflex:
+  when a problem repeats, turn it into code. Most of what I've automated there —
+  device provisioning, 5G synchronization, fault tracking — started as someone's
+  manual routine.</p>
+
+  <p>Products came later. Network work is satisfying, but its feedback loop is
+  internal: you make the machine run better and nobody outside ever sees it.
+  I wanted to build things people choose to use. So I started shipping — first
+  MentAI, then mulakat.pro, both with small teams, both eventually stopped when
+  real usage didn't match what we had designed. We went through the whole
+  early-stage loop: formed teams, talked to users, sat in founder meetups,
+  learned that distribution matters as much as architecture.</p>
+
+  <p>ConsulDent is the third attempt, and it is built differently: with a
+  practicing dentist, inside the workflow it serves, instead of from the outside
+  looking in. That is the main lesson the first two left me — a well-designed
+  system isn't a product until someone's actual day depends on it.</p>
+
+  <p>The two tracks feed each other. Telecom taught me to design for failure and
+  to distrust anything that only works in a demo; building products taught me to
+  ask who actually needs a thing before engineering it. ConsulDent gets both.
+  "Workflow" is the word I keep coming back to: a tool that lives outside the
+  workflow gets opened twice, one that lives inside it stops being optional.
+  That is the standard I hold the products to.</p>
+</section>
+
+<section class="minor">
+  <p class="eyebrow">Tools</p>
+  <p class="tools-line">Python &middot; Django &middot; FastAPI &middot; PostgreSQL &middot; pgvector &middot; LangChain / LangGraph &middot; Whisper &middot; Netmiko &middot; .NET &middot; Linux</p>
+</section>
+
+<section class="minor">
+  <p class="eyebrow">Experience</p>
+
+  <div class="entry">
+    <p class="entry-date">2024 — present</p>
+    <h3>ConsulDent &middot; Founder &amp; developer</h3>
+    <p>A clinical AI assistant for dentists, live on the App Store. Answers are
+    grounded in retrievable clinical sources and returned as structured output
+    that fits the clinic's day: visit preparation, notes, patient communication.
+    I own it end to end — RAG pipelines, backend, voice input, deployment, and
+    the product decisions in between. It is currently in testing with a cohort
+    of around fifty dentists, and payments are live.
+    <a class="quiet-link" href="{% url 'project_detail' 'consuldent' %}">Full write-up &rarr;</a></p>
+  </div>
+
+  <div class="entry">
+    <p class="entry-date">Dec 2021 — present</p>
+    <h3>Türk Telekom &middot; Network engineer, İzmir</h3>
+    <p>Carrier-grade infrastructure on Nokia and Huawei platforms: MPLS services,
+    access networks, and the operational reality of keeping them running. My focus
+    is turning network problems into reproducible, code-driven systems — replacing
+    repetitive operator work with tooling the team actually adopts.</p>
+    <ul class="plain-list tight">
+      <li>Python/Netmiko automation for Nokia and Huawei devices</li>
+      <li>MPLS service configuration (VPRN, IES) and failure analysis</li>
+      <li>Automation for 5G synchronization and GPON / OLT rollouts</li>
+      <li>.NET application for enterprise customer fault tracking</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p class="entry-date">2023</p>
+    <h3>Miuul &middot; Data science bootcamp, then teaching assistant</h3>
+    <p>Completed the data science &amp; machine learning bootcamp, then returned as
+    a teaching assistant for the following cohort — statistics, scikit-learn,
+    model evaluation.</p>
   </div>
 </section>
 
-<!-- Introduction -->
-<section class="section">
-  <div class="section-inner">
-    <div class="card-theme card-theme-wide" data-aos="fade-up">
-      <h2>A Bit About How I Work</h2>
-      <p>I'm Arda -- a product-focused software engineer who builds AI-assisted systems around real operational problems.</p>
-      <p>My background spans network infrastructure and backend engineering, but my core strength lies in designing intelligent workflows: systems that combine LLMs, retrieval, and automation to support real users in healthcare, education, and career development. I don't build demos -- I build products. From clinical knowledge systems (ConsulDent), to long-term mentorship journeys (MentAI), to resume and interview gap analysis (mulakat.pro), my work consistently revolves around the same question:</p>
-      <p><strong>"How can AI reduce complexity and guide better decisions?"</strong></p>
-      <p>I'm deeply focused on retrieval-augmented generation (RAG), agent-based architectures, and structured AI outputs. I care about correctness, traceability, and usability -- not just model outputs, but how those outputs fit into real workflows.</p>
-      <p>Every project I build is treated as a potential product. That means owning the full lifecycle: system design, backend logic, deployment, iteration, and continuous improvement based on user feedback.</p>
-      <p class="text-muted-theme">Below are the tools and systems I actively use. They're not just part of my stack -- they're the foundation of the products I ship.</p>
-    </div>
+<section class="minor">
+  <p class="eyebrow">Earlier</p>
+  <ul class="plain-list tight">
+    <li><strong>SADELABS</strong> (2021) — anomaly detection on energy data with LSTM</li>
+    <li><strong>Yaşar University</strong> (2019 — 2020) — scheduling IoT device traffic with ML</li>
+    <li><strong>Green Energy Park, Morocco</strong> (2019) — C#/SQL reporting tool for PV panel tests</li>
+    <li><strong>İzdemir Energy</strong> (2018) — internship</li>
+  </ul>
+</section>
+
+<section class="minor">
+  <p class="eyebrow">Earlier projects</p>
+  <ul class="plain-list">
+    <li><strong>mulakat.pro</strong> (2025) — AI mock interviews generated from a job
+    description. Stopped: people tried it once and didn't come back.
+    <a class="quiet-link" href="{% url 'project_detail' 'mulakat-pro' %}">Full write-up &rarr;</a></li>
+    <li><strong>MentAI</strong> (2024) — a personalized mentorship app with daily guidance
+    and adaptive tasks. Stopped after MVP testing: the users we spoke to didn't
+    have the need we had designed for.
+    <a class="quiet-link" href="{% url 'project_detail' 'mentai' %}">Full write-up &rarr;</a></li>
+  </ul>
+</section>
+
+<section class="minor">
+  <p class="eyebrow">Education</p>
+
+  <div class="entry">
+    <p class="entry-date">2017 — 2021</p>
+    <h3>B.Sc. Electrical &amp; Electronics Engineering &middot; Yaşar University</h3>
+    <p>GPA 3.42 / 4.00 &middot; 100% scholarship</p>
+  </div>
+
+  <div class="entry">
+    <p class="entry-date">2016 — 2020</p>
+    <h3>B.Sc. Energy Systems Engineering &middot; Yaşar University</h3>
+    <p>GPA 3.72 / 4.00, highest in cohort. Graduation work: a smart home energy
+    demand management system — real-time consumption data driving demand
+    reduction without hurting comfort.
+    <a class="quiet-link" href="https://ieeexplore.ieee.org/abstract/document/9677670" target="_blank" rel="noopener">IEEE paper &rarr;</a></p>
   </div>
 </section>
 
-<!-- Skills Dashboard -->
-<section class="section" style="padding-top: 0;">
-  <div class="section-inner">
-    <div class="skills-dashboard-wrapper" data-aos="fade-up">
-    <!-- Sketch arrow hint -->
-    <div class="sketch-arrow-hint">
-      <img src="{% static 'click_around-removebg-preview.png' %}" alt="click around!" class="sketch-arrow-img">
-    </div>
-    <div class="skills-dashboard">
-      <!-- Dashboard titlebar -->
-      <div class="dashboard-titlebar">
-        <div class="dashboard-dots">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="dashboard-title">skills & tools</div>
-        <div class="dashboard-dots" style="visibility:hidden;">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-      <!-- Dashboard body -->
-      <div class="dashboard-body">
-        <!-- Sidebar -->
-        <div class="dashboard-sidebar">
-          <div class="sidebar-section">
-            <div class="sidebar-label">CATEGORIES</div>
-            <div class="sidebar-item active" data-tab="builder">Builder</div>
-            <div class="sidebar-item" data-tab="backend">Backend & AI</div>
-            <div class="sidebar-item" data-tab="domain">Domain Expertise</div>
-          </div>
-        </div>
-        <!-- Main content -->
-        <div class="dashboard-main">
-
-          <!-- Tab: Builder & Product Engineer -->
-          <div class="dashboard-tab active" id="tab-builder">
-            <h3 class="dashboard-section-title">Builder & Product Engineer</h3>
-            <div class="dashboard-grid">
-              <div class="dashboard-cell">
-                <div class="cell-label">Product Thinking</div>
-                <div class="cell-value">Problem discovery & validation</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Product Thinking</div>
-                <div class="cell-value">User-centric workflow design</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Product Thinking</div>
-                <div class="cell-value">Turning ideas into shippable products</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">MVP & Startup</div>
-                <div class="cell-value">End-to-end MVP building</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">MVP & Startup</div>
-                <div class="cell-value">Fast iteration & feedback loops</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">MVP & Startup</div>
-                <div class="cell-value">Zero-to-one product development</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Product Ownership</div>
-                <div class="cell-value">Feature scoping & prioritization</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Product Ownership</div>
-                <div class="cell-value">Deployment & production readiness</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Product Ownership</div>
-                <div class="cell-value">Long-term product evolution</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Entrepreneurial</div>
-                <div class="cell-value">Market-driven development</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Entrepreneurial</div>
-                <div class="cell-value">Building with constraints (time, cost, users)</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Entrepreneurial</div>
-                <div class="cell-value">Treating side projects as real startups</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab: Backend & AI Systems Engineer -->
-          <div class="dashboard-tab" id="tab-backend">
-            <h3 class="dashboard-section-title">Backend & AI Systems Engineer</h3>
-            <div class="dashboard-grid">
-              <div class="dashboard-cell">
-                <div class="cell-label">Backend Engineering</div>
-                <div class="cell-value">Python-based backend systems</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Backend Engineering</div>
-                <div class="cell-value">Django & FastAPI architectures</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Backend Engineering</div>
-                <div class="cell-value">RESTful API design</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Backend Engineering</div>
-                <div class="cell-value">Data modeling & persistence</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">AI-Assisted Systems</div>
-                <div class="cell-value">LLM integrations (OpenAI APIs)</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">AI-Assisted Systems</div>
-                <div class="cell-value">Retrieval-Augmented Generation (RAG)</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">AI-Assisted Systems</div>
-                <div class="cell-value">Structured AI outputs & validation</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Agent Architectures</div>
-                <div class="cell-value">Agent routing & orchestration</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Agent Architectures</div>
-                <div class="cell-value">Multi-step reasoning pipelines</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Agent Architectures</div>
-                <div class="cell-value">LangChain / LangGraph systems</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Data & Storage</div>
-                <div class="cell-value">PostgreSQL, SQLite</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Data & Storage</div>
-                <div class="cell-value">Vector search & embeddings (Supabase)</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab: Domain & Specialized Engineering -->
-          <div class="dashboard-tab" id="tab-domain">
-            <h3 class="dashboard-section-title">Domain & Specialized Engineering</h3>
-            <div class="dashboard-grid">
-              <div class="dashboard-cell">
-                <div class="cell-label">Domain-Driven Systems</div>
-                <div class="cell-value">Healthcare knowledge workflows</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Domain-Driven Systems</div>
-                <div class="cell-value">Education & mentorship platforms</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Domain-Driven Systems</div>
-                <div class="cell-value">Career & interview preparation systems</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Network-Aware Engineering</div>
-                <div class="cell-value">TCP/IP fundamentals</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Network-Aware Engineering</div>
-                <div class="cell-value">Nokia & Huawei systems</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Network-Aware Engineering</div>
-                <div class="cell-value">Automation mindset from telecom infrastructure</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Applied Data Science</div>
-                <div class="cell-value">NLP-based analysis</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Applied Data Science</div>
-                <div class="cell-value">Anomaly detection & pattern discovery</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Applied Data Science</div>
-                <div class="cell-value">Data-informed product decisions</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Operational Thinking</div>
-                <div class="cell-value">Reliability & performance awareness</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Operational Thinking</div>
-                <div class="cell-value">Automation-first mindset</div>
-              </div>
-              <div class="dashboard-cell">
-                <div class="cell-label">Operational Thinking</div>
-                <div class="cell-value">Designing systems that survive real usage</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
+<section class="minor">
+  <p>If you're building something where AI has to work inside a real professional
+  workflow — or you just want to compare notes — I'd like to hear from you.
+  I'm most interested in clinical and other regulated domains, where structured,
+  source-grounded output matters more than a chat box.</p>
+  <p>
+    {# TODO(owner): CV — activates together with the footer link once the PDF #}
+    {# lands at main/static/main/files/arda-asut-cv.pdf: #}
+    {# <a class="cv-btn" href="{% static 'main/files/arda-asut-cv.pdf' %}" target="_blank" rel="noopener">CV (PDF) &rarr;</a> #}
+    <a class="quiet-link" href="mailto:arda.asut@gmail.com">arda.asut@gmail.com</a>
+  </p>
 </section>
 
-<!-- Experience Timeline -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="section-title section-title-toggle" data-target="experience-section" data-aos="fade-up">Experience <span class="toggle-arrow">+</span></h2>
-    <div class="timeline-collapsible" id="experience-section">
-    <div class="timeline">
-
-      <!-- ConsulDent -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">2024 - Present</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Founder & Developer, ConsulDent</h3>
-          <p>A domain-specific AI-assisted system designed to support dentists in daily clinical workflows, knowledge retrieval, and decision preparation. The core challenge it addresses is not lack of information, but fragmentation: clinical knowledge exists across books, guidelines, documents, and personal notes -- disconnected from the dentist's actual workflow.</p>
-          <p>I built ConsulDent as a backend-first, knowledge-centric system that integrates retrieval-augmented generation (RAG), structured outputs, and workflow-aware reasoning into a single product. The goal is not to replace clinical judgment, but to reduce cognitive load and friction around documentation, preparation, and reference lookup.</p>
-          <p><strong>System Philosophy</strong></p>
-          <p>ConsulDent is not a chat interface. It is a clinical support system. Every response is designed to be grounded in retrievable sources, structured for clinical usability, and aligned with real-world dental workflows. The system decomposes clinical interactions into retrieval, reasoning, and output layers -- allowing accuracy, traceability, and domain control to remain first-class concerns.</p>
-          <p><strong>Core Capabilities</strong></p>
-          <ul>
-            <li><strong>Knowledge-Centric Retrieval (RAG):</strong> Clinical books, guidelines, and reference documents are indexed and retrieved as first-class sources. Queries are resolved through retrieval-augmented pipelines ensuring section-aware responses, reduced hallucination risk, and consistent terminology.</li>
-            <li><strong>Workflow-Oriented Outputs:</strong> Visit preparation summaries, treatment explanations, clinical notes and documentation drafts, presentation-ready content for patient communication.</li>
-            <li><strong>Agent-Oriented Reasoning:</strong> Complex tasks handled through agent-like flows -- retrieval, reasoning, validation, and formatting as separate steps.</li>
-            <li><strong>Voice & Multimodal Input:</strong> Voice-based input for real clinical environments where typing is impractical. Speech transformed into structured, actionable data.</li>
-          </ul>
-          <p><strong>ConsulDent Clinic (Operational Layer)</strong></p>
-          <p>Extends the knowledge system into day-to-day clinical operations: visit lifecycle tracking, task coordination, structured documentation outputs, and reducing administrative overhead. This layer bridges clinical reasoning with operational execution.</p>
-          <p><strong>What I Built End-to-End</strong></p>
-          <ul>
-            <li>Domain-specific RAG pipelines</li>
-            <li>Knowledge ingestion and indexing logic</li>
-            <li>Agent-style reasoning flows</li>
-            <li>Structured output generation</li>
-            <li>Voice-to-structure processing</li>
-            <li>Backend APIs and data models</li>
-            <li>Deployment, iteration, and product evolution</li>
-          </ul>
-          <p><strong>Why ConsulDent Matters</strong></p>
-          <p>ConsulDent represents how I approach AI products: as systems, not features. It combines domain expertise, backend engineering, and AI-assisted reasoning to solve real operational problems. This is the most complete expression of my architectural mindset.</p>
-          <p class="text-muted-theme"><strong>Tech:</strong> Python, Django, FastAPI, LLM integrations (OpenAI APIs), RAG, Agent-based orchestration (LangChain / LangGraph), Structured outputs & validation, Voice pipelines (Whisper), PostgreSQL, vector search</p>
-          <div class="timeline-tags">
-            <a href="{% url 'blog' %}?tag=consuldent" class="timeline-tag">Notes</a>
-            <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- mulakat.pro -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">2025 - Present</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Founder & Developer, mulakat.pro</h3>
-          <p>An AI-assisted interview preparation system designed to identify skill gaps, structure learning paths, and simulate real interview expectations. The core problem it solves is not "mock interviews" -- it's decision ambiguity: candidates don't know what to study, in what order, or how close they are to being interview-ready.</p>
-          <p>I designed mulakat.pro as a backend-first system that analyzes resumes and job requirements, extracts structured signals, and maps them into actionable preparation steps. The platform focuses on gap detection between candidate profiles and job roles, structured topic breakdowns instead of generic advice, and AI-assisted evaluation with explainable outputs.</p>
-          <p><strong>System Design & Architecture</strong></p>
-          <p>The system is built around retrieval-augmented generation (RAG) and structured reasoning pipelines. Job descriptions, resumes, and domain knowledge are processed as retrievable sources rather than raw prompts. Agent-like flows separate concerns: analysis, evaluation, feedback generation, and preparation guidance are handled as distinct steps instead of a single LLM call.</p>
-          <p><strong>What I Built</strong></p>
-          <ul>
-            <li>Resume and job-post parsing pipelines</li>
-            <li>Skill and requirement extraction logic</li>
-            <li>Gap analysis and readiness estimation</li>
-            <li>Structured interview topic generation</li>
-            <li>Backend APIs for evaluation and progress tracking</li>
-            <li>Deployment and iteration based on real user feedback</li>
-          </ul>
-          <p><strong>Why This Project Matters</strong></p>
-          <p>mulakat.pro reflects how I approach AI products in general: not as chat interfaces, but as decision-support systems. The goal is not to "sound smart", but to guide users through complex processes with clarity, structure, and measurable progress.</p>
-          <p class="text-muted-theme"><strong>Tech:</strong> Python, Django, FastAPI, LLM integrations (OpenAI APIs), RAG, Structured outputs & evaluation pipelines, PostgreSQL, vector search</p>
-          <div class="timeline-tags">
-            <a href="{% url 'blog' %}?tag=mulakat-pro" class="timeline-tag">Notes</a>
-            <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- MentAI -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">Jul 2024 - Present</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Founder & Developer, MentAI</h3>
-          <p>A personalized education and mentorship system designed to support long-term cognitive and behavioral development. The core problem it addresses is continuity: most learning tools treat users as stateless, forgetting context, goals, and progress over time.</p>
-          <p>MentAI was my first end-to-end product where I actively combined backend engineering, AI-assisted reasoning, and product thinking into a single system. More importantly, it was the project that introduced me to entrepreneurship and real-world product development.</p>
-          <p><strong>System Philosophy</strong></p>
-          <p>MentAI is not a content platform. It is a guidance system. The system is built around persistence: user history, feedback, and actions are treated as structured, evolving state rather than disposable input. Every interaction feeds the next one. The goal is not one good answer, but sustained guidance over time.</p>
-          <p><strong>Core Capabilities</strong></p>
-          <ul>
-            <li><strong>Long-Term User Modeling:</strong> User reflections, feedback, and responses stored as structured data models -- enabling progress tracking, pattern detection in behavior, and adaptive guidance.</li>
-            <li><strong>Structured Guidance & Workflows:</strong> Daily prompts, reflection questions, task suggestions, and periodic evaluations. Outputs designed to be actionable and contextual, not generic motivational text.</li>
-            <li><strong>AI-Assisted Reasoning:</strong> LLMs used as reasoning components -- summarizing user input, extracting structured signals, and shaping future guidance through controlled pipelines.</li>
-            <li><strong>Backend & Cloud Architecture:</strong> Google Cloud Functions for event-driven logic, asynchronous input processing, and scheduled workflows. Stateless execution units on top of stateful data models.</li>
-          </ul>
-          <p><strong>Product & Entrepreneurship Journey</strong></p>
-          <p>MentAI was my first real exposure to entrepreneurship beyond writing code. We formed a small team, developed the product collaboratively, and actively engaged in early-stage startup communities. We built and managed an Instagram page to communicate the product vision, participated in the Karsiyaka Girisimcilik Merkezi collective, and discussed the product with other founders, mentors, and early users.</p>
-          <p><strong>What I Built End-to-End</strong></p>
-          <ul>
-            <li>User state and history models</li>
-            <li>Structured guidance workflows</li>
-            <li>LLM-assisted analysis pipelines</li>
-            <li>Event-driven backend logic (Cloud Functions)</li>
-            <li>APIs and persistence layers</li>
-            <li>Deployment, iteration, and user feedback loops</li>
-          </ul>
-          <p><strong>Why MentAI Matters</strong></p>
-          <p>MentAI represents the point where I stopped thinking like a developer working on features and started thinking like a product builder. It taught me how technical decisions, user behavior, and product direction are tightly connected. Many of the architectural patterns and product instincts I apply today in ConsulDent and mulakat.pro originated in this project.</p>
-          <p class="text-muted-theme"><strong>Tech:</strong> Python, Django, Google Cloud Functions, LLM integrations (OpenAI APIs), Structured user modeling, Stateful AI workflows, PostgreSQL</p>
-          <div class="timeline-tags">
-            <a href="{% url 'blog' %}?tag=mentai" class="timeline-tag">Notes</a>
-            <a href="{% url 'projects' %}" class="timeline-tag">Project</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Turk Telekom -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">Dec 2021 - Present</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Network Engineer, Turk Telekom</h3>
-          <h4>Izmir, Turkiye</h4>
-          <p>Software-oriented network engineer working at scale on carrier-grade telecom infrastructure. I focus on automating network operations, translating low-level networking problems into reproducible, code-driven systems.</p>
-          <p><strong>Core Engineering Work</strong></p>
-          <ul>
-            <li>Automated network provisioning, validation, and troubleshooting using Python and Netmiko for Nokia and Huawei devices.</li>
-            <li>Designed and maintained MPLS service configurations (VPRN, IES), including service lifecycle operations, validation workflows, and failure analysis.</li>
-            <li>Built Python-based automation for 5G synchronization and GPON / OLT access network deployments, reducing manual intervention and configuration errors.</li>
-          </ul>
-          <p><strong>Systems & Protocols</strong></p>
-          <ul>
-            <li>Deep hands-on experience with TCP/IP, VLANs, routing, and service-oriented network design.</li>
-            <li>Worked directly with carrier-grade Nokia and Huawei routing and switching platforms in production environments.</li>
-            <li>Linux-based operational environments for scripting, monitoring, and automation workflows.</li>
-          </ul>
-          <p><strong>Automation & Intelligence Layer</strong></p>
-          <ul>
-            <li>Developed automation-first workflows to reduce downtime, standardize configurations, and improve operational reliability.</li>
-            <li>Experimented with local LLM usage to assist with configuration analysis, log interpretation, and operational knowledge extraction as part of internal tooling and personal R&D.</li>
-          </ul>
-          <p><strong>Engineering Mindset</strong></p>
-          <ul>
-            <li>Strong bias toward reproducibility, observability, and failure-aware system design.</li>
-            <li>Approach network infrastructure as a programmable system, not a static environment.</li>
-          </ul>
-          <p class="text-muted-theme"><strong>Technologies:</strong> Python, Netmiko, TCP/IP, MPLS (VPRN, IES), Nokia & Huawei systems, Linux, Network automation, 5G synchronization, GPON</p>
-        </div>
-      </div>
-
-        <!-- Miuul -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge">Jun 2023 - Oct 2023</span>
-          </div>
-          <div class="timeline-content">
-            <h3 class="h5 fw-bold">Teaching Assistant & Bootcamp Participant, Miuul</h3>
-            <ul>
-              <li>Teaching Assistant (Sep 2023 - Oct 2023): Assisted in Data Science & Machine Learning Bootcamp.</li>
-              <li>Bootcamp Participant (Jun 2023 - Sep 2023): Completed comprehensive training in data science and machine learning.</li>
-              <li>Skills: Statistical Modeling, Scikit-Learn, Generative AI, Data Analytics</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- SADELABS -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge">Jul 2021 - Aug 2021</span>
-          </div>
-          <div class="timeline-content">
-            <h3 class="h5 fw-bold">Project Intern, SADELABS</h3>
-            <h4>Izmir, Turkiye</h4>
-            <p>Anomaly detection on first party energy consumption data using LSTM neural network.</p>
-          </div>
-        </div>
-
-        <!-- Yasar University -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge">Feb 2019 - Jan 2020</span>
-          </div>
-          <div class="timeline-content">
-            <h3 class="h5 fw-bold">Part-time Project Assistant, Yasar University</h3>
-            <h4>Izmir, Turkiye</h4>
-            <p>Scheduling IoT device traffic with machine learning models.</p>
-          </div>
-        </div>
-
-        <!-- Green Energy Park -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge">Jun 2019 - Aug 2019</span>
-          </div>
-          <div class="timeline-content">
-            <h3 class="h5 fw-bold">Intern, Green Energy Park Morocco</h3>
-            <p>Developed a Windows application using C# and SQL that automates the presentation of measurement results from PV panel performance tests in Excel reports.</p>
-          </div>
-        </div>
-
-        <!-- Izdemir Energy -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">
-            <span class="badge">Jun 2018 - Aug 2018</span>
-          </div>
-          <div class="timeline-content">
-            <h3 class="h5 fw-bold">Intern, Izdemir Energy Inc.</h3>
-            <h4>Izmir, Turkiye</h4>
-            <p>Voluntary Internship</p>
-          </div>
-        </div>
-
-    </div>
-    </div>
-  </div>
-</section>
-
-<!-- Education -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="section-title section-title-toggle" data-target="education-section" data-aos="fade-up">Education <span class="toggle-arrow">+</span></h2>
-    <div class="timeline-collapsible" id="education-section">
-    <div class="timeline">
-
-      <!-- Yasar University - EEE -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">2017 - 2021</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">B.Sc. Electrical & Electronics Engineering</h3>
-          <h4>Yasar University, Izmir</h4>
-          <p><strong>GPA:</strong> 3.42 / 4.00 | <strong>Scholarship:</strong> 100%</p>
-          <p>Studied core electrical and electronics engineering disciplines, with a strong focus on systems thinking, signal processing, and applied engineering problem-solving. My academic work emphasized how complex physical systems can be modeled, optimized, and controlled -- a mindset that later translated directly into backend systems, automation, and AI-driven architectures.</p>
-          <div class="timeline-tags">
-            <a href="https://ieeexplore.ieee.org/abstract/document/9677670" target="_blank" class="timeline-tag">IEEE Paper</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Yasar University - Energy Systems -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">2016 - 2020</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">B.Sc. Energy Systems Engineering</h3>
-          <h4>Yasar University, Izmir</h4>
-          <p><strong>GPA:</strong> 3.72 / 4.00 (Highest GPA in cohort)</p>
-          <p>Focused on energy production, distribution, and optimization, with particular interest in efficiency-driven system design and demand-side management. Graduation work centered on a Smart Home Energy Demand Management System, exploring how real-time consumption data, optimization logic, and control mechanisms can reduce energy usage while preserving user comfort.</p>
-          <ul>
-            <li>Model real-world systems</li>
-            <li>Reason about constraints and trade-offs</li>
-            <li>Design data-driven decision mechanisms</li>
-          </ul>
-          <div class="timeline-tags">
-            <a href="https://ieeexplore.ieee.org/abstract/document/9677670" target="_blank" class="timeline-tag">IEEE Paper</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Izmir Ataturk Lisesi -->
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">
-          <span class="badge">2011 - 2015</span>
-        </div>
-        <div class="timeline-content">
-          <h3 class="h5 fw-bold">Izmir Ataturk Lisesi</h3>
-          <h4>Boarding Student</h4>
-          <p>Completed high school education as a boarding student, living independently in Izmir from an early age. Dormitory life played a significant role in developing discipline, responsibility, and self-management -- skills that later proved essential in both engineering and entrepreneurship.</p>
-        </div>
-      </div>
-
-    </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section" style="padding-top: 3rem;">
-  <div class="section-inner text-center">
-    <a href="{% url 'projects' %}" class="btn-theme">Explore My Projects</a>
-  </div>
-</section>
-
-{% endblock %}
-
-{% block extra_js %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var items = document.querySelectorAll('.sidebar-item[data-tab]');
-  var tabs = document.querySelectorAll('.dashboard-tab');
-
-  items.forEach(function(item) {
-    item.addEventListener('click', function() {
-      items.forEach(function(i) { i.classList.remove('active'); });
-      item.classList.add('active');
-
-      var tabId = 'tab-' + item.getAttribute('data-tab');
-      tabs.forEach(function(tab) { tab.classList.remove('active'); });
-      document.getElementById(tabId).classList.add('active');
-    });
-  });
-
-  // Collapsible timeline sections (click on section title)
-  var toggleTitles = document.querySelectorAll('.section-title-toggle');
-  toggleTitles.forEach(function(title) {
-    title.addEventListener('click', function() {
-      var targetId = title.getAttribute('data-target');
-      var target = document.getElementById(targetId);
-      var arrow = title.querySelector('.toggle-arrow');
-      if (target.classList.contains('expanded')) {
-        target.classList.remove('expanded');
-        arrow.textContent = '+';
-      } else {
-        target.classList.add('expanded');
-        arrow.textContent = '\u2212';
-      }
-    });
-  });
-});
-</script>
 {% endblock %}

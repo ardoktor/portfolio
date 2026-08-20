@@ -1,9 +1,9 @@
 /* ==========================================================================
-   HOMEPAGE — quiet, dense, near-monochrome. Scoped under body.page-home;
-   other pages keep style.css untouched.
+   QUIET THEME — paper/ink/pine, shared by the homepage and about page.
+   Scoped under body.page-quiet; other pages keep style.css untouched.
    ========================================================================== */
 
-.page-home {
+.page-quiet {
   --paper:      #F5F6F4;
   --ink:        #15191A;
   --ink-muted:  #5C6462;
@@ -24,79 +24,79 @@
 }
 
 /* --- Layout: single column, one spacing rule for all sections --- */
-.page-home main {
+.page-quiet main {
   max-width: 680px;
   margin: 0 auto;
   padding: 64px 24px 96px;
 }
 
 /* Reading measure: headings may span the column, running text may not */
-.page-home main p,
-.page-home main li {
+.page-quiet main p,
+.page-quiet main li {
   max-width: 66ch;
 }
 
-.page-home main > * + * {
+.page-quiet main > * + * {
   margin-top: var(--gap);
 }
 
 /* The lead project is isolated with 1.5x the section gap */
-.page-home main > .lead-project,
-.page-home main > .lead-project + * {
+.page-quiet main > .lead-project,
+.page-quiet main > .lead-project + * {
   margin-top: calc(var(--gap) * 1.5);
 }
 
 /* --- Nav & footer: paper + hairline, nothing heavier --- */
-.page-home .site-nav {
+.page-quiet .site-nav {
   position: static;
   background-color: var(--paper);
   border-bottom: 1px solid var(--rule);
 }
 
 /* Nav and footer line up with the 680px content column */
-.page-home .site-nav-inner,
-.page-home .footer-inner {
+.page-quiet .site-nav-inner,
+.page-quiet .footer-inner {
   max-width: 680px;
   padding: 0 24px;
   justify-content: space-between;
 }
 
-.page-home .nav-brand {
+.page-quiet .nav-brand {
   color: var(--ink);
   font-family: var(--font-mono);
 }
 
-.page-home .nav-list li a {
+.page-quiet .nav-list li a {
   color: var(--ink-muted);
   background: none;
 }
 
-.page-home .nav-list li a:hover {
+.page-quiet .nav-list li a:hover {
   color: var(--ink);
   background: none;
 }
 
-.page-home .site-footer {
+.page-quiet .site-footer {
   background-color: var(--paper);
   border-top: 1px solid var(--rule);
   color: var(--ink-muted);
 }
 
-.page-home .site-footer .footer-brand,
-.page-home .site-footer .footer-copy {
+.page-quiet .site-footer .footer-brand,
+.page-quiet .site-footer .footer-copy {
   color: var(--ink-muted);
 }
 
-.page-home .site-footer a {
+.page-quiet .site-footer a {
   color: var(--ink);
 }
 
-.page-home .footer-right a + a::before {
+.page-quiet .footer-right a + a::before {
   color: var(--ink-muted);
 }
 
 /* --- Intro --- */
-.page-home .intro h1 {
+.page-quiet .intro h1 {
   font-size: 44px;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -104,19 +104,19 @@
   color: var(--ink);
 }
 
-.page-home .intro-line {
+.page-quiet .intro-line {
   font-size: 22px;
   line-height: 1.5;
   margin: 0 0 8px;
   color: var(--ink);
 }
 
-.page-home .intro-sub {
+.page-quiet .intro-sub {
   margin: 0;
 }
 
 /* --- Lead project: set at display scale, no card, no box --- */
-.page-home .lead-project h2 {
+.page-quiet .lead-project h2 {
   font-size: 34px;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -124,14 +124,14 @@
   color: var(--ink);
 }
 
-.page-home .lead-project p {
+.page-quiet .lead-project p {
   font-size: 19px;
   line-height: 1.5;
   margin: 0 0 20px;
 }
 
 /* Metrics strip — the one place the page raises its voice */
-.page-home .metrics {
+.page-quiet .metrics {
   max-width: none;
   font-family: var(--font-mono);
   font-size: 14px;
@@ -143,19 +143,19 @@
   margin: 28px 0;
 }
 
-.page-home .store-badge {
+.page-quiet .store-badge {
   display: inline-block;
   margin-right: 20px;
   vertical-align: middle;
 }
 
-.page-home .store-badge img {
+.page-quiet .store-badge img {
   height: 44px;
   width: auto;
 }
 
 /* Screenshot ships inside its own device frame — no extra border */
-.page-home .lead-shot {
+.page-quiet .lead-shot {
   max-width: 280px;
   width: 100%;
   height: auto;
@@ -165,18 +165,18 @@
 /* Wide screens: app screenshot sits in a second column to the right of
    the lead text, top-aligned with the project title */
 @media (min-width: 1280px) {
-  .page-home .lead-project:has(.lead-shot) {
+  .page-quiet .lead-project:has(.lead-shot) {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 175px;
     column-gap: 56px;
     width: calc(100% + 231px);
   }
 
-  .page-home .lead-project:has(.lead-shot) > * {
+  .page-quiet .lead-project:has(.lead-shot) > * {
     grid-column: 1;
   }
 
-  .page-home .lead-project .lead-shot {
+  .page-quiet .lead-project .lead-shot {
     grid-column: 2;
     grid-row: 2 / span 5;
     align-self: start;
@@ -185,7 +185,7 @@
 }
 
 /* --- Minor sections: body scale, eyebrow does the separating --- */
-.page-home .eyebrow {
+.page-quiet .eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -195,64 +195,64 @@
   margin: 0 0 14px;
 }
 
-.page-home .minor p {
+.page-quiet .minor p {
   margin: 0 0 10px;
 }
 
-.page-home .plain-list {
+.page-quiet .plain-list {
   list-style: none;
   margin: 0 0 14px;
   padding: 0;
 }
 
-.page-home .plain-list li {
+.page-quiet .plain-list li {
   margin: 0 0 10px;
 }
 
 /* Minor sections stay on one size and one color; titles separate by
    weight only, gray is reserved for dates and eyebrows */
-.page-home .plain-list strong {
+.page-quiet .plain-list strong {
   font-weight: 500;
 }
 
-.page-home .plain-list .muted {
+.page-quiet .plain-list .muted {
   font-size: inherit;
 }
 
 /* Tight variant: compact bulleted lines (day job) */
-.page-home .tight li {
+.page-quiet .tight li {
   margin: 0 0 4px;
   padding-left: 16px;
   position: relative;
 }
 
-.page-home .tight li::before {
+.page-quiet .tight li::before {
   content: "\00B7";
   position: absolute;
   left: 2px;
   color: var(--ink-muted);
 }
 
-.page-home .muted {
+.page-quiet .muted {
   font-size: 15px;
   color: var(--ink-muted);
 }
 
 /* --- Links & focus --- */
-.page-home main a {
+.page-quiet main a {
   color: var(--accent);
 }
 
-.page-home .quiet-link {
+.page-quiet .quiet-link {
   text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
   text-underline-offset: 3px;
 }
 
-.page-home .quiet-link:hover {
+.page-quiet .quiet-link:hover {
   text-decoration-color: var(--accent);
 }
 
-.page-home a:focus-visible {
+.page-quiet a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 2px;
@@ -260,27 +260,27 @@
 
 /* --- Mobile --- */
 @media (max-width: 480px) {
-  .page-home {
+  .page-quiet {
     --gap: 52px;
   }
 
-  .page-home main {
+  .page-quiet main {
     padding: 44px 20px 72px;
   }
 
-  .page-home .intro h1 {
+  .page-quiet .intro h1 {
     font-size: 32px;
   }
 
-  .page-home .intro-line {
+  .page-quiet .intro-line {
     font-size: 19px;
   }
 
-  .page-home .lead-project h2 {
+  .page-quiet .lead-project h2 {
     font-size: 27px;
   }
 
-  .page-home .lead-project p {
+  .page-quiet .lead-project p {
     font-size: 17px;
   }
 }
