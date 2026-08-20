@@ -13,8 +13,13 @@
 {% block content %}
 
 <section>
-  <p class="p-meta">{{ project.year }} — present · <span>Active</span></p>
-  <h1>ConsulDent</h1>
+  <div class="title-row">
+    <div>
+      <p class="p-meta">{{ project.year }} — present · <span>Active</span></p>
+      <h1>ConsulDent</h1>
+    </div>
+    <img class="app-logo" src="{% static 'main/img/Consuldent-AppIcon-1024.png' %}" alt="ConsulDent app icon">
+  </div>
   <p>ConsulDent is a clinical support system for dentists, built together with a
   practising dentist — my co-founder — rather than for an imagined one. She brings
   the cases, the vocabulary, and the veto; I build the system. It answers clinical

@@ -33,6 +33,25 @@
   margin: 0 0 16px;
 }
 
+.page-detail .title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 4px;
+}
+
+.page-detail .title-row h1 {
+  margin-bottom: 0;
+}
+
+.page-detail .app-logo {
+  width: 84px;
+  height: 84px;
+  border-radius: 19px;
+  flex-shrink: 0;
+}
+
 .page-detail h2 {
   font-size: 20px;
   font-weight: 500;
