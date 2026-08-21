@@ -17,16 +17,16 @@
   <h1>mulakat.pro</h1>
   <p>mulakat.pro generated mock interviews from a job description and a CV: it
   read both, worked out where the candidate fell short of the role, and turned
-  that gap into an ordered preparation plan with voice-based practice. It was
-  built by a small team for job candidates staring at a posting and not knowing
-  what to study first. We stopped it the same year we launched it — people tried
-  it once and didn't come back. This is the postmortem.
+  that gap into an ordered preparation plan with voice-based practice. I built
+  it alone, for job candidates staring at a posting and not knowing what to
+  study first. I stopped it the same year I launched it — people tried it once
+  and didn't come back. This is the postmortem.
   {# TODO(owner): real numbers in one plain sentence — signups, completed #}
   {# interviews, how many returned. The retention number is the story (§4.1). #}</p>
 </section>
 
 <section>
-  <h2>What we actually built</h2>
+  <h2>What I actually built</h2>
   <p>The framing was the interesting part: not a bank of practice questions but
   gap analysis. The CV and the job post were parsed into structured signals —
   skills claimed, skills required — and the delta between them became the
@@ -45,7 +45,7 @@
     <h3>First use worked. There was no second use.</h3>
     <p>The first session was the whole product experience: upload the CV, point
     at the job post, get the gap report and a mock interview. People completed
-    it, and the ones we talked to were positive about the output. Then the logs
+    it, and the ones I talked to were positive about the output. Then the logs
     went quiet. The product delivered its value in one sitting — once you've
     read your gap report, you have it. Coming back would have meant preparing
     for a different job, and most people weren't.</p>
@@ -53,7 +53,7 @@
 
   <div class="decision">
     <h3>The retention features nobody needed</h3>
-    <p>We had built for a returning user from the start: progress tracking,
+    <p>I had built for a returning user from the start: progress tracking,
     readiness re-scoring, the study plan as a thing you'd work through over
     weeks. That was the attempted fix, baked in early — give people a reason to
     come back and measure themselves. It didn't move anything, and the reason
@@ -67,23 +67,23 @@
     specific problem. But interview preparation is intensely needed for about
     two weeks and then not at all. A product whose need doesn't recur has no
     retention problem to fix; it has a category problem, and no amount of
-    iteration on our side could make interviews happen more often. That
+    iteration on my side could make interviews happen more often. That
     realization ended the project more than any metric did.</p>
   </div>
 </section>
 
 <section>
-  <h2>Why we stopped</h2>
-  <p>Once we accepted that the need was one-shot, the options were to chase
-  volume — a funnel business, not the product we wanted to build — or to stop.
-  We stopped. The clearest evidence of how settled the decision was: when the
-  mulakat.pro domain came up for renewal, we let it lapse. Letting it expire was
+  <h2>Why I stopped</h2>
+  <p>Once I accepted that the need was one-shot, the options were to chase
+  volume — a funnel business, not the product I wanted to build — or to stop.
+  I stopped. The clearest evidence of how settled the decision was: when the
+  mulakat.pro domain came up for renewal, I let it lapse. Letting it expire was
   a decision, not neglect.</p>
 </section>
 
 <section>
   <h2>What it changed</h2>
-  <p>mulakat.pro added the test that MentAI hadn't taught us: does the need come
+  <p>mulakat.pro added the test that MentAI hadn't taught me: does the need come
   back next week? ConsulDent is the direct answer — a dentist's questions recur
   every working day, inside a workflow she is already in, in a profession narrow
   enough to reach. Recurring need over one-time need, and an audience defined by
