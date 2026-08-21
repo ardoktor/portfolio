@@ -26,6 +26,8 @@ def project_detail(request, slug):
         return render(request, 'main/project_consuldent.html', {'project': project})
     if slug == 'mentai':
         return render(request, 'main/project_mentai.html', {'project': project})
+    if slug == 'mulakat-pro':
+        return render(request, 'main/project_mulakat.html', {'project': project})
     return render(request, 'main/project_detail.html', {'project': project})
 
 

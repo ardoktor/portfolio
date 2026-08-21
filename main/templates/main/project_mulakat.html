@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}mulakat.pro — Arda Asut{% endblock %}
+{% block body_class %}page-quiet page-detail{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/quiet.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section>
+  <p class="p-meta">2025 · <span>Stopped</span></p>
+  <h1>mulakat.pro</h1>
+  <p>mulakat.pro generated mock interviews from a job description and a CV: it
+  read both, worked out where the candidate fell short of the role, and turned
+  that gap into an ordered preparation plan with voice-based practice. It was
+  built by a small team for job candidates staring at a posting and not knowing
+  what to study first. We stopped it the same year we launched it — people tried
+  it once and didn't come back. This is the postmortem.
+  {# TODO(owner): real numbers in one plain sentence — signups, completed #}
+  {# interviews, how many returned. The retention number is the story (§4.1). #}</p>
+</section>
+
+<section>
+  <h2>What we actually built</h2>
+  <p>The framing was the interesting part: not a bank of practice questions but
+  gap analysis. The CV and the job post were parsed into structured signals —
+  skills claimed, skills required — and the delta between them became the
+  product: an ordered study plan, a readiness estimate, and mock interviews
+  generated against the specific role rather than a generic template. Voice
+  practice existed because the frightening part of an interview is speaking, not
+  reading; a typed Q&amp;A rehearses the wrong skill. All of it ran as controlled
+  pipelines over the parsed documents, with evaluation and progress tracking
+  behind an API.</p>
+</section>
+
+<section>
+  <h2>What happened</h2>
+
+  <div class="decision">
+    <h3>First use worked. There was no second use.</h3>
+    <p>The first session was the whole product experience: upload the CV, point
+    at the job post, get the gap report and a mock interview. People completed
+    it, and the ones we talked to were positive about the output. Then the logs
+    went quiet. The product delivered its value in one sitting — once you've
+    read your gap report, you have it. Coming back would have meant preparing
+    for a different job, and most people weren't.</p>
+  </div>
+
+  <div class="decision">
+    <h3>The retention features nobody needed</h3>
+    <p>We had built for a returning user from the start: progress tracking,
+    readiness re-scoring, the study plan as a thing you'd work through over
+    weeks. That was the attempted fix, baked in early — give people a reason to
+    come back and measure themselves. It didn't move anything, and the reason
+    became obvious in hindsight: nobody wants to track progress on an event.
+    They want the interview to be over.</p>
+  </div>
+
+  <div class="decision">
+    <h3>A category problem, not a retention problem</h3>
+    <p>The need was real — unlike MentAI, people arrived with a burning,
+    specific problem. But interview preparation is intensely needed for about
+    two weeks and then not at all. A product whose need doesn't recur has no
+    retention problem to fix; it has a category problem, and no amount of
+    iteration on our side could make interviews happen more often. That
+    realization ended the project more than any metric did.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Why we stopped</h2>
+  <p>Once we accepted that the need was one-shot, the options were to chase
+  volume — a funnel business, not the product we wanted to build — or to stop.
+  We stopped. The clearest evidence of how settled the decision was: when the
+  mulakat.pro domain came up for renewal, we let it lapse. Letting it expire was
+  a decision, not neglect.</p>
+</section>
+
+<section>
+  <h2>What it changed</h2>
+  <p>mulakat.pro added the test that MentAI hadn't taught us: does the need come
+  back next week? ConsulDent is the direct answer — a dentist's questions recur
+  every working day, inside a workflow she is already in, in a profession narrow
+  enough to reach. Recurring need over one-time need, and an audience defined by
+  their workday rather than by a life event. That filter came from here.</p>
+</section>
+
+<a class="quiet-link back-link" href="{% url 'projects' %}">&larr; Back to projects</a>
+
+{% endblock %}
