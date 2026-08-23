@@ -48,7 +48,7 @@
             "year": "2025",
             "tech_stack": "Python, OpenAI API, LangChain, Django, Whisper",
             "metrics": "",
-            "postmortem": "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on.",
+            "postmortem": "AI mock interviews generated from a job description. Stopped: the bottleneck in the market was getting interviews, not preparing for them.",
             "app_store_link": "",
             "demo_link": "",
             "github_link": "",
@@ -56,7 +56,7 @@
             "other_link_text": "",
             "order": 2,
             "image_url": "",
-            "short_description": "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on."
+            "short_description": "AI mock interviews generated from a job description. Stopped: the bottleneck in the market was getting interviews, not preparing for them."
         }
     },
     {

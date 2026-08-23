@@ -50,8 +50,8 @@ class Command(BaseCommand):
                 'year': '2025',
                 'tech_stack': 'Python, OpenAI API, LangChain, Django, Whisper',
                 # demo_link intentionally empty: mulakat.pro domain has expired
-                'postmortem': "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on.",
-                'short_description': "AI mock interviews generated from a job description. Stopped: people tried it once and didn't come back. Without repeat use there was no product to build on.",
+                'postmortem': "AI mock interviews generated from a job description. Stopped: the bottleneck in the market was getting interviews, not preparing for them.",
+                'short_description': "AI mock interviews generated from a job description. Stopped: the bottleneck in the market was getting interviews, not preparing for them.",
                 'order': 2,
             },
             {
