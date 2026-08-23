@@ -15,82 +15,39 @@
 <section>
   <p class="p-meta">2025 · <span>Stopped</span></p>
   <h1>mulakat.pro</h1>
-  <p>mulakat.pro generated mock interviews from a job description and a CV: it
-  read both, worked out where the candidate fell short of the role, and turned
-  that gap into an ordered preparation plan with voice-based practice. I built
-  it alone, for job candidates staring at a posting and not knowing what to
-  study first. I stopped it the same year I launched it — people tried it once
-  and didn't come back. This is the postmortem.
-  {# TODO(owner): real numbers in one plain sentence — signups, completed #}
-  {# interviews, how many returned. The retention number is the story (§4.1). #}</p>
+  <p>An interview preparation tool that generated mock interviews from a job
+  description and a CV. It parsed both, worked out where the candidate fell
+  short of the role, and turned that gap into an ordered study plan with
+  voice-based practice. Built solo over four or five months. Stopped the same
+  year it launched.</p>
 </section>
 
 <section>
-  <h2>What I actually built</h2>
-  <p>The framing was the interesting part: not a bank of practice questions but
-  gap analysis. The CV and the job post were parsed into structured signals —
-  skills claimed, skills required — and the delta between them became the
-  product: an ordered study plan, a readiness estimate, and mock interviews
-  generated against the specific role rather than a generic template. Voice
-  practice existed because the frightening part of an interview is speaking, not
-  reading; a typed Q&amp;A rehearses the wrong skill. All of it ran as controlled
-  pipelines over the parsed documents, with evaluation and progress tracking
-  behind an API.</p>
+  <h2>What it did</h2>
+  <p>The framing was gap analysis rather than a question bank. The CV and the
+  job post were parsed into structured signals — skills claimed against skills
+  required — and the delta became the product: an ordered preparation plan, a
+  readiness estimate, and mock interviews generated against that specific role
+  instead of a generic template. Voice practice existed because speaking is the
+  part of an interview people fear; a typed Q&amp;A rehearses the wrong
+  skill.</p>
 </section>
 
 <section>
-  <h2>What happened</h2>
-
-  <div class="decision">
-    <h3>First use worked. There was no second use.</h3>
-    <p>The first session was the whole product experience: upload the CV, point
-    at the job post, get the gap report and a mock interview. People completed
-    it, and the ones I talked to were positive about the output. Then the logs
-    went quiet. The product delivered its value in one sitting — once you've
-    read your gap report, you have it. Coming back would have meant preparing
-    for a different job, and most people weren't.</p>
-  </div>
-
-  <div class="decision">
-    <h3>The retention features nobody needed</h3>
-    <p>I had built for a returning user from the start: progress tracking,
-    readiness re-scoring, the study plan as a thing you'd work through over
-    weeks. That was the attempted fix, baked in early — give people a reason to
-    come back and measure themselves. It didn't move anything, and the reason
-    became obvious in hindsight: nobody wants to track progress on an event.
-    They want the interview to be over.</p>
-  </div>
-
-  <div class="decision">
-    <h3>A category problem, not a retention problem</h3>
-    <p>The need was real — unlike MentAI, people arrived with a burning,
-    specific problem. But interview preparation is intensely needed for about
-    two weeks and then not at all. A product whose need doesn't recur has no
-    retention problem to fix; it has a category problem, and no amount of
-    iteration on my side could make interviews happen more often. That
-    realization ended the project more than any metric did.</p>
-  </div>
-</section>
-
-<section>
-  <h2>Why I stopped</h2>
-  <p>Once I accepted that the need was one-shot, the options were to chase
-  volume — a funnel business, not the product I wanted to build — or to stop.
-  I stopped. The clearest evidence of how settled the decision was: when the
-  mulakat.pro domain came up for renewal, I let it lapse. Letting it expire was
-  a decision, not neglect.</p>
-</section>
-
-<section>
-  <h2>What it changed</h2>
-  <p>mulakat.pro added the test that MentAI hadn't taught me: does the need come
-  back next week? ConsulDent is the direct answer — a dentist's questions recur
-  every working day, inside a workflow she is already in, in a profession narrow
-  enough to reach. Recurring need over one-time need, and an audience defined by
-  their workday rather than by a life event. That filter came from here.</p>
-  <p>The longer story — the funnel, the Reddit thread, what it cost — is in the
-  note:
-  <a class="quiet-link" href="{% url 'blog_detail' 'i-built-the-wrong-half-of-the-problem' %}">I built the wrong half of the problem &rarr;</a></p>
+  <h2>Why it stopped</h2>
+  <p>Two reasons, and the first one is structural.</p>
+  <p>In Turkey, preparing for an interview is not the hard part — getting one
+  is. Postings collected thousands of applications within hours and most
+  candidates were never evaluated at all. A preparation tool only matters after
+  you have cleared that step, which means I had scoped the problem at the wrong
+  point in the chain. I assumed the scarce resource was preparation. It was
+  attention from a person on the other side.</p>
+  <p>The second reason is simpler: job seekers have no income and no certainty
+  about when they will. Asking them to pay put the product in the exact
+  category of spending that gets postponed indefinitely.</p>
+  <p>Neither problem was fixable by iterating on the product. When the domain
+  came up for renewal, I let it lapse.</p>
+  <p><a class="quiet-link" href="{% url 'blog_detail' 'i-built-the-wrong-half-of-the-problem' %}">Full story &rarr;</a></p>
 </section>
 
 <a class="quiet-link back-link" href="{% url 'projects' %}">&larr; Back to projects</a>
