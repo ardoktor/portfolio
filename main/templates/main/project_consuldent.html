@@ -18,12 +18,11 @@
     <img class="app-logo" src="{% static 'main/img/Consuldent-AppIcon-1024.png' %}" alt="ConsulDent app icon">
     <h1>ConsulDent</h1>
   </div>
-  <p>ConsulDent is a clinical support system for dentists, built together with a
-  practising dentist — my co-founder — rather than for an imagined one. She brings
-  the cases, the vocabulary, and the veto; I build the system. It answers clinical
-  questions from retrievable sources and returns structured output that slots into
-  the day's work: visit preparation, clinical notes, patient communication. It is
-  live on the App Store and in paid use.</p>
+  <p>ConsulDent is a clinical support tool for dentists. I build it with a
+  practising dentist — my co-founder, and my closest friend — who runs a clinic
+  and brings the cases, the vocabulary, and the veto. It's live on the App
+  Store, in paid use, and still changing shape based on what the current cohort
+  asks for.</p>
 
   {% if project.metrics %}
   <p class="metrics">
@@ -44,47 +43,94 @@
 </section>
 
 <section>
-  <h2>The problem</h2>
-  <p>A dentist's knowledge isn't missing — it's scattered. Guidelines live in one
-  PDF, dosages in a textbook, the department's preferred protocol in someone's
-  notes, and none of it is reachable in the two minutes between patients. The
-  failure mode isn't ignorance; it's friction: looking something up costs more
-  than it should, so it gets skipped, half-remembered, or asked in a WhatsApp
-  group.</p>
-  <p>Working with my co-founder made the shape of the problem concrete. Watching
-  her actual day made one thing obvious that I would have gotten wrong alone: the
-  bottleneck isn't answering a question, it's what happens after — the answer has
-  to become a note, a preparation sheet, or something a patient can understand.
-  A system that stops at the answer solves the smaller half of the problem.
-  {# TODO(owner): replace the generic line above with ONE specific example — a #}
-  {# decision she changed with a real case. This is the single strongest thing #}
-  {# the page can carry (spec §2.1). #}</p>
+  <h2>Where this came from</h2>
+  <p>I spent a lot of time in my co-founder's clinic. Not interviewing her —
+  just being there, watching her work over a couple of years before any of this
+  was a product.</p>
+  <p>Two things stood out.</p>
+  <p>The first is that dentistry hasn't been touched much by any of this yet.
+  The tooling is old, the workflows are paper-shaped, and most of the dentists
+  I met weren't really aware of how fast things were moving elsewhere. That's
+  not a criticism of them; they're busy treating people. But the gap between
+  what's possible and what's in use is enormous.</p>
+  <p>The second is the mess. There are documents everywhere — guidelines,
+  product inserts, protocols, notes from a course someone attended. Notes get
+  written and lost. Sometimes they don't get written at all, because the
+  patient is in the chair and there's no free hand. When a dentist needs to
+  check something and the colleague who'd know isn't in that day, they ask
+  whoever is around, or they go with what they remember.</p>
+  <p>The obvious thought is: they could just ask an AI. And they can't, really —
+  not for anything that matters. A model that answers confidently without
+  telling you where the answer came from is useless in a clinic. The dentist
+  has no way to check it, and "the AI said so" isn't a defensible reason for a
+  treatment decision. What's missing isn't an answer. It's an answer you can
+  trace.</p>
+  <p>That's the product in one line: a place a dentist can ask something and
+  get back an answer with the source attached.</p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <p>Four things, and they came from watching what goes wrong rather than from
+  a feature plan.</p>
+  <p><strong>Verified answers with sources.</strong> Clinical questions
+  answered from a curated corpus of dental textbooks and guidelines, with
+  numbered inline citations that resolve to real reference metadata — authors,
+  organisation, year, a link where one exists. If there's no source, there's no
+  claim.</p>
+  <p><strong>Drug information and dosage calculation.</strong> Against a
+  hand-verified dosing database, not model recall. The model's only job is
+  recognising what's being asked; the arithmetic — weight-based paediatric
+  dosing, local anaesthetic maximum-dose limits — is deterministic code. This
+  is where a confident wrong answer does the most damage, so the language model
+  is kept away from the numbers.</p>
+  <p><strong>Documents.</strong> Generating and organising the paperwork that
+  currently gets scattered: consent forms, consultation notes, a post-operative
+  instruction library, treatment records.</p>
+  <p><strong>Patient-facing material.</strong> Explanations and brochures a
+  patient can actually read, produced from the same clinical basis, so the
+  dentist isn't rewriting the same explanation for the twentieth time.</p>
+</section>
+
+<section>
+  <h2>From desk to chairside</h2>
+  <p>ConsulDent started as a web app — a server-rendered Django product you'd
+  use at a desk. The longer-term ambition behind it was ambient listening: the
+  system hears the appointment, and the notes and patient material fall out of
+  the conversation instead of being typed afterwards. We built the first slice
+  of that — hands-free voice capture, press-and-hold, because you can't type
+  with gloves on — and staged the rest.</p>
+  <p>Then the usage data disagreed with the plan. The moments dentists actually
+  reached for the product were chairside and between patients, on a phone. Desk
+  usage was the minority.</p>
+  <p>So we moved to mobile: a native app on the App Store talking to the same
+  Django backend over a JSON API. The web panel still exists, but mobile is
+  where the product lives now, and the ambient listening work waits until the
+  mobile habit is established rather than the other way around.</p>
 </section>
 
 <section>
   <h2>Why it isn't a chat box</h2>
-  <p>The obvious build was a chat interface over a RAG pipeline. We didn't ship
-  that, for a product reason rather than a technical one: chat pushes the hard
-  work back onto the dentist. She has to phrase the question well, judge whether
-  the fluent answer is actually grounded, and then manually turn the transcript
-  into something usable. Mid-procedure, none of that is realistic.</p>
-  <p>So the unit of output is a document, not a message. Each task — visit
-  preparation, a treatment explanation, a clinical note, patient-facing wording —
-  has a defined output shape with the source references attached. Structure makes
-  answers checkable (the citation is right there), reusable (a note is a note,
-  not a chat excerpt), and honest about scope: the system does defined jobs
-  instead of pretending to converse about anything.</p>
-  <p>Voice input exists for the same reason. Typing mid-procedure isn't possible
-  with gloves on; speech is the only interface the clinic actually allows.
-  Whisper turns it into text, and the same structured pipeline takes over.</p>
+  <p>The easy build was a chat window over a retrieval pipeline. We didn't do
+  that, and the reason is about the clinic rather than the technology.</p>
+  <p>Chat moves work onto the dentist. She has to phrase the question well,
+  judge whether a fluent answer is actually grounded, then turn a conversation
+  into something she can file or hand to a patient. Between two appointments,
+  that doesn't happen.</p>
+  <p>So the tasks produce artifacts, not transcripts. Each one has a shape — a
+  consent form, a post-op instruction sheet, a patient explanation, a dosage
+  calculation — with references attached. That makes the output checkable,
+  reusable, and honest about what the system does and doesn't do.</p>
+  <p>Voice input exists for the dull reason above: gloves. Speech is the only
+  input the clinic allows during treatment.</p>
 </section>
 
 <section>
-  <h2>Architecture</h2>
-  <p>Two paths share one store. Offline, sources are ingested, chunked along
-  their own structure, embedded, and written to Postgres. At query time,
-  retrieval pulls candidate sections, a reasoning step composes and validates
-  the answer against them, and the output layer renders the task's structure.</p>
+  <h2>How it's built</h2>
+  <p>One Django codebase serves everything — server-rendered pages for the web
+  panel, and a JSON API with JWT auth for the mobile app. Two paths share one
+  corpus: an offline ingestion side that writes, and a clinic-time query side
+  that only reads.</p>
 
   <figure>
     <svg class="diagram" viewBox="0 0 600 352" role="img"
@@ -95,11 +141,9 @@
         </marker>
       </defs>
 
-      <!-- lane captions -->
       <text x="20" y="22" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="var(--ink-muted)">INGESTION · OFFLINE</text>
       <text x="330" y="22" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="var(--ink-muted)">QUERY · IN CLINIC</text>
 
-      <!-- ingestion lane -->
       <rect x="20" y="36" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
       <text x="34" y="60" font-size="15" font-weight="500" fill="currentColor">Clinical sources</text>
       <text x="34" y="80" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">guidelines · textbooks · TR + EN</text>
@@ -108,7 +152,7 @@
 
       <rect x="20" y="132" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
       <text x="34" y="156" font-size="15" font-weight="500" fill="currentColor">Section-aware chunking</text>
-      <text x="34" y="176" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">headings kept · embedded</text>
+      <text x="34" y="176" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">OCR fallback · headings kept · embedded</text>
 
       <line x1="145" y1="190" x2="145" y2="224" stroke="#1F4D3F" marker-end="url(#arr)"/>
 
@@ -116,164 +160,166 @@
       <text x="34" y="252" font-size="15" font-weight="500" fill="currentColor">Supabase · pgvector</text>
       <text x="34" y="272" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">vectors + app data, one DB</text>
 
-      <!-- store feeds retrieval -->
       <path d="M270,257 L300,257 L300,143 L326,143" fill="none" stroke="#1F4D3F" marker-end="url(#arr)"/>
       <text x="308" y="200" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-muted)" transform="rotate(-90 308 200)">top-k</text>
 
-      <!-- query lane -->
       <rect x="330" y="36" width="250" height="50" rx="6" fill="none" stroke="var(--rule)"/>
       <text x="344" y="57" font-size="15" font-weight="500" fill="currentColor">Dentist query</text>
-      <text x="344" y="75" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">text or voice (Whisper)</text>
+      <text x="344" y="75" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">Turkish · text or voice</text>
 
       <line x1="455" y1="86" x2="455" y2="114" stroke="#1F4D3F" marker-end="url(#arr)"/>
 
       <rect x="330" y="118" width="250" height="50" rx="6" fill="none" stroke="var(--rule)"/>
-      <text x="344" y="139" font-size="15" font-weight="500" fill="currentColor">Retrieval</text>
-      <text x="344" y="157" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">candidate sections + metadata</text>
+      <text x="344" y="139" font-size="15" font-weight="500" fill="currentColor">Router</text>
+      <text x="344" y="157" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">intent · clarify · EN multi-query</text>
 
       <line x1="455" y1="168" x2="455" y2="196" stroke="#1F4D3F" marker-end="url(#arr)"/>
 
       <rect x="330" y="200" width="250" height="50" rx="6" fill="none" stroke="var(--rule)"/>
-      <text x="344" y="221" font-size="15" font-weight="500" fill="currentColor">Reasoning &amp; validation</text>
-      <text x="344" y="239" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">stepwise · checked against sources</text>
+      <text x="344" y="221" font-size="15" font-weight="500" fill="currentColor">Parallel retrieval</text>
+      <text x="344" y="239" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">dedup · sections + metadata</text>
 
       <line x1="455" y1="250" x2="455" y2="278" stroke="#1F4D3F" marker-end="url(#arr)"/>
 
       <rect x="330" y="282" width="250" height="58" rx="6" fill="none" stroke="var(--rule)"/>
-      <text x="344" y="305" font-size="15" font-weight="500" fill="currentColor">Structured output</text>
-      <text x="344" y="323" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">visit prep · notes · patient info</text>
+      <text x="344" y="305" font-size="15" font-weight="500" fill="currentColor">Streamed answer</text>
+      <text x="344" y="323" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-muted)">Turkish · numbered citations</text>
     </svg>
-    <figcaption>Ingestion runs offline; the clinic-time path only reads. Both sides meet in one Postgres instance.</figcaption>
+    <figcaption>Ingestion runs offline and writes; the clinic-time path only reads. Both sides meet in one Postgres instance.</figcaption>
   </figure>
+
+  <p><strong>Ingestion</strong> runs offline as a resumable pipeline. PDFs are
+  validated, extracted with an OCR fallback for scanned sources, chunked along
+  their own structure, embedded, and uploaded incrementally. A registry tracks
+  every processed source so runs can resume, and per-source deletion means a
+  bad document can be pulled from the corpus without touching the rest.</p>
+  <p><strong>At query time</strong>, a single router call does four jobs at
+  once: decides whether the question needs clarification, a direct reply, or
+  retrieval; classifies the clinical intent — comparison, dosage, procedure,
+  post-op; and rewrites the Turkish question into two or three English search
+  queries covering different facets of it. Those run against the vector store
+  in parallel, results are deduplicated, and the answer is composed in Turkish
+  with inline numbered citations, streamed token by token so the dentist sees
+  something immediately rather than waiting for a complete response.</p>
+
+  <h3>The rewrite</h3>
+  <p>The first production pipeline was around 3,000 lines: a planner that
+  narrated its reasoning, answers generated as structured JSON and validated
+  against a small domain-specific markup of paragraphs, tables and callouts,
+  follow-up suggestion chips, and a retry loop for when the model drifted out
+  of Turkish. It produced good demos and slow answers.</p>
+  <p>The current one is about a fifth of that size. Consolidated prompts —
+  roughly 400 tokens where there used to be 900 — full chunk context instead of
+  truncated excerpts, one strong language instruction instead of a retry loop,
+  and markdown streamed as tokens instead of JSON rendered after the fact.</p>
+  <p>The lesson wasn't that structure is bad. It's that structure belongs where
+  it pays. Documents and dosage calculations are still schema-validated,
+  because those are artifacts someone files or hands to a patient. The
+  conversational answer became a stream, because nobody files a
+  conversation.</p>
+
+  <h3>Vector storage</h3>
+  <p>Vectors live in Postgres with pgvector — a managed Supabase instance
+  queried through a single similarity-search function — rather than in a
+  dedicated vector database.</p>
+  <p>The usual options were Pinecone, Qdrant, Weaviate. Postgres means one
+  well-understood store: SQL against chunk metadata, ordinary tooling, no
+  second database technology to operate. At the corpus size we're working with,
+  that simplicity is worth more than raw retrieval performance.</p>
+  <p>There's a ceiling. pgvector won't match a purpose-built index at tens of
+  millions of vectors. If the corpus grows past what one instance handles
+  comfortably, this gets revisited.</p>
+
+  <h3>Chunking</h3>
+  <p>The first version split documents into fixed-size chunks with overlap,
+  which is what every tutorial does.</p>
+  <p>It broke in a way specific to clinical text. A dosage table would get
+  separated from the heading naming the patient group it applies to.
+  Contraindications would end up in a different chunk from the indication they
+  belong to. Retrieval then returned sections that were topically correct and
+  clinically wrong, which is worse than returning nothing.</p>
+  <p>The fix was chunking along the document's own structure — chunks keyed to
+  headings, carrying their section path as metadata that later steps can check.
+  It costs ingestion time, because every new source format needs mapping work
+  before it enters the corpus, so the library grows more slowly than a naive
+  pipeline would allow.</p>
+
+  <h3>Drug data</h3>
+  <p>The drug side deliberately doesn't use retrieval. There's a small,
+  hand-verified dosing database — each drug goes through a verification
+  worklist before it ships — plus Turkish brand-name mappings and a local
+  anaesthetics reference. Questions that mention a drug are caught by intent
+  detection and routed to deterministic calculators. A dentist asking for a
+  paediatric amoxicillin dose gets arithmetic over verified numbers with the
+  reference attached.</p>
 </section>
 
 <section>
-  <h2>Decisions and trade-offs</h2>
-
-  <div class="decision">
-    <h3>Vector storage</h3>
-    <p class="choice">Supabase with pgvector, not a dedicated vector database.</p>
-    <p>The alternatives were the usual ones — Pinecone, Qdrant, Weaviate. I chose
-    pgvector because it keeps vectors and application data in the same Postgres
-    instance: one connection, one auth story, and retrieval results join directly
-    against chunk metadata in SQL instead of being stitched together across two
-    systems. At this corpus size that simplicity wins outright. The cost is a
-    known ceiling: pgvector's index performance won't match a purpose-built HNSW
-    store at tens of millions of vectors, and heavy retrieval competes with
-    ordinary app queries for the same database. If the corpus grows past what one
-    instance handles comfortably, this decision gets revisited — knowingly.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Tenancy</h3>
-    <p class="choice">A single-tenant system with a dentist_id seam, not multi-tenant infrastructure.</p>
-    <p>The honest version of where the product is: one paying user class, cohorts
-    of testers, no clinics with isolation requirements yet. Building multi-tenant
-    infrastructure now would have been engineering for a customer that doesn't
-    exist. Instead the system runs as a singleton with a dentist_id threaded
-    through every table from day one — a seam, not a feature. It buys shipping
-    speed today and a defined migration path later. The cost is real: some
-    queries quietly assume one user's corpus, and turning the seam into actual
-    tenancy will be a project, not a config change. I consider that debt taken on
-    deliberately, at a known interest rate.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Chunking</h3>
-    <p class="choice">Section-aware chunking, after naive splitting failed.</p>
-    <p>The first pipeline did what every tutorial does: fixed-size chunks with
-    overlap. For clinical texts that broke in a specific, dangerous way — a
-    dosage table separated from the heading that says which patient group it
-    applies to, contraindications split from the indication they belong to.
-    Retrieval then returned sections that were topically right and clinically
-    wrong. The fix was chunking along the documents' own structure: chunks keyed
-    to headings, carrying their section path as metadata the retrieval and
-    validation steps can check. The cost is ingestion effort — every new source
-    format needs mapping work before it enters the corpus, so the library grows
-    slower than a naive pipeline would allow. In this domain that trade is not
-    close.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Output contract</h3>
-    <p class="choice">Schema-validated structured output, not free-form generation.</p>
-    <p>Every task type has a defined output schema; generation is validated
-    against it and retried on a miss. That's what makes outputs land as usable
-    artifacts — a note, a prep sheet — with source references attached, and it
-    caps how far a hallucination can travel: a claim without a retrievable source
-    has nowhere to sit in the structure. The cost is rigidity. The system does
-    its defined jobs well and open-ended questions worse, and every new output
-    type is engineering work — schema, template, validation — rather than a
-    prompt tweak. For a clinical tool I'll take predictable-and-narrow over
-    flexible-and-occasionally-wrong.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Payments</h3>
-    <p class="choice">Lemon Squeezy as merchant of record, not Stripe.</p>
-    <p>Stripe doesn't serve Turkey-origin businesses without a foreign entity,
-    and incorporating abroad to run a test cohort's payments would have been
-    absurd. Lemon Squeezy acts as merchant of record — it owns tax handling and
-    card acceptance globally, which is how "payments live" became true in days
-    instead of months. The costs: a noticeably higher fee than raw card
-    processing, less control over the checkout, and payout delay. It's the right
-    tool for this stage and probably the wrong one at scale; that switch is a
-    future problem I accepted on purpose.</p>
-  </div>
+  <h2>What we measure</h2>
+  <p>Saying the cohort shapes the product only means something if you can see
+  the cohort, so the product is instrumented fairly heavily.</p>
+  <p>Every meaningful action is logged as a typed event with a platform tag —
+  around thirty of them. Queries submitted and what intent they were classified
+  as. Follow-up chips clicked. Sources opened, and which ones. Citations
+  copied. Voice transcriptions. Documents generated, by type. These aggregate
+  into internal dashboards that answer the questions I actually have: which of
+  the four features gets used, at what time of day, on which device, and
+  whether a dentist who generated a document last week came back this week.</p>
+  <p>Two things the data has already told us that I would have guessed
+  wrong.</p>
+  <p>The first is where people use it — chairside on a phone, not at a desk.
+  That's what moved the product to mobile.</p>
+  <p>The second is which features earn their place. Some things I was confident
+  about get opened rarely. Things I filed as secondary turn out to be why
+  someone opens the app at all. I'm not going to pretend I predicted that; the
+  event stream told me, and the roadmap changed.</p>
 </section>
 
 <section>
-  <h2>What was hard</h2>
-  <p>Plausible-but-wrong retrieval was the defining fight. Embeddings are good at
-  topical similarity and indifferent to clinical correctness — the paragraph
-  about the adult protocol ranks beautifully for a question about a child. The
-  chunking rework above was half the answer; the other half is validation that
-  checks composed answers against the retrieved sections and a hard rule at the
-  output layer: no source, no claim. When grounding fails, the honest behavior is
-  to return less — a narrower answer with references — rather than a fluent
-  guess. Getting the system to prefer "less" took longer than building the happy
-  path.</p>
-  <p>The corpus itself is a constraint nobody warns you about: dental sources are
-  a mix of Turkish and English, and embedding quality is not symmetric across
-  them. Queries arrive in Turkish clinical shorthand; the best source for the
-  answer may be an English textbook section. Cross-language retrieval works, but
-  it needed deliberate evaluation with my co-founder reviewing outputs
-  case-by-case — her review queue, on top of her actual job, was the scarcest
-  resource in the project.</p>
-  <p>And the unglamorous part: none of this mattered until it survived a real
-  clinic. A tool that needs two free hands loses to habit instantly — which is
-  why voice input stopped being a nice-to-have — and a dentist who has asked a
-  colleague for twenty years doesn't switch because your architecture is sound.
-  The cohorts exist to fight for that habit change one workflow at a time.
-  {# TODO(owner): add specifics that only you know — App Store review history #}
-  {# if noteworthy, corpus size, query volume, typical latency (spec §2.2). #}</p>
+  <h2>Payments</h2>
+  <p>In-app purchases through the App Store, handled with RevenueCat, with
+  entitlements driven by webhooks — including the unglamorous cases, like not
+  revoking access the moment someone cancels, because they've paid through the
+  end of the period. Not the interesting part of the project, but worth stating
+  plainly: people pay for this.</p>
 </section>
 
-{# TODO(owner): two unframed interface screenshots (spec §4.5): #}
-{# 1) structured output with visible source references, 2) a workflow surface #}
-{# (visit prep or notes). Drop at main/static/main/img/consuldent-output.png #}
-{# and consuldent-workflow.png, then uncomment: #}
-{# <section> #}
-{#   <h2>In the interface</h2> #}
-{#   <figure> #}
-{#     <img src="{% static 'main/img/consuldent-output.png' %}" alt="ConsulDent structured answer with source references" loading="lazy"> #}
-{#     <figcaption>A structured answer — every claim carries its source section.</figcaption> #}
-{#   </figure> #}
-{#   <figure> #}
-{#     <img src="{% static 'main/img/consuldent-workflow.png' %}" alt="ConsulDent visit preparation workflow" loading="lazy"> #}
-{#     <figcaption>Visit preparation — the output is a document, not a transcript.</figcaption> #}
-{#   </figure> #}
-{# </section> #}
+<section>
+  <h2>What's been hard</h2>
+  <p><strong>Answer quality is the permanent fight.</strong> Not a problem
+  that got solved — an ongoing one. Embeddings are good at topical similarity
+  and completely indifferent to clinical correctness, so the paragraph about
+  the adult protocol will rank beautifully against a question about a child.
+  The chunking rework helped. So did multi-query retrieval and the rule that a
+  claim without a source doesn't ship. But there's no version of this where we
+  declare it done. Every cohort surfaces answers that are technically
+  defensible and practically useless, and we work through them.</p>
+  <p><strong>The corpus and the users don't share a language.</strong>
+  Questions arrive in Turkish clinical shorthand; the best sources are mostly
+  English textbook sections. The pipeline handles this explicitly — questions
+  get rewritten into English search queries, retrieval runs in English,
+  composition comes back in Turkish with the terminology intact. It works, but
+  getting there needed case-by-case review, my co-founder going through outputs
+  one at a time on top of running a clinic. Her review time has been the
+  scarcest resource in the project.</p>
+  <p><strong>Habit is a harder opponent than accuracy.</strong> A dentist who
+  has asked a colleague for twenty years doesn't switch because the retrieval
+  is well-designed. Anything that needs two free hands loses instantly. Most of
+  what the cohorts are testing is whether the thing survives contact with a
+  real working day.</p>
+</section>
 
 <section>
   <h2>Where it stands</h2>
-  <p>Live on the App Store, roughly fifty dentists reached across three test
-  cohorts, payments running. The mobile release moved usage from "I'll check at
-  my desk" toward the chairside moments the product was designed for. The current
-  cohort is about retention: whether the workflow outputs — not the answers —
-  are what people come back for. Deliberately not built yet: clinic-level
-  accounts and multi-dentist operations. That's what the tenancy seam is waiting
-  for, and it stays unbuilt until a clinic asks.</p>
+  <p>Live on the App Store, around fifty dentists across three test cohorts,
+  payments running. The mobile release moved usage toward the moments the
+  product was designed for.</p>
+  <p>The current cohort is less about proving the retrieval works and more
+  about finding out which of the four features people actually reach for. That
+  answer has already shifted once and will probably shift again.</p>
+  <p>Not built yet: clinic-level accounts, multiple dentists sharing a
+  workspace. That's the obvious next thing and it stays unbuilt until a clinic
+  asks for it.</p>
 </section>
 
 <a class="quiet-link back-link" href="{% url 'projects' %}">&larr; Back to projects</a>
