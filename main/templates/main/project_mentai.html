@@ -18,97 +18,42 @@
     <img class="app-logo" src="{% static 'main/img/mentai-icon.png' %}" alt="MentAI logo">
     <h1>MentAI</h1>
   </div>
-  <p>MentAI was a personalized mentorship app: daily guidance, reflection
-  prompts, and adaptive tasks meant to help people make steady progress on
-  cognitive and productivity goals. A small team of close friends built it — my
-  first end-to-end product, and the project that pulled me into building
-  products at all. We stopped it after MVP testing: the users we spoke to didn't
-  have the need we had designed for. This page is the postmortem.</p>
+  <p>A personalized mentorship app: daily guidance, reflection prompts, and
+  adaptive tasks for cognitive and productivity goals. Seven of us built it —
+  close friends, mostly engineers — over ten months of evenings and weekends.
+  It was my first end-to-end product. We stopped it after MVP testing.</p>
 </section>
 
 <section>
-  <h2>What we actually built</h2>
-  <p>The idea worth keeping was structured user state instead of chat history.
-  A user wasn't a transcript; they were a profile, goals, daily inputs, assigned
-  tasks, progress signals, and a weekly summary that acted as compressed memory —
-  each interaction read that state and wrote back to it. Serverless functions on
-  Google Cloud handled the asynchronous work: processing a day's input, scheduled
-  nudges, weekly reviews. The LLM sat inside controlled pipelines as a reasoning
-  component — summarizing input, extracting signals, shaping the next day's
-  guidance — rather than as an open chat. The architecture worked. That is not
-  the same as the product working.</p>
-</section>
-
-<section>
-  <h2>What went wrong</h2>
-
-  <div class="decision">
-    <h3>Over-structured UX</h3>
-    <p>The early product asked users to fill forms about their day — mood,
-    energy, goals — because structured input made the state model clean. Users
-    felt boxed in, and said so. We flipped it: free-text input, with structured
-    extraction after the fact. The complaint went away and onboarding got
-    smoother — but the people who had bounced didn't come back. We had fixed the
-    friction, not the reason to return.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Over-generation</h3>
-    <p>Left to generate freely, the guidance came out inconsistent — different
-    tone every day, motivational filler, verbosity that read as noise. We moved
-    to templates, structured outputs, and validation, and the outputs became
-    consistent and genuinely better. It changed nothing measurable. Nobody had
-    been leaving because of tone; polishing the answer polished a thing people
-    weren't asking for.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Unmeasurable progress</h3>
-    <p>"Is this helping?" had no honest answer for months — mentorship progress
-    is fuzzy, and we let it stay fuzzy. Eventually we defined a few hard signals:
-    streaks, task completion, friction points. That fix did work, in the least
-    comfortable way possible — the dashboard stopped being arguable, and what it
-    showed was thin engagement that no feature shipped afterwards moved.</p>
-  </div>
-
-  <div class="decision">
-    <h3>Said versus did</h3>
-    <p>Interviews were encouraging to the end. People liked the idea, said they
-    wanted a system like this, gave thoughtful feedback. Usage disagreed: they
-    tried it, drifted, and didn't miss it. We spent too long weighing what
-    testers said over what they did — the single most expensive lesson on this
-    page.</p>
-  </div>
+  <h2>What it did</h2>
+  <p>The idea worth keeping was structured user state instead of chat history:
+  a user wasn't a transcript but a profile, goals, daily inputs, assigned
+  tasks, and a weekly summary acting as compressed memory. Serverless functions
+  on Google Cloud handled the asynchronous work — processing a day's input,
+  scheduled nudges, weekly reviews — and the LLM sat inside controlled
+  pipelines as a reasoning component. The architecture worked. That is not the
+  same as the product working.</p>
 </section>
 
 <section>
   <h2>Why we stopped</h2>
-  <p>Once the signals were honest, the decision mostly made itself. The gap
-  wasn't a missing feature or a rough interface — the people we could reach
-  didn't have the daily need the whole design assumed, and no iteration on our
-  side could manufacture it. We chose to stop rather than pivot in place,
-  because every pivot we sketched kept the assumption that had already failed.
-  {# TODO(owner): if you want, add the human detail — who called it, how long #}
-  {# accepting it took (spec §4.4). #}</p>
-</section>
-
-<section>
-  <h2>What it changed</h2>
-  <p>The next two projects were built against this one's mistakes. ConsulDent
-  started from a domain expert with the need in her own workday — my co-founder
-  brings the cases — instead of from an idea looking for users; demand gets
-  validated before architecture now, not after. The audience flipped from broad
-  consumer to narrow professional.</p>
-  <p>One thing did work, and it's worth naming: distribution. We built the
-  {# TODO(owner): add the follower count if you want the claim to carry a number #}
+  <p>Around twenty friends tried it on TestFlight; it never reached the App
+  Store. The daily letters — the core feature — became annoying, and I wasn't
+  reading them either, on the product I had built for my own problem.
+  Interviews stayed encouraging while usage said otherwise: people tried it,
+  drifted, and didn't miss it.</p>
+  <p>We were generating mentorship content and none of us knew anything about
+  mentorship. The users we could reach didn't have the daily need the whole
+  design assumed, and no iteration on our side could manufacture it. At some
+  point we said it out loud: none of us needed this product. That was the end
+  of it.</p>
+  <p>One thing did work: we grew the
   <a class="quiet-link" href="https://www.instagram.com/mentai.app/" rel="noopener">MentAI Instagram</a>
-  into a real audience organically — no paid promotion, just consistent content
-  and showing up in the Karşıyaka founder collective and public presentations.
-  That taught us that distribution is a separate craft from building, and it's
-  why ConsulDent went to cohorts of real dentists before anything else.</p>
-  <p>The longer story — the team, the letters, the four thousand followers — is
-  in the note:
-  <a class="quiet-link" href="{% url 'blog_detail' 'we-built-a-mentorship-app-without-a-mentor' %}">We built a mentorship app without a mentor &rarr;</a></p>
+  to around four thousand followers organically — which taught us that
+  distribution is a separate craft from building, and why
+  <a class="quiet-link" href="{% url 'project_detail' 'consuldent' %}">ConsulDent</a>
+  went to cohorts of real dentists instead of an audience.</p>
+  <p><a class="quiet-link" href="{% url 'blog_detail' 'we-built-a-mentorship-app-without-a-mentor' %}">Full story &rarr;</a></p>
 </section>
 
 <a class="quiet-link back-link" href="{% url 'projects' %}">&larr; Back to projects</a>
