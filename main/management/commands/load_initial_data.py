@@ -34,7 +34,7 @@ class Command(BaseCommand):
                 'status': 'active',
                 'description': CONSULDENT_DESCRIPTION,
                 'year': '2024',
-                'tech_stack': 'Python, RAG, LLM Integration, FastAPI, React',
+                'tech_stack': 'Python, Django, React Native, RAG, pgvector, Whisper',
                 'short_description': "A clinical AI assistant for dentists, live on the App Store. Answers come from retrievable clinical sources and land as structured output that fits the clinic's day: visit preparation, clinical notes, patient communication.",
                 'demo_link': 'https://consuldent.app',
                 'app_store_link': 'https://apps.apple.com/tr/app/consuldent/id6781041991',

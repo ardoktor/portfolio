@@ -25,7 +25,7 @@
             "status": "active",
             "description": "ConsulDent is a clinical AI assistant for dentists, live on the App Store. It answers from retrievable clinical sources — guidelines, books, reference documents — and returns structured output that fits the workflow: visit preparation, clinical notes, patient communication. Under the hood: RAG pipelines and agent-style reasoning instead of a chat box.",
             "year": "2024",
-            "tech_stack": "Python, RAG, LLM Integration, FastAPI, React",
+            "tech_stack": "Python, Django, React Native, RAG, pgvector, Whisper",
             "metrics": "~50 dentists reached, 3 test cohorts, payments active",
             "postmortem": "",
             "app_store_link": "https://apps.apple.com/tr/app/consuldent/id6781041991",
