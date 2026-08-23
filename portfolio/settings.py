@@ -16,6 +16,8 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # Allowed hosts
 ALLOWED_HOSTS = [
+    'ardaasut.com',
+    'www.ardaasut.com',
     'portfolio-3-nq87.onrender.com',
     '.onrender.com',
     'localhost',
@@ -24,6 +26,8 @@ ALLOWED_HOSTS = [
 
 # CSRF trusted origins (required for admin on HTTPS)
 CSRF_TRUSTED_ORIGINS = [
+    'https://ardaasut.com',
+    'https://www.ardaasut.com',
     'https://portfolio-3-nq87.onrender.com',
     'https://*.onrender.com',
 ]
