@@ -4,12 +4,15 @@ from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def home(request):
+    latest = BlogPost.objects.filter(is_published=True).first()
     return render(request, 'main/home.html', {
         'current_project': Project.objects.filter(status='active').first(),
         # Homepage lists only archived products with a postmortem written;
         # the rest stay on /projects/.
         'archived_projects': Project.objects.filter(status='archived').exclude(postmortem=''),
-        'recent_posts': BlogPost.objects.filter(is_published=True)[:3],
+        'latest_post': latest,
+        # The latest note is surfaced on its own above, so keep it out of the list.
+        'recent_posts': BlogPost.objects.filter(is_published=True).exclude(pk=latest.pk)[:3] if latest else [],
     })
 
 def about(request):

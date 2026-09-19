@@ -40,6 +40,11 @@
   margin-top: var(--gap);
 }
 
+/* The latest note sits with the intro, not as its own section */
+.page-quiet main > .latest {
+  margin-top: 36px;
+}
+
 /* The lead project is isolated with 1.5x the section gap */
 .page-quiet main > .lead-project,
 .page-quiet main > .lead-project + * {
@@ -59,6 +64,15 @@
   max-width: 680px;
   padding: 0 24px;
   justify-content: space-between;
+}
+
+/* No wordmark in the nav: the links align with the content column instead */
+.page-quiet .site-nav-inner {
+  justify-content: flex-start;
+}
+
+.page-quiet .nav-list {
+  margin-left: -0.85rem;
 }
 
 .page-quiet .nav-brand {

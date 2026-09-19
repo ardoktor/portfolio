@@ -17,6 +17,13 @@
   <p class="intro-sub muted">Currently ConsulDent, a clinical assistant for dentists.</p>
 </header>
 
+{% if latest_post %}
+<section class="latest">
+  <p class="eyebrow">Latest note</p>
+  <p><a class="quiet-link" href="{{ latest_post.get_absolute_url }}">{{ latest_post.title }}</a> <span class="muted">{{ latest_post.created_at|date:"M Y" }}</span></p>
+</section>
+{% endif %}
+
 {% if current_project %}
 <section class="lead-project">
   <p class="eyebrow">Currently building</p>
