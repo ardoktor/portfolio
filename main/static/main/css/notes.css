@@ -164,6 +164,28 @@
   font-weight: 500;
 }
 
+/* Video: full column width, hairline frame, same radius as images.
+   Pair with preload="none" and a poster so the page costs nothing until
+   someone presses play. */
+.note-body video,
+.note-body iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.035);
+  margin: 0 0 8px;
+}
+
+.note-body .caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: 0 0 16px;
+}
+
 .page-notes .back-link {
   display: inline-block;
   margin-top: 56px;
