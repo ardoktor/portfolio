@@ -64,6 +64,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'main.context_processors.site',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -107,6 +108,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Absolute origin used to build canonical and Open Graph URLs. Scrapers
+# (LinkedIn, X, Slack) need absolute addresses, and they must not depend on
+# the incoming request's scheme, which is plain HTTP behind Render's proxy.
+SITE_URL = os.environ.get('SITE_URL', 'https://ardaasut.com').rstrip('/')
 
 # Security settings for production
 if not DEBUG:

@@ -3,6 +3,10 @@
 {% load custom_filters %}
 
 {% block title %}{{ post.title }} — Arda Asut{% endblock %}
+{% block meta_description %}{{ post.summary }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.title }}{% endblock %}
+{% block og_description %}{{ post.summary }}{% endblock %}
 {% block body_class %}page-quiet page-notes{% endblock %}
 
 {% block extra_css %}

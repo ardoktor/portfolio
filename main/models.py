@@ -1,8 +1,25 @@
+import html
+import re
+
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from django.utils.text import slugify
+from django.utils.text import slugify, Truncator
 from django.utils import timezone
+
+
+def _plain_text(markdown):
+    """Strip markdown and HTML down to readable prose."""
+    text = re.sub(r'<[^>]+>', ' ', markdown)                  # raw HTML
+    text = html.unescape(text)                                # &middot; etc.
+    text = re.sub(r'!\[([^\]]*)\]\([^)]*\)', r'\1', text)      # images
+    text = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', text)       # links
+    text = re.sub(r'^\s{0,3}#{1,6}\s*', '', text, flags=re.M)  # headings
+    text = re.sub(r'^\s{0,3}>\s?', '', text, flags=re.M)       # quotes
+    text = re.sub(r'^\s{0,3}[-*+]\s+', '', text, flags=re.M)   # bullets
+    text = re.sub(r'[*_`]', '', text)                         # emphasis
+    return ' '.join(text.split())
+
 
 # Create your models here.
 class Tag(models.Model):
@@ -43,6 +60,27 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog_detail', args=[self.slug])
+
+    @property
+    def summary(self):
+        """The note's opening as plain text, for meta descriptions.
+
+        Share cards and search results want prose, so markdown and any raw
+        HTML (a video embed, say) are stripped rather than rendered.
+        Paragraphs are taken in order until there is enough to read: stopping
+        at the first one would cut a short opening line off from the sentence
+        that completes it, and taking the whole note drags in captions and
+        list fragments that read as noise once the markup is gone.
+        """
+        lede = []
+        for block in (self.text or '').split('\n\n'):
+            cleaned = _plain_text(block)
+            if len(cleaned) < 15:          # a heading, a caption, stray markup
+                continue
+            lede.append(cleaned)
+            if sum(len(part) for part in lede) >= 80:
+                break
+        return Truncator(' '.join(lede)).chars(200)
 
     def __str__(self):
         return self.title or self.text[:50]

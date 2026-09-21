@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block title %}{{ project.title }} — Arda Asut{% endblock %}
+{% block meta_description %}{{ project.short_description|default:project.description }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ project.title }}{% endblock %}
+{% block og_description %}{{ project.short_description|default:project.description }}{% endblock %}
 {% block body_class %}page-quiet page-detail{% endblock %}
 
 {% block extra_css %}
