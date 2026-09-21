@@ -63,21 +63,17 @@
 .page-quiet .footer-inner {
   max-width: 680px;
   padding: 0 24px;
-  justify-content: space-between;
 }
 
-/* No wordmark in the nav: the links align with the content column instead */
+/* No wordmark in the nav, so the links themselves start the column. The
+   negative margin cancels the link's own left padding so the text — not the
+   hover box — lands on the 24px gutter. */
 .page-quiet .site-nav-inner {
   justify-content: flex-start;
 }
 
 .page-quiet .nav-list {
   margin-left: -0.85rem;
-}
-
-.page-quiet .nav-brand {
-  color: var(--ink);
-  font-family: var(--font-mono);
 }
 
 .page-quiet .nav-list li a {
@@ -99,6 +95,10 @@
 .page-quiet .site-footer .footer-brand,
 .page-quiet .site-footer .footer-copy {
   color: var(--ink-muted);
+}
+
+.page-quiet .site-footer .footer-brand {
+  font-family: var(--font-mono);
 }
 
 .page-quiet .site-footer a {
