@@ -5,13 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Arda Asut — AI products for real workflows{% endblock %}</title>
-    <meta name="description" content="I build AI products that professionals use in their actual workflow. Currently ConsulDent, a clinical assistant for dentists, live on the App Store.">
 
-    <meta property="og:type"        content="website">
-    <meta property="og:title"       content="Arda Asut — AI products for real workflows">
-    <meta property="og:description" content="Currently building ConsulDent, a clinical AI assistant for dentists. Live on the App Store.">
-    <meta property="og:image"       content="https://ardaasut.com{% static 'main/img/og.png' %}">
-    <meta property="og:url"         content="https://ardaasut.com/">
+    {% comment %}
+    Every page supplies its own card. Scrapers read og:url as the canonical
+    address, so leaving it fixed sends every share back to the homepage.
+    {% endcomment %}
+    <meta name="description" content="{% block meta_description %}I build AI products that professionals use in their actual workflow. Currently ConsulDent, a clinical assistant for dentists, live on the App Store.{% endblock %}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <meta property="og:site_name"   content="Arda Asut">
+    <meta property="og:type"        content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title"       content="{% block og_title %}Arda Asut — AI products for real workflows{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Currently building ConsulDent, a clinical AI assistant for dentists. Live on the App Store.{% endblock %}">
+    <meta property="og:image"       content="{% block og_image %}{{ site_url }}{% static 'main/img/og.png' %}{% endblock %}">
+    <meta property="og:url"         content="{{ canonical_url }}">
     <meta name="twitter:card"       content="summary_large_image">
 
     <!-- Fonts -->
